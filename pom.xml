@@ -16,6 +16,7 @@
 
     <modules>
     <module>ytj-api</module>
+    <module>ytj-generated-model</module>
   </modules>
 
 </project>
