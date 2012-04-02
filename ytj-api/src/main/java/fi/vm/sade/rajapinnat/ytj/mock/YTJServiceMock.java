@@ -5,15 +5,21 @@ package fi.vm.sade.rajapinnat.ytj.mock;
 
 import fi.vm.sade.rajapinnat.ytj.api.YTJDTO;
 import fi.vm.sade.rajapinnat.ytj.api.YTJService;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
+ * Mock for YTJService.
  *
  * @author mlyly
  */
 public class YTJServiceMock implements YTJService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(YTJServiceMock.class);
 
     public YTJServiceMock() {
         initMockData();
@@ -21,14 +27,26 @@ public class YTJServiceMock implements YTJService {
 
     @Override
     public YTJDTO findByYTunnus(String ytunnus) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        YTJDTO result = dataByYTunnus.get(ytunnus);
+        return result;
     }
 
     @Override
     public List<YTJDTO> findByYNimi(String nimi) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<YTJDTO> result = new ArrayList<YTJDTO>();
+
+        for (YTJDTO ytjdto : dataByYTunnus.values()) {
+            if (ytjdto.getNimi().contains(nimi)) {
+                result.add(ytjdto);
+            }
+        }
+
+        return result;
     }
 
+    /*
+     * MOCK DATA
+     */
 
     private Map<String, YTJDTO> dataByYTunnus = new HashMap<String, YTJDTO>();
 
