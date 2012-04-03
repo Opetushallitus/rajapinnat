@@ -20,13 +20,10 @@ import org.apache.commons.codec.binary.Hex;
  */
 public class YTJServiceImpl implements YTJService {
     
-    /*These final String are just for testing -> later add profile
-    * so that these values will be retrieved from properties-file 
-    * 
-    */
+   
     
-    private String asiakastunnus = "oPHallitusOPH";
-    private String salainenavain = "39769FB6-465D-43B7-AB26-4D891428BB42";
+    private String asiakastunnus = "";
+    private String salainenavain = "";
     private final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private final String HASH_ALGORITHM = "SHA-1";
     private final String ENCODING = "UTF-8";

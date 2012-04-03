@@ -10,8 +10,8 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="ytjServiceImplBean" class="fi.vm.sade.rajapinnat.ytj.service.YTJServiceImpl">
-        <property name="asiakastunnus" value="oPHallitusOPH"/>
-        <property name="salainenavain" value="39769FB6-465D-43B7-AB26-4D891428BB42"/>
+        <property name="asiakastunnus" value="${rajapinnat.ytj.asiakastunnus}"/>
+        <property name="salainenavain" value="${rajapinnat.ytj.avain}"/>
     </bean>    
 
     <osgi:service id="ytjServiceImpl" ref="ytjServiceImplBean" interface="fi.vm.sade.rajapinnat.ytj.api.YTJService"/>
