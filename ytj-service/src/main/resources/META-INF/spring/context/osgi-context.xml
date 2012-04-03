@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:util="http://www.springframework.org/schema/util"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/osgi
+       http://www.springframework.org/schema/osgi/spring-osgi.xsd
+       http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="ytjServiceImplBean" class="fi.vm.sade.rajapinnat.ytj.service.YTJServiceImpl">
+        <property name="asiakastunnus" value="oPHallitusOPH"/>
+        <property name="salainenavain" value="39769FB6-465D-43B7-AB26-4D891428BB42"/>
+    </bean>    
+
+    <osgi:service id="ytjServiceImpl" ref="ytjServiceImplBean" interface="fi.vm.sade.rajapinnat.ytj.api.YTJService"/>
+
+</beans>
