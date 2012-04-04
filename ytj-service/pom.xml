@@ -32,9 +32,9 @@
 
     <build>
         <finalName>${artifactId}</finalName>
-        <filters>
+        <!--<filters>
             <filter>src/main/filter/filter-${env}.properties</filter>
-        </filters>
+        </filters>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.felix</groupId>
@@ -53,7 +53,14 @@
             </plugin>
         </plugins>
     </build>
-
+    <repositories>
+        <repository>
+            <url>http://repo1.maven.org/maven2/</url>
+            <id>junit_4</id>
+            <layout>default</layout>
+            <name>Repository for library Library[junit_4]</name>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>fi.vm.sade.rajapinnat.ytj</groupId>
@@ -69,6 +76,12 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

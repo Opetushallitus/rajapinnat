@@ -30,7 +30,7 @@ public class YTJServiceImpl implements YTJService {
     private String aikaleima = "";
     private String tarkiste = "";
     private String tiketti = "";
-   
+    private YtjDtoMapperHelper mapper = new YtjDtoMapperHelper();
     
     public void tstYtj() {
         try {
@@ -99,7 +99,8 @@ public class YTJServiceImpl implements YTJService {
                     tarkiste, 
                     tiketti);
             
-              return mapVastausListToDtoList(vastaus.getYritysHaku().getYritysHakuDTO());
+              return mapper.mapYritysHakuDTOListToDtoList(vastaus.getYritysHaku().getYritysHakuDTO());
+             
         } catch (Exception exp) {
             
             //TODO, add logging
@@ -114,20 +115,18 @@ public class YTJServiceImpl implements YTJService {
             YritysTiedotSoap ytj = yt.getYritysTiedotSoap();
             tarkiste = this.createHashHex(this.createHashString());
             
-            
-            
-            YritysHakutulos vastaus = ytj.wmYritysHaku("", 
-                    "", 
-                    false, 
-                    ytunnus, 
-                    true, 
+            YritysTiedotV2DTO vastaus = ytj.wmYritysTiedotV2(ytunnus,
                     Kieli.FI, 
-                    getAsiakastunnus(), 
+                    asiakastunnus, 
                     aikaleima, 
                     tarkiste, 
                     tiketti);
             
-               return mapVastausToDto(vastaus.getYritysHaku().getYritysHakuDTO().get(0));
+                    
+                    
+           
+            
+               return mapper.mapYritysTiedotV2DTOtoYTJDTO(vastaus);
               
             
         } catch (Exception exp) {
@@ -137,24 +136,10 @@ public class YTJServiceImpl implements YTJService {
         }
     }
     
-    private List<YTJDTO> mapVastausListToDtoList(List<YritysHakuDTO> vastaukset) {
-        List<YTJDTO> yritykset = new ArrayList<YTJDTO>();
-        for (YritysHakuDTO vastaus:vastaukset) {
-            yritykset.add(mapVastausToDto(vastaus));
-        }
-        
-        
-        return yritykset;
-    }
+  
     
-    private YTJDTO mapVastausToDto(YritysHakuDTO ytjParam) {
-        YTJDTO dto = new YTJDTO();
-        dto.setNimi(ytjParam.getYritysnimi());
-        dto.setYtunnus(ytjParam.getYTunnus());
-        
-        
-        return dto;
-    }
+    
+   
 
     /**
      * @return the asiakastunnus
