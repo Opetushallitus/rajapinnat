@@ -22,6 +22,9 @@ public class YTJDTO {
     private String nimi;
     private String ytunnus;
     private String yritysmuoto;
+    private String yritysmuotoKoodi;
+    private String toimiala;
+    private String toimialaKoodi;
     private String yrityksenKieli;
     private YTJOsoiteDTO postiOsoite;
     private YTJOsoiteDTO kayntiOsoite;
@@ -161,5 +164,47 @@ public class YTJDTO {
      */
     public void setFaksi(String faksi) {
         this.faksi = faksi;
+    }
+
+    /**
+     * @return the toimiala
+     */
+    public String getToimiala() {
+        return toimiala;
+    }
+
+    /**
+     * @param toimiala the toimiala to set
+     */
+    public void setToimiala(String toimiala) {
+        this.toimiala = toimiala;
+    }
+
+    /**
+     * @return the toimialaKoodi
+     */
+    public String getToimialaKoodi() {
+        return toimialaKoodi;
+    }
+
+    /**
+     * @param toimialaKoodi the toimialaKoodi to set
+     */
+    public void setToimialaKoodi(String toimialaKoodi) {
+        this.toimialaKoodi = toimialaKoodi;
+    }
+
+    /**
+     * @return the yritysmuotoKoodi
+     */
+    public String getYritysmuotoKoodi() {
+        return yritysmuotoKoodi;
+    }
+
+    /**
+     * @param yritysmuotoKoodi the yritysmuotoKoodi to set
+     */
+    public void setYritysmuotoKoodi(String yritysmuotoKoodi) {
+        this.yritysmuotoKoodi = yritysmuotoKoodi;
     }
 }
