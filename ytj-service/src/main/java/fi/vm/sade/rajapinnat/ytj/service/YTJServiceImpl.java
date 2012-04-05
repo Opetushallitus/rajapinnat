@@ -12,7 +12,7 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.security.MessageDigest;
-import java.util.ArrayList;
+
 import org.apache.commons.codec.binary.Hex;
 /**
  *
@@ -24,9 +24,9 @@ public class YTJServiceImpl implements YTJService {
     
     private String asiakastunnus = "";
     private String salainenavain = "";
-    private final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    private final String HASH_ALGORITHM = "SHA-1";
-    private final String ENCODING = "UTF-8";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String HASH_ALGORITHM = "SHA-1";
+    private static final String ENCODING = "UTF-8";
     private String aikaleima = "";
     private String tarkiste = "";
     private String tiketti = "";

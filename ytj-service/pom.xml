@@ -3,38 +3,38 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--<parent>
+    <parent>
         <groupId>fi.vm.sade.rajapinnat</groupId>
         <artifactId>ytj-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
-    </parent>-->
+    </parent>
 
     <groupId>fi.vm.sade.rajapinnat</groupId>
     <artifactId>ytj-service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Rajapinnat :: YTJ :: SERVICE</name>
-   <!--<packaging>bundle</packaging>-->
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
+    
     
   
 
     <properties>
         <felix.Import-Package>
             javax.jws,
-            <!--org.apache.cxf.annotations,-->
-            <!--javax.xml.bind.annotation.adapters,-->
-            <!--fi.vm.sade.generic.dao,
-            fi.vm.sade.generic.service,
-            fi.vm.sade.organisaatio.api.model,-->
+            fi.vm.sade.rajapinnat.ytj.api,
+            fi.ytj,
+            org.apache.commons.codec.binary,
+           
         </felix.Import-Package>
+        <env>development</env>
     </properties>
 
 
     <build>
         <finalName>${artifactId}</finalName>
-        <!--<filters>
+        <filters>
             <filter>src/main/filter/filter-${env}.properties</filter>
-        </filters>-->
+        </filters>
         <plugins>
             <plugin>
                 <groupId>org.apache.felix</groupId>

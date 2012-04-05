@@ -22,7 +22,8 @@ public class YtjDtoMapperHelper {
         ytj.setYtunnus(vastaus.getYritysTunnus().getYTunnus());
         ytj.setPostiOsoite(mapYtjOsoite(vastaus.getYrityksenPostiOsoite()));
         //If kayntiosoite-katu or postilokero is not null then try to map it
-        ytj.setKayntiOsoite(vastaus.getYrityksenKayntiOsoite() != null && vastaus.getYrityksenKayntiOsoite().getKatu() != null || vastaus.getYrityksenKayntiOsoite().getPostilokero() != null ? mapYtjOsoite(vastaus.getYrityksenKayntiOsoite()) : null);
+        ytj.setKayntiOsoite(vastaus.getYrityksenKayntiOsoite() != null && vastaus.getYrityksenKayntiOsoite().getKatu() != null 
+        || vastaus.getYrityksenKayntiOsoite().getPostilokero() != null ? mapYtjOsoite(vastaus.getYrityksenKayntiOsoite()) : null);
         mapYhteysTiedot(vastaus, ytj);
         mapYritysmuotoAndToimiala(vastaus, ytj);
         return ytj;
@@ -45,7 +46,7 @@ public class YtjDtoMapperHelper {
         for (YrityksenYhteystietoDTO yhtTieto:yritysParam.getYrityksenYhteystiedot().getYrityksenYhteystietoDTO()) {
             if (yhtTieto.getLaji().trim().equals("4") || yhtTieto.getSeloste().trim().equalsIgnoreCase("www")) {
                 yritys.setWww(yhtTieto.getYhteysTieto());
-            } else if (yhtTieto.getLaji().trim().equals("3") || yhtTieto.getSeloste().trim().equalsIgnoreCase("SŠhkšposti")) {
+            } else if (yhtTieto.getLaji().trim().equals("3")) {
                 yritys.setSahkoposti(yhtTieto.getYhteysTieto());
             } else if (yhtTieto.getLaji().trim().equals("5") || yhtTieto.getSeloste().trim().equalsIgnoreCase("Matkapuhelin")) {
                 yritys.setPuhelin(yhtTieto.getYhteysTieto());
@@ -66,7 +67,8 @@ public class YtjDtoMapperHelper {
         if (osoiteParam.getKatu() != null) {
             String kokoKatuOsoite = "";
 
-            kokoKatuOsoite = osoiteParam.getKatu() + " " + (osoiteParam.getTalo() != null ? osoiteParam.getTalo() : "") + " " + (osoiteParam.getPorras() != null ? osoiteParam.getPorras() : "") +  " " + (osoiteParam.getHuoneisto() != null ? osoiteParam.getHuoneisto() : "");
+            kokoKatuOsoite = osoiteParam.getKatu() + " " + (osoiteParam.getTalo() != null ? osoiteParam.getTalo() : "") + " " 
+            + (osoiteParam.getPorras() != null ? osoiteParam.getPorras() : "") +  " " + (osoiteParam.getHuoneisto() != null ? osoiteParam.getHuoneisto() : "");
 
             return kokoKatuOsoite;
         } else {
