@@ -4,6 +4,7 @@
 package fi.vm.sade.rajapinnat.ytj.mock;
 
 import fi.vm.sade.rajapinnat.ytj.api.YTJDTO;
+import fi.vm.sade.rajapinnat.ytj.api.YTJKieli;
 import fi.vm.sade.rajapinnat.ytj.api.YTJService;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,13 +27,13 @@ public class YTJServiceMock implements YTJService {
     }
 
     @Override
-    public YTJDTO findByYTunnus(String ytunnus) {
+    public YTJDTO findByYTunnus(String ytunnus, YTJKieli kieli) {
         YTJDTO result = dataByYTunnus.get(ytunnus);
         return result;
     }
 
     @Override
-    public List<YTJDTO> findByYNimi(String nimi) {
+    public List<YTJDTO> findByYNimi(String nimi, boolean naytaPassiiviset, YTJKieli kieli) {
         List<YTJDTO> result = new ArrayList<YTJDTO>();
 
         for (YTJDTO ytjdto : dataByYTunnus.values()) {

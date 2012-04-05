@@ -16,9 +16,9 @@ import javax.jws.WebService;
 public interface YTJService {
 
     @WebMethod
-    YTJDTO findByYTunnus(@WebParam String ytunnus);
+    YTJDTO findByYTunnus(@WebParam String ytunnus, YTJKieli kieli);
 
     @WebMethod
-    List<YTJDTO> findByYNimi(@WebParam String nimi);
+    List<YTJDTO> findByYNimi(@WebParam String nimi, @WebParam boolean naytaPassiiviset, @WebParam YTJKieli kieli);
 
 }
