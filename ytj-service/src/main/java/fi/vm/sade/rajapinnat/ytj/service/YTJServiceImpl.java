@@ -4,15 +4,18 @@
  */
 package fi.vm.sade.rajapinnat.ytj.service;
 
+import com.sun.xml.internal.ws.client.ClientTransportException;
 import fi.vm.sade.rajapinnat.ytj.api.YTJDTO;
 import fi.vm.sade.rajapinnat.ytj.api.YTJKieli;
 import fi.vm.sade.rajapinnat.ytj.api.YTJService;
+import fi.vm.sade.rajapinnat.ytj.api.exception.YtjConnectionException;
 import fi.ytj.*;
 import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.xml.ws.soap.SOAPFaultException;
 import org.apache.commons.codec.binary.Hex;
 
 /**
@@ -54,7 +57,7 @@ public class YTJServiceImpl implements YTJService {
     }
 
     @Override
-    public List<YTJDTO> findByYNimi(String nimi, boolean naytaPassiiviset, YTJKieli kieli) {
+    public List<YTJDTO> findByYNimi(String nimi, boolean naytaPassiiviset, YTJKieli kieli) throws YtjConnectionException {
         
 
             Kieli kiali = getKieli(kieli);
@@ -62,10 +65,10 @@ public class YTJServiceImpl implements YTJService {
             YritysTiedot yt = new YritysTiedot();
             YritysTiedotSoap ytj = yt.getYritysTiedotSoap();
             tarkiste = this.createHashHex(this.createHashString());
+            YritysHakutulos vastaus = null; 
+            try {
 
-
-
-            YritysHakutulos vastaus = ytj.wmYritysHaku(nimi,
+            vastaus = ytj.wmYritysHaku(nimi,
                     "",
                     false,
                     "",
@@ -75,6 +78,15 @@ public class YTJServiceImpl implements YTJService {
                     aikaleima,
                     tarkiste,
                     tiketti);
+            
+            
+            } catch (SOAPFaultException exp ) {
+                
+                throw new YtjConnectionException(exp.getFault().getFaultCode(),exp.getFault().getFaultString());
+                
+            } catch (ClientTransportException clientExp) {
+                throw new YtjConnectionException(clientExp.getKey(),clientExp.getMessage());
+            }
 
             return mapper.mapYritysHakuDTOListToDtoList(vastaus.getYritysHaku().getYritysHakuDTO());
 
@@ -104,7 +116,7 @@ public class YTJServiceImpl implements YTJService {
     }
 
     @Override
-    public YTJDTO findByYTunnus(String ytunnus, YTJKieli kieli) {
+    public YTJDTO findByYTunnus(String ytunnus, YTJKieli kieli) throws YtjConnectionException {
 
        
             Kieli kiali = getKieli(kieli);
@@ -120,7 +132,7 @@ public class YTJServiceImpl implements YTJService {
                     tiketti);
 
 
-
+            
 
 
             return mapper.mapYritysTiedotV2DTOtoYTJDTO(vastaus);
