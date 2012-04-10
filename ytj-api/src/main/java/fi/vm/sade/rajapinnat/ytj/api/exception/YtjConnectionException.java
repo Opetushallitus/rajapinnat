@@ -13,7 +13,7 @@ public class YtjConnectionException extends Exception {
     private String exceptionCode;
     private String message;
     
-    public YtjConnectionException(String expCode,String msg) {
+    public YtjConnectionException(String expCode, String msg) {
         this.exceptionCode = expCode;
         this.message = msg;
     }
