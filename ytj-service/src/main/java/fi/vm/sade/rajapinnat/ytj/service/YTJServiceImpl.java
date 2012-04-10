@@ -18,6 +18,8 @@ import org.apache.commons.codec.binary.Hex;
 /**
  *
  * @author Tuomas Katva
+ * 
+ * TODO: Add logging to the project
  */
 public class YTJServiceImpl implements YTJService {
 
@@ -53,7 +55,7 @@ public class YTJServiceImpl implements YTJService {
 
     @Override
     public List<YTJDTO> findByYNimi(String nimi, boolean naytaPassiiviset, YTJKieli kieli) {
-        try {
+        
 
             Kieli kiali = getKieli(kieli);
 
@@ -76,11 +78,7 @@ public class YTJServiceImpl implements YTJService {
 
             return mapper.mapYritysHakuDTOListToDtoList(vastaus.getYritysHaku().getYritysHakuDTO());
 
-        } catch (Exception exp) {
-
-            //TODO, add logging
-            return null;
-        }
+        
     }
     
     private Kieli getKieli(YTJKieli kieliParam) {
@@ -108,7 +106,7 @@ public class YTJServiceImpl implements YTJService {
     @Override
     public YTJDTO findByYTunnus(String ytunnus, YTJKieli kieli) {
 
-        try {
+       
             Kieli kiali = getKieli(kieli);
             YritysTiedot yt = new YritysTiedot();
             YritysTiedotSoap ytj = yt.getYritysTiedotSoap();
@@ -128,11 +126,7 @@ public class YTJServiceImpl implements YTJService {
             return mapper.mapYritysTiedotV2DTOtoYTJDTO(vastaus);
 
 
-        } catch (Exception exp) {
-
-            //TODO, add logging
-            return null;
-        }
+        
     }
 
     /**
