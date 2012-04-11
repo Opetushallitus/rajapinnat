@@ -24,7 +24,10 @@
             fi.vm.sade.rajapinnat.ytj.api,
             fi.ytj,
             org.apache.commons.codec.binary,
-           
+            com.sun.xml.internal.ws.client,
+            fi.vm.sade.rajapinnat.ytj.api.exception,
+            javax.xml.soap,
+            javax.xml.ws.soap,
         </felix.Import-Package>
         <env>development</env>
     </properties>

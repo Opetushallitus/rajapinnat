@@ -9,6 +9,7 @@ import fi.vm.sade.rajapinnat.ytj.api.YTJDTO;
 import fi.vm.sade.rajapinnat.ytj.api.YTJKieli;
 import fi.vm.sade.rajapinnat.ytj.api.YTJService;
 import fi.vm.sade.rajapinnat.ytj.api.exception.YtjConnectionException;
+import fi.vm.sade.rajapinnat.ytj.api.exception.YtjExceptionType;
 import fi.ytj.*;
 import java.security.MessageDigest;
 import java.text.DateFormat;
@@ -21,7 +22,7 @@ import org.apache.commons.codec.binary.Hex;
 /**
  *
  * @author Tuomas Katva
- * 
+ *
  * TODO: Add logging to the project
  */
 public class YTJServiceImpl implements YTJService {
@@ -58,15 +59,15 @@ public class YTJServiceImpl implements YTJService {
 
     @Override
     public List<YTJDTO> findByYNimi(String nimi, boolean naytaPassiiviset, YTJKieli kieli) throws YtjConnectionException {
-        
 
-            Kieli kiali = getKieli(kieli);
 
-            YritysTiedot yt = new YritysTiedot();
-            YritysTiedotSoap ytj = yt.getYritysTiedotSoap();
-            tarkiste = this.createHashHex(this.createHashString());
-            YritysHakutulos vastaus = null; 
-            try {
+        Kieli kiali = getKieli(kieli);
+
+        YritysTiedot yt = new YritysTiedot();
+        YritysTiedotSoap ytj = yt.getYritysTiedotSoap();
+        tarkiste = this.createHashHex(this.createHashString());
+        YritysHakutulos vastaus = null;
+        try {
 
             vastaus = ytj.wmYritysHaku(nimi,
                     "",
@@ -78,67 +79,69 @@ public class YTJServiceImpl implements YTJService {
                     aikaleima,
                     tarkiste,
                     tiketti);
-            
-            
-            } catch (SOAPFaultException exp ) {
-                
-                throw new YtjConnectionException(exp.getFault().getFaultCode(),exp.getFault().getFaultString());
-                
-            } catch (ClientTransportException clientExp) {
-                throw new YtjConnectionException(clientExp.getKey(),clientExp.getMessage());
-            }
 
-            return mapper.mapYritysHakuDTOListToDtoList(vastaus.getYritysHaku().getYritysHakuDTO());
 
-        
+        } catch (SOAPFaultException exp) {
+
+            throw new YtjConnectionException(YtjExceptionType.SOAP, exp.getFault().getFaultString());
+
+        } catch (ClientTransportException clientExp) {
+            throw new YtjConnectionException(YtjExceptionType.HTTP, clientExp.getMessage());
+        } catch (Exception commonExp) {
+            throw new YtjConnectionException(YtjExceptionType.OTHER, commonExp.getMessage());
+        }
+
+        return mapper.mapYritysHakuDTOListToDtoList(vastaus.getYritysHaku().getYritysHakuDTO());
+
+
     }
-    
+
     private Kieli getKieli(YTJKieli kieliParam) {
         Kieli selectedLang;
-            switch (kieliParam) {
-                case EN:
-                    selectedLang = Kieli.EN;
-                    break;
+        switch (kieliParam) {
+            case EN:
+                selectedLang = Kieli.EN;
+                break;
 
-                case SV:
-                    selectedLang = Kieli.SV;
-                    break;
+            case SV:
+                selectedLang = Kieli.SV;
+                break;
 
-                default:
+            default:
 
-                    selectedLang = Kieli.FI;
-                    break;
+                selectedLang = Kieli.FI;
+                break;
 
 
 
-            }
-            return selectedLang;
+        }
+        return selectedLang;
     }
 
     @Override
     public YTJDTO findByYTunnus(String ytunnus, YTJKieli kieli) throws YtjConnectionException {
 
-       
-            Kieli kiali = getKieli(kieli);
-            YritysTiedot yt = new YritysTiedot();
-            YritysTiedotSoap ytj = yt.getYritysTiedotSoap();
-            tarkiste = this.createHashHex(this.createHashString());
 
-            YritysTiedotV2DTO vastaus = ytj.wmYritysTiedotV2(ytunnus,
-                    kiali,
-                    asiakastunnus,
-                    aikaleima,
-                    tarkiste,
-                    tiketti);
+        Kieli kiali = getKieli(kieli);
+        YritysTiedot yt = new YritysTiedot();
+        YritysTiedotSoap ytj = yt.getYritysTiedotSoap();
+        tarkiste = this.createHashHex(this.createHashString());
 
-
-            
+        YritysTiedotV2DTO vastaus = ytj.wmYritysTiedotV2(ytunnus,
+                kiali,
+                asiakastunnus,
+                aikaleima,
+                tarkiste,
+                tiketti);
 
 
-            return mapper.mapYritysTiedotV2DTOtoYTJDTO(vastaus);
 
 
-        
+
+        return mapper.mapYritysTiedotV2DTOtoYTJDTO(vastaus);
+
+
+
     }
 
     /**
