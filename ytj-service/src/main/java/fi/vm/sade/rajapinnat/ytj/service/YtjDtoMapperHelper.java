@@ -33,7 +33,7 @@ public class YtjDtoMapperHelper {
     private YTJOsoiteDTO mapYtjOsoite(YrityksenOsoiteV2DTO osoiteParam) {
         YTJOsoiteDTO osoite = new YTJOsoiteDTO();
 
-        osoite.setPostilokero(osoiteParam.getPostilokero());
+        
 
         osoite.setKatu(getKatuOsoite(osoiteParam));
         osoite.setPostinumero(osoiteParam.getPostinumero());
@@ -73,6 +73,8 @@ public class YtjDtoMapperHelper {
             + (osoiteParam.getPorras() != null ? osoiteParam.getPorras() : "") +  " " + (osoiteParam.getHuoneisto() != null ? osoiteParam.getHuoneisto() : "");
 
             return kokoKatuOsoite;
+        } else if (osoiteParam.getPostilokero() != null) {
+            return osoiteParam.getPostilokero();
         } else {
             return null;
         }
