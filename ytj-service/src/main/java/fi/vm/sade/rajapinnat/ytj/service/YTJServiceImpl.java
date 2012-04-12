@@ -4,7 +4,7 @@
  */
 package fi.vm.sade.rajapinnat.ytj.service;
 
-import com.sun.xml.internal.ws.client.ClientTransportException;
+
 import fi.vm.sade.rajapinnat.ytj.api.YTJDTO;
 import fi.vm.sade.rajapinnat.ytj.api.YTJKieli;
 import fi.vm.sade.rajapinnat.ytj.api.YTJService;
@@ -85,8 +85,6 @@ public class YTJServiceImpl implements YTJService {
 
             throw new YtjConnectionException(YtjExceptionType.SOAP, exp.getFault().getFaultString());
 
-        } catch (ClientTransportException clientExp) {
-            throw new YtjConnectionException(YtjExceptionType.HTTP, clientExp.getMessage());
         } catch (Exception commonExp) {
             throw new YtjConnectionException(YtjExceptionType.OTHER, commonExp.getMessage());
         }
