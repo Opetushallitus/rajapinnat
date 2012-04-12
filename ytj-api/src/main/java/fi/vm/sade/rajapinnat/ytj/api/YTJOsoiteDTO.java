@@ -11,7 +11,7 @@ package fi.vm.sade.rajapinnat.ytj.api;
 public class YTJOsoiteDTO {
     
     private String katu;
-    private String postilokero;
+    
     private String postinumero;
     private String toimipaikka;
     private String maa;
@@ -30,20 +30,6 @@ public class YTJOsoiteDTO {
      */
     public void setKatu(String katu) {
         this.katu = katu;
-    }
-
-    /**
-     * @return the postilokero
-     */
-    public String getPostilokero() {
-        return postilokero;
-    }
-
-    /**
-     * @param postilokero the postilokero to set
-     */
-    public void setPostilokero(String postilokero) {
-        this.postilokero = postilokero;
     }
 
     /**
