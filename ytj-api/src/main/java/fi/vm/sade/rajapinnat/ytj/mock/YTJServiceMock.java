@@ -5,6 +5,7 @@ package fi.vm.sade.rajapinnat.ytj.mock;
 
 import fi.vm.sade.rajapinnat.ytj.api.YTJDTO;
 import fi.vm.sade.rajapinnat.ytj.api.YTJKieli;
+import fi.vm.sade.rajapinnat.ytj.api.YTJOsoiteDTO;
 import fi.vm.sade.rajapinnat.ytj.api.YTJService;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,6 +62,14 @@ public class YTJServiceMock implements YTJService {
         YTJDTO dto = new YTJDTO();
         dto.setNimi(nimi);
         dto.setYtunnus(ytunnus);
+        YTJOsoiteDTO osoite = new YTJOsoiteDTO();
+        osoite.setKatu("Tie 1");
+        osoite.setMaa("Suami");
+        osoite.setMaakoodi("FI");
+        osoite.setToimipaikka("Helsinki");
+        osoite.setPostinumero("00100");
+        dto.setPostiOsoite(osoite);
+        dto.setKayntiOsoite(osoite);
         return dto;
     }
 
