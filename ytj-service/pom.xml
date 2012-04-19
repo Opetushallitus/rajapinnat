@@ -28,6 +28,7 @@
             fi.vm.sade.rajapinnat.ytj.api.exception,
             javax.xml.soap,
             javax.xml.ws.soap,
+            com_*;resolution:=optional<!-- com_*... is for clover -->
         </felix.Import-Package>
         <env>development</env>
     </properties>
