@@ -62,6 +62,7 @@ public class YTJServiceMock implements YTJService {
         YTJDTO dto = new YTJDTO();
         dto.setNimi(nimi);
         dto.setYtunnus(ytunnus);
+        if (!ytunnus.trim().equals("2255802-1")) {
         YTJOsoiteDTO osoite = new YTJOsoiteDTO();
         osoite.setKatu("Tie 1");
         osoite.setMaa("Suami");
@@ -70,6 +71,16 @@ public class YTJServiceMock implements YTJService {
         osoite.setPostinumero("00100");
         dto.setPostiOsoite(osoite);
         dto.setKayntiOsoite(osoite);
+        } else {
+            YTJOsoiteDTO osoite = new YTJOsoiteDTO();
+        osoite.setKatu("Ygankuja 1");
+        osoite.setMaa("Suomi");
+        osoite.setMaakoodi("FI");
+        osoite.setToimipaikka("Helsinki");
+        osoite.setPostinumero("00100");
+        dto.setPostiOsoite(osoite);
+        
+        }
         return dto;
     }
 
@@ -114,6 +125,7 @@ public class YTJServiceMock implements YTJService {
         {"0571974-3", "Lylyisten virkistysalueyhdistys ry ", "Aatteellinen yhdistys"},
         {"1490443-0", "Tehy ry:n HYKS:n Meilahden alueen ammattiosasto ry ", "Aatteellinen yhdistys"},
         {"2401713-0", "TEHYn HYKSin Naistensairaalan ammattiosasto ry ", "Aatteellinen yhdistys"},
-        {"2397998-7", "Vasara, Helsingin yliopiston geologinen kerho ry ", "Aatteellinen yhdistys"}
+        {"2397998-7", "Vasara, Helsingin yliopiston geologinen kerho ry ", "Aatteellinen yhdistys"},
+        {"2255802-1", "Katva Consulting","Yksityinen elinkeinonharjoittaja"}
     };
 }
