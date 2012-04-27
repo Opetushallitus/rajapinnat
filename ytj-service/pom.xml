@@ -35,7 +35,7 @@
 
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <filters>
             <filter>src/main/filter/filter-${env}.properties</filter>
         </filters>
