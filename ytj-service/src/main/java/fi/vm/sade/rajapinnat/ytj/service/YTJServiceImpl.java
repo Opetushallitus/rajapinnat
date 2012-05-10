@@ -89,6 +89,18 @@ public class YTJServiceImpl implements YTJService {
             throw new YtjConnectionException(YtjExceptionType.OTHER, commonExp.getMessage());
         }
 
+        if (vastaus == null) {
+            throw new YtjConnectionException(YtjExceptionType.OTHER, "Error connecting to service");  
+        }
+        
+        if (vastaus.getYritysHaku() == null) {
+          if (vastaus.getVirheTiedot() != null) { 
+          throw new YtjConnectionException(YtjExceptionType.OTHER, vastaus.getVirheTiedot().getMessage());  
+          } else {
+              throw new YtjConnectionException(YtjExceptionType.OTHER, "Error connecting to service");  
+          }
+        } 
+        
         return mapper.mapYritysHakuDTOListToDtoList(vastaus.getYritysHaku().getYritysHakuDTO());
 
 
@@ -124,15 +136,26 @@ public class YTJServiceImpl implements YTJService {
         YritysTiedot yt = new YritysTiedot();
         YritysTiedotSoap ytj = yt.getYritysTiedotSoap();
         tarkiste = this.createHashHex(this.createHashString());
-
-        YritysTiedotV2DTO vastaus = ytj.wmYritysTiedotV2(ytunnus,
+        YritysTiedotV2DTO vastaus;
+        try {
+        vastaus = ytj.wmYritysTiedotV2(ytunnus,
                 kiali,
                 asiakastunnus,
                 aikaleima,
                 tarkiste,
                 tiketti);
 
+        } catch (SOAPFaultException exp) {
 
+            throw new YtjConnectionException(YtjExceptionType.SOAP, exp.getFault().getFaultString());
+
+        } catch (Exception commonExp) {
+            throw new YtjConnectionException(YtjExceptionType.OTHER, commonExp.getMessage());
+        }
+
+        if (vastaus == null) {
+            throw new YtjConnectionException(YtjExceptionType.OTHER, "Error connecting to service");  
+        }
 
 
 
