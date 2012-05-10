@@ -21,16 +21,16 @@ public class YtjDtoMapperHelper {
         ytj.setNimi(vastaus.getToiminimi().getToiminimi() != null ? vastaus.getToiminimi().getToiminimi() 
         : (vastaus.getYrityksenHenkilo() != null ? vastaus.getYrityksenHenkilo().getNimi() : null));
         ytj.setYtunnus(vastaus.getYritysTunnus().getYTunnus());
-        ytj.setPostiOsoite(mapYtjOsoite(vastaus.getYrityksenPostiOsoite()));
+        ytj.setPostiOsoite(vastaus.getYrityksenPostiOsoite() != null ? mapYtjOsoite(vastaus.getYrityksenPostiOsoite()) : null);
         //If kayntiosoite-katu or postilokero is not null then try to map it
-        ytj.setKayntiOsoite(vastaus.getYrityksenKayntiOsoite() != null && vastaus.getYrityksenKayntiOsoite().getKatu() != null 
-        || vastaus.getYrityksenKayntiOsoite().getPostilokero() != null ? mapYtjOsoite(vastaus.getYrityksenKayntiOsoite()) : null);
+        ytj.setKayntiOsoite( vastaus.getYrityksenKayntiOsoite() != null ?  mapYtjOsoite(vastaus.getYrityksenKayntiOsoite()) : null);
         mapYhteysTiedot(vastaus, ytj);
         mapYritysmuotoAndToimiala(vastaus, ytj);
         return ytj;
     }
 
     private YTJOsoiteDTO mapYtjOsoite(YrityksenOsoiteV2DTO osoiteParam) {
+        if (osoiteParam != null) {
         YTJOsoiteDTO osoite = new YTJOsoiteDTO();
 
         
@@ -41,9 +41,13 @@ public class YtjDtoMapperHelper {
         osoite.setMaa(osoiteParam.getMaa());
         osoite.setMaakoodi(osoiteParam.getMaakoodi());
         return osoite;
+        } else {
+            return null;
+        }
     }
     
     private void mapYhteysTiedot(YritysTiedotV2DTO yritysParam, YTJDTO yritys) {
+        if (yritysParam.getYrityksenYhteystiedot() != null) {
         for (YrityksenYhteystietoDTO yhtTieto:yritysParam.getYrityksenYhteystiedot().getYrityksenYhteystietoDTO()) {
             //Yhteystieto lajit = 4 : www, 3 : email, 5 : matkapuhelin
             if (yhtTieto.getLaji().trim().equals("4")) {
@@ -55,13 +59,18 @@ public class YtjDtoMapperHelper {
             }
             //Add other if's if needed
         }
+        }
     }
     
     private void mapYritysmuotoAndToimiala(YritysTiedotV2DTO yritysParam, YTJDTO yritys) {
+        if (yritysParam.getYritysmuoto() != null) {
         yritys.setYritysmuoto(yritysParam.getYritysmuoto().getSeloste());
         yritys.setYritysmuotoKoodi(yritysParam.getYritysmuoto().getKoodi());
+        }
+        if (yritysParam.getToimiala() != null) {
         yritys.setToimiala(yritysParam.getToimiala().getSeloste());
         yritys.setToimialaKoodi(yritysParam.getToimiala().getKoodi());
+        }
     }
 
     private String getKatuOsoite(YrityksenOsoiteV2DTO osoiteParam) {
@@ -82,6 +91,7 @@ public class YtjDtoMapperHelper {
     }
 
     public List<YTJDTO> mapYritysHakuDTOListToDtoList(List<YritysHakuDTO> vastaukset) {
+        if (vastaukset != null) {
         List<YTJDTO> yritykset = new ArrayList<YTJDTO>();
         for (YritysHakuDTO vastaus : vastaukset) {
             yritykset.add(mapYritysHakuDTOToDto(vastaus));
@@ -89,14 +99,21 @@ public class YtjDtoMapperHelper {
 
 
         return yritykset;
+        } else{
+            return null;
+        }
     }
 
     public YTJDTO mapYritysHakuDTOToDto(YritysHakuDTO ytjParam) {
+        if (ytjParam != null) {
         YTJDTO dto = new YTJDTO();
-        dto.setNimi(ytjParam.getYritysnimi());
-        dto.setYtunnus(ytjParam.getYTunnus());
+        dto.setNimi(ytjParam.getYritysnimi() != null ? ytjParam.getYritysnimi() : null);
+        dto.setYtunnus(ytjParam.getYTunnus() != null ? ytjParam.getYTunnus() : null);
 
 
         return dto;
+        } else {
+            return null;
+        }
     }
 }
