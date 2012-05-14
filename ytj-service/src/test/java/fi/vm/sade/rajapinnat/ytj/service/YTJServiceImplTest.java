@@ -37,6 +37,13 @@ public class YTJServiceImplTest {
     public void tearDown() {
     }
 
+    @Test
+    public void testHashHex() throws Exception {
+        String str = "Str to be hashed";
+        YTJServiceImpl instance = new YTJServiceImpl();
+        String hex = instance.createHashHex(str);
+        assertTrue(hex != null);
+    }
     /**
      * Test of findByYNimi method, of class YTJServiceImpl.
      * 

@@ -18,15 +18,17 @@ import java.util.Date;
 import java.util.List;
 import javax.xml.ws.soap.SOAPFaultException;
 import org.apache.commons.codec.binary.Hex;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Tuomas Katva
  *
- * TODO: Add logging to the project
  */
 public class YTJServiceImpl implements YTJService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(YTJServiceImpl.class);
     private String asiakastunnus = "";
     private String salainenavain = "";
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -37,16 +39,15 @@ public class YTJServiceImpl implements YTJService {
     private String tiketti = "";
     private YtjDtoMapperHelper mapper = new YtjDtoMapperHelper();
 
-    private String createHashHex(String strToHash) {
+    public String createHashHex(String strToHash) {
         try {
             byte[] strBytes = strToHash.getBytes(ENCODING);
             MessageDigest md = MessageDigest.getInstance(HASH_ALGORITHM);
             byte[] digestBytes = md.digest(strBytes);
-
-
+               
             return Hex.encodeHexString(digestBytes).toUpperCase();
         } catch (Exception exp) {
-            System.out.println("Exception : " + exp.toString());
+            LOG.debug("Exception when creating hashHex : " + exp.toString());
             return null;
         }
     }
