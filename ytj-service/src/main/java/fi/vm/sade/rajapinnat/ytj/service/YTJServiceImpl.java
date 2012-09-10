@@ -83,19 +83,22 @@ public class YTJServiceImpl implements YTJService {
 
 
         } catch (SOAPFaultException exp) {
-
+            LOG.error("SOAPException connecting to YTJ-service : " + exp.getFault().getFaultCode() + " " + exp.getFault().getFaultString());
             throw new YtjConnectionException(YtjExceptionType.SOAP, exp.getFault().getFaultString());
 
         } catch (Exception commonExp) {
+            LOG.error("Exception occured in YTJ-service : " + commonExp.toString());
             throw new YtjConnectionException(YtjExceptionType.OTHER, commonExp.getMessage());
         }
 
         if (vastaus == null) {
+            LOG.error("Exception in YTJ-service : reply was null");
             throw new YtjConnectionException(YtjExceptionType.OTHER, "Error connecting to service");  
         }
         
         if (vastaus.getYritysHaku() == null) {
           if (vastaus.getVirheTiedot() != null) { 
+              LOG.error("Exception occurred when connecting to YTJ-service: " + vastaus.getVirheTiedot().getMessage());
           throw new YtjConnectionException(YtjExceptionType.OTHER, vastaus.getVirheTiedot().getMessage());  
           } else {
               throw new YtjConnectionException(YtjExceptionType.OTHER, "Error connecting to service");  
