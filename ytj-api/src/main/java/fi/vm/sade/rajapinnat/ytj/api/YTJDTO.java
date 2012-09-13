@@ -32,7 +32,7 @@ public class YTJDTO {
     private String www;
     private String puhelin;
     private String faksi;
-    
+    private String kotiPaikka;
 
     public Integer getVersio() {
         return versio;
@@ -206,5 +206,19 @@ public class YTJDTO {
      */
     public void setYritysmuotoKoodi(String yritysmuotoKoodi) {
         this.yritysmuotoKoodi = yritysmuotoKoodi;
+    }
+
+    /**
+     * @return the kotiPaikka
+     */
+    public String getKotiPaikka() {
+        return kotiPaikka;
+    }
+
+    /**
+     * @param kotiPaikka the kotiPaikka to set
+     */
+    public void setKotiPaikka(String kotiPaikka) {
+        this.kotiPaikka = kotiPaikka;
     }
 }
