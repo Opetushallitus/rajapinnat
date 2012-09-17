@@ -56,6 +56,7 @@ public class YTJServiceImpl implements YTJService {
         DateFormat df = new SimpleDateFormat(DATE_FORMAT);
         aikaleima = df.format(new Date());
         return getAsiakastunnus() + getSalainenavain() + aikaleima;
+        
     }
 
     @Override
@@ -69,7 +70,7 @@ public class YTJServiceImpl implements YTJService {
         tarkiste = this.createHashHex(this.createHashString());
         YritysHakutulos vastaus = null;
         try {
-
+            
             vastaus = ytj.wmYritysHaku(nimi,
                     "",
                     false,
@@ -101,7 +102,10 @@ public class YTJServiceImpl implements YTJService {
               LOG.error("Exception occurred when connecting to YTJ-service: " + vastaus.getVirheTiedot().getMessage());
           throw new YtjConnectionException(YtjExceptionType.OTHER, vastaus.getVirheTiedot().getMessage());  
           } else {
-              throw new YtjConnectionException(YtjExceptionType.OTHER, "Error connecting to service");  
+              throw new YtjConnectionException(YtjExceptionType.OTHER, "Error connecting to service, vastaus  : " 
+                      + " AIKALEIMA :  " + aikaleima 
+                      + " tarkiste : " + tarkiste
+                      + " tunnistustiedot " + vastaus.getTunnistusTiedot().getTunnistusStatus().value());  
           }
         } 
         
