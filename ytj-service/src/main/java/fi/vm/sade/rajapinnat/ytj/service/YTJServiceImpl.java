@@ -47,7 +47,7 @@ public class YTJServiceImpl implements YTJService {
                
             return Hex.encodeHexString(digestBytes).toUpperCase();
         } catch (Exception exp) {
-            LOG.debug("Exception when creating hashHex : " + exp.toString());
+            //DEBUGSAWAY:LOG.debug("Exception when creating hashHex : " + exp.toString());
             return null;
         }
     }
