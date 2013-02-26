@@ -19,17 +19,6 @@
   
 
     <properties>
-        <felix.Import-Package>
-            javax.jws,
-            fi.vm.sade.rajapinnat.ytj.api,
-            fi.ytj,
-            org.apache.commons.codec.binary,
-            com.sun.xml.internal.ws.client,
-            fi.vm.sade.rajapinnat.ytj.api.exception,
-            javax.xml.soap,
-            javax.xml.ws.soap,
-            com_*;resolution:=optional<!-- com_*... is for clover -->
-        </felix.Import-Package>
         <env>development</env>
     </properties>
 
@@ -39,23 +28,6 @@
         <filters>
             <filter>src/main/filter/filter-${env}.properties</filter>
         </filters>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Description>${project.description}</Bundle-Description>
-                        <Import-Package>
-                            ${felix.Import-Package}
-                        </Import-Package>
-                        <Include-Resource>META-INF=target/classes/META-INF</Include-Resource>
-                    </instructions>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
     <repositories>
         <repository>

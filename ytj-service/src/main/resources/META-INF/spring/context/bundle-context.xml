@@ -3,8 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="context/osgi-context.xml"/>
-    
-    
-    
+    <bean id="ytjServiceImplBean" class="fi.vm.sade.rajapinnat.ytj.service.YTJServiceImpl">
+        <property name="asiakastunnus" value="${rajapinnat.ytj.asiakastunnus}"/>
+        <property name="salainenavain" value="${rajapinnat.ytj.avain}"/>
+    </bean>
+
 </beans>
