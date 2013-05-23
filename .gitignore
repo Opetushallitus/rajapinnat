@@ -3,4 +3,9 @@ target
 */*/target
 **/*~
 *~
-
+.project
+.settings
+.classpath
+**/.project
+**/.settings
+**/.classpath
