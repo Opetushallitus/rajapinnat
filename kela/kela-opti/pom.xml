@@ -1,0 +1,170 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	
+  <parent>
+    <groupId>fi.vm.sade.rajapinnat</groupId>
+    <artifactId>kela</artifactId>
+    <version>5.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>kela-opti</artifactId>
+  <name>Rajapinnat :: KELA :: Kela OPTI - ${version}</name>
+  <packaging>jar</packaging>
+  <description>Kelan OPTI-tiedonsiirrot</description>
+  
+  <properties>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+      <organisaatio.api.version>5.0-SNAPSHOT</organisaatio.api.version>
+      <authentication.api.version>5.0-SNAPSHOT</authentication.api.version>
+      <generic.version>5.0-SNAPSHOT</generic.version>
+      <koodisto.api.version>5.0-SNAPSHOT</koodisto.api.version>
+      <tarjonta.api.version>5.0-SNAPSHOT</tarjonta.api.version>
+  </properties>
+    
+  <build>
+    <plugins>
+        <plugin>
+                <groupId>de.smartics.maven.plugin</groupId>
+                <artifactId>hibernate4-maven-plugin</artifactId>
+                <version>0.1.1</version>
+                <executions>
+                    <execution>
+                        <id>export</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>hbm2ddl</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <unitName>tarjontaKela</unitName>
+                    <createOutputFile>${project.build.directory}/hibernate3/sql/schema.ddl</createOutputFile>
+                    <dropOutputFile>${project.build.directory}/hibernate3/sql/drop.ddl</dropOutputFile>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-core</artifactId>
+                        <version>${hibernate.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-ehcache</artifactId>
+                        <version>${hibernate.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+    </plugins>
+ </build>
+
+  <dependencies>
+
+        <dependency>
+            <groupId>fi.vm.sade.tarjonta</groupId>
+            <artifactId>tarjonta-api</artifactId>
+            <version>${tarjonta.api.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>fi.vm.sade.koodisto</groupId>
+            <artifactId>koodisto-api</artifactId>
+            <version>${koodisto.api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fi.vm.sade.organisaatio</groupId>
+            <artifactId>organisaatio-api</artifactId>
+            <version>${organisaatio.api.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fi.vm.sade.generic</groupId>
+            <artifactId>generic-test-support</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>fi.vm.sade.generic</groupId>
+            <artifactId>generic-common</artifactId>
+            <version>${generic.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fi.vm.sade.generic</groupId>
+            <artifactId>dependencies-service</artifactId>
+            <version>${generic.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+            <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>1.9.12</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-ftp</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockftpserver</groupId>
+            <artifactId>MockFtpServer</artifactId>
+            <version>2.4</version>
+            <scope>test</scope>
+        </dependency>
+        
+    </dependencies>   
+    
+   <pluginRepositories>
+        <pluginRepository>
+            <id>smartics</id>
+            <url>http://www.smartics.eu/nexus/content/groups/public-group</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    
+</project>
