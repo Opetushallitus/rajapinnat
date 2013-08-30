@@ -17,7 +17,7 @@
 		<property name="ssh.keypass" value=""/>
 
         <echo>Stop Tomcat</echo>
-		<sshexec command="/data00/oph/tomcat/ctltomcat ${oph.name} stop"
+		<sshexec command="/data00/oph/tomcat/ophtomcat ${oph.name} stop"
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
@@ -37,28 +37,27 @@
         <echo>Copy files to server...</echo>
 		<scp todir="tomcat@${tomcat-host}:${tomcat.home}/webapps/"
                keyfile="${ssh.keyfile}" passphrase="${ssh.keypass}" >
-			
 			<fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${pom.version}" ><include name="*-${pom.version}.war"/></fileset>
-
 		</scp>
 
 		<echo>unzip war-files to webapps...</echo>
         <sshexec command="
 cd ${tomcat.home}/webapps
-
 ls -la 
-
 mkdir vtj-service;
-
 unzip -qo -dvtj-service vtj-service-*.war;
-
 rm -rf *.war"
 				
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
+		<echo>Remove extra log4j config-files</echo>
+		<sshexec command="find ${tomcat.home} -name 'log4j.properties' -exec rm -rf {} \;"
+                 host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
+                 passphrase="${ssh.keypass}" trust="true" failonerror="false" />
+				 
 		<echo>Start Tomcat</echo>
-		<sshexec command="/data00/oph/tomcat/ctltomcat ${oph.name} start"
+		<sshexec command="/data00/oph/tomcat/ophtomcat ${oph.name} start"
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
