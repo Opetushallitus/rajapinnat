@@ -130,14 +130,14 @@ public class KelaGenerator {
                 dataTimeout + "&passiveMode=true");
         LOG.info("Target url: " + targetUrl);
         
-        
-        producerTemplate.sendBodyAndHeader(targetUrl, new File(optiliWriter.fileName), Exchange.FILE_NAME, this.optiliWriter.getFileLocalName());
-        producerTemplate.sendBodyAndHeader(targetUrl, new File(optiniWriter.fileName), Exchange.FILE_NAME, this.optiniWriter.getFileLocalName());
-        producerTemplate.sendBodyAndHeader(targetUrl, new File(optiolWriter.fileName), Exchange.FILE_NAME, this.optiolWriter.getFileLocalName());
-        producerTemplate.sendBodyAndHeader(targetUrl, new File(optituWriter.fileName), Exchange.FILE_NAME, this.optituWriter.getFileLocalName());
-        producerTemplate.sendBodyAndHeader(targetUrl, new File(optiopWriter.fileName), Exchange.FILE_NAME, this.optiopWriter.getFileLocalName());
-        //LEFT OUT FOR NOW! producerTemplate.sendBodyAndHeader(targetUrl, new File(optiyhWriter.fileName), Exchange.FILE_NAME, this.optiyhWriter.getFileLocalName());
-        producerTemplate.sendBodyAndHeader(targetUrl, new File(optiytWriter.fileName), Exchange.FILE_NAME, this.optiytWriter.getFileLocalName());
+        //"KELA1109/RY.WYZ.SR.D130911.OPTILI"
+        producerTemplate.sendBodyAndHeader(targetUrl, new File("KELA1109/RY.WYZ.SR.D130911.OPTILI"), Exchange.FILE_NAME, "RY.WYZ.SR.D130911.OPTILI");
+        producerTemplate.sendBodyAndHeader(targetUrl, new File("KELA1109/RY.WYZ.SR.D130911.OPTINI"), Exchange.FILE_NAME, "RY.WYZ.SR.D130911.OPTINI");
+        producerTemplate.sendBodyAndHeader(targetUrl, new File("KELA1109/RY.WYZ.SR.D130911.OPTIOL"), Exchange.FILE_NAME, "RY.WYZ.SR.D130911.OPTIOL");
+        producerTemplate.sendBodyAndHeader(targetUrl, new File("KELA1109/RY.WYZ.SR.D130911.OPTITU"), Exchange.FILE_NAME, "RY.WYZ.SR.D130911.OPTITU");
+        producerTemplate.sendBodyAndHeader(targetUrl, new File("KELA1109/RY.WYZ.SR.D130911.OPTIOP"), Exchange.FILE_NAME, "RY.WYZ.SR.D130911.OPTIOP");
+        producerTemplate.sendBodyAndHeader(targetUrl, new File("KELA1109/RY.WYZ.SR.D130911.OPTIYH"), Exchange.FILE_NAME, "RY.WYZ.SR.D130911.OPTIYH");
+        producerTemplate.sendBodyAndHeader(targetUrl, new File("KELA1109/RY.WYZ.SR.D130911.OPTIYT"), Exchange.FILE_NAME, "RY.WYZ.SR.D130911.OPTIYT");
         LOG.info("Files transfered");
     }
     
@@ -220,7 +220,7 @@ public class KelaGenerator {
         System.setProperties(props);
         final ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/context/bundle-context.xml");
         KelaGenerator kelaGenerator = context.getBean(KelaGenerator.class);
-        kelaGenerator.generateKelaFiles();
+        //kelaGenerator.generateKelaFiles();
         try {
             kelaGenerator.transferFiles();
         } catch (Exception ex) {
