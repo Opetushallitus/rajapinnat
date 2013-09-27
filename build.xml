@@ -22,7 +22,7 @@
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
 		<echo>Wait Tomcat to stop...</echo>
-        <waitfor maxwait="3000" checkevery="500">
+        <waitfor maxwait="30000" checkevery="500">
             <not>
                 <socket server="${tomcat-host}" port="${tomcat-port}" />
             </not>
@@ -62,7 +62,7 @@ rm -rf *.war"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
 		<echo>Wait for service http-url: http://${tomcat-host}:${tomcat-port}/vtj-service/buildversion.txt</echo>
-		<waitfor maxwait="15000" checkevery="500" >
+		<waitfor maxwait="30000" checkevery="500" >
 			<and>
 				<http url="http://${tomcat-host}:${tomcat-port}/vtj-service/buildversion.txt"/>
 			</and>
