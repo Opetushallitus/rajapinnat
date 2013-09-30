@@ -4,14 +4,14 @@
 
     <groupId>fi.vm.sade.rajapinnat</groupId>
     <artifactId>rajapinnat</artifactId>
-    <version>6.1-SNAPSHOT</version>
+    <version>6.2</version>
     <packaging>pom</packaging>
     <name>Rajapinnat :: Parent - ${version}</name>
 
     <parent>
         <groupId>fi.vm.sade.generic</groupId>
         <artifactId>build-parent</artifactId>
-        <version>6.1-SNAPSHOT</version>
+        <version>6.2</version>
     </parent>
 
     <properties>
