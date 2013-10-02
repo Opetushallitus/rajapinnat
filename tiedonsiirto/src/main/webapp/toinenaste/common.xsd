@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://service.henkilo.sade.vm.fi/types/common"
+           xmlns="http://service.henkilo.sade.vm.fi/types/common"
+           elementFormDefault="qualified">
+
+    <!-- todo: copypaste from authentication-api common.xsd -->
+    <xs:simpleType name="OidStringType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9\.]*" />
+            <xs:minLength value="14" />
+            <xs:maxLength value="30" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="VUOSI">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="LUOKKA">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[\w]{1,10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="LUOKKATASO">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="9|10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="HETU">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{6}[-A][\w]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SUKUNIMI">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ETUNIMET">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="KUTSUMANIMI">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="LAHIOSOITE">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PUHELINNUMERO">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ERA">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="PKERA[0-9]_[0-9]{4}[SK]_[0-9]{5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TODISTUS">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="1|2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AINE">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[\w]{2,5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TYYPPI">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[BC]{1}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ARVOSANA_4_10">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="4"/>
+            <xs:maxInclusive value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- haku ja valinta -->
+
+    <xs:simpleType name="HAKUJONO">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="OPETUSPISTENIMI">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="180"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="BOOLEANX">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="|X"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="BOOLEAN10">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="0|1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AINEIDENKESKIARVO">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="0"/>
+            <!--<xs:maxExclusive value="1000"/> max arvon laittaminen ei liene tarpeellista? -->
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="HARKINNANVARAISUUSPERUSTE">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="OPPIJANUMERO">
+        <xs:restriction base="OidStringType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="SAHKOPOSTI">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^\.]+\..+"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
+ 

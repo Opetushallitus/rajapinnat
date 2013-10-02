@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://service.koodisto.sade.vm.fi/types/koodisto"
+           xmlns="http://service.koodisto.sade.vm.fi/types/koodisto"
+           elementFormDefault="qualified">
+
+    <xs:include schemaLocation="koodisto/oppilaitosnumero.xsd"/>
+    <xs:include schemaLocation="koodisto/posti.xsd"/>
+    <xs:include schemaLocation="koodisto/maatjavaltiot2.xsd"/>
+    <xs:include schemaLocation="koodisto/kunta.xsd"/>
+    <xs:include schemaLocation="koodisto/sukupuoli.xsd"/>
+    <xs:include schemaLocation="koodisto/kieli.xsd"/>
+    <xs:include schemaLocation="koodisto/kausi.xsd"/>
+    <xs:include schemaLocation="koodisto/pohjakoulutustoinenaste.xsd"/>
+    <xs:include schemaLocation="koodisto/opetuspisteet.xsd"/>
+    <xs:include schemaLocation="koodisto/hakukohteet.xsd"/>
+
+</xs:schema>
+ 

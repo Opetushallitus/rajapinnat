@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://service.henkilo.sade.vm.fi/types/perusopetus"
+           xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus"
+           xmlns:common="http://service.henkilo.sade.vm.fi/types/common"
+           xmlns:koodisto="http://service.koodisto.sade.vm.fi/types/koodisto"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://service.henkilo.sade.vm.fi/types/common" schemaLocation="common.xsd"/>
+    <xs:import namespace="http://service.koodisto.sade.vm.fi/types/koodisto" schemaLocation="common_koodisto.xsd"/>
+
+    <xs:element name="ROWSET">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ROW" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="VUOSI" minOccurs="1" maxOccurs="1" type="common:VUOSI"/>
+                            <xs:element name="KAUSI" minOccurs="1" maxOccurs="1" type="koodisto:kausi"/>
+                            <xs:element name="LAHTOKOULU" minOccurs="1" maxOccurs="1" type="koodisto:oppilaitosnumero"/>
+                            <xs:element name="POHJAKOULUTUS" minOccurs="1" maxOccurs="1" type="koodisto:pohjakoulutustoinenaste"/>
+                            <xs:element name="OPETUSKIELI" minOccurs="1" maxOccurs="1" type="koodisto:kieli"/>
+                            <xs:element name="LUOKKA" minOccurs="1" maxOccurs="1" type="common:LUOKKA"/>
+                            <xs:element name="LUOKKATASO" minOccurs="1" maxOccurs="1" type="common:LUOKKATASO"/>
+                            <xs:element name="HETU" minOccurs="1" maxOccurs="1" type="common:HETU"/>
+                            <xs:element name="SUKUPUOLI" minOccurs="1" maxOccurs="1" type="koodisto:sukupuoli"/>
+                            <xs:element name="SUKUNIMI" minOccurs="1" maxOccurs="1" type="common:SUKUNIMI"/>
+                            <xs:element name="ETUNIMET" minOccurs="1" maxOccurs="1" type="common:ETUNIMET"/>
+                            <xs:element name="KUTSUMANIMI" minOccurs="0" maxOccurs="1" type="common:KUTSUMANIMI"/>
+                            <xs:element name="KOTIKUNTA" minOccurs="1" maxOccurs="1" type="koodisto:kunta"/>
+                            <xs:element name="AIDINKIELI" minOccurs="1" maxOccurs="1" type="koodisto:kieli"/>
+                            <xs:element name="KANSALAISUUS" minOccurs="1" maxOccurs="1" type="koodisto:maatjavaltiot2"/>
+                            <xs:element name="LAHIOSOITE" minOccurs="0" maxOccurs="1" type="common:LAHIOSOITE"/>
+                            <xs:element name="POSTINUMERO" minOccurs="0" maxOccurs="1" type="koodisto:posti"/>
+                            <xs:element name="MAA" minOccurs="1" maxOccurs="1" type="koodisto:maatjavaltiot2"/>
+                            <xs:element name="MATKAPUHELIN" minOccurs="0" maxOccurs="1" type="common:PUHELINNUMERO"/>
+                            <xs:element name="MUUPUHELIN" minOccurs="0" maxOccurs="1" type="common:PUHELINNUMERO"/>
+                            <xs:element name="ERA" minOccurs="1" maxOccurs="1" type="common:ERA"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
+ 

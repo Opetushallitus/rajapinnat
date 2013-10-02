@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://service.koodisto.sade.vm.fi/types/koodisto"
+           xmlns="http://service.koodisto.sade.vm.fi/types/koodisto"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="kausi">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="K">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: V&#229;r - V&#229;r
+
+                        FI: Kev&#228;t - Voi olla joko koulutuksen alkamiskausi tai hakukausi
+
+                        EN: Spring - Spring
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="S">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Syksy - Voi olla joko koulutuksen alkamiskausi tai hakukausi
+
+                        EN: Autumn - Autumn
+
+                        SV: H&#246;st - H&#246;st
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

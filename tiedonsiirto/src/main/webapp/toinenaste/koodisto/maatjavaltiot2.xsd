@@ -1,0 +1,3288 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://service.koodisto.sade.vm.fi/types/koodisto"
+           xmlns="http://service.koodisto.sade.vm.fi/types/koodisto"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="maatjavaltiot2">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="660">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Anguilla - Anguilla
+
+                        EN: Anguilla - Anguilla
+
+                        SV: Anguilla - Anguilla
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="440">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Litauen - Litauen
+
+                        EN: Lithuania - Lithuania
+
+                        FI: Liettua - Liettua
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="804">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Ukraina - Ukraina
+
+                        SV: Ukraina - Ukraina
+
+                        EN: Ukraine - Ukraine
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="795">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Turkmenistan - Turkmenistan
+
+                        EN: Turkmenistan - Turkmenistan
+
+                        FI: Turkmenistan - Turkmenistan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="882">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Samoa - Samoa
+
+                        SV: Samoa - Samoa
+
+                        FI: Samoa - Samoa
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="144">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Sri Lanka - Sri Lanka
+
+                        FI: Sri Lanka - Sri Lanka
+
+                        SV: Sri Lanka - Sri Lanka
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="480">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Mauritius - Mauritius
+
+                        EN: Mauritius - Mauritius
+
+                        FI: Mauritius - Mauritius
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="380">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Italia - Italia
+
+                        EN: Italy - Italy
+
+                        SV: Italien - Italien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="585">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Palau - Palau
+
+                        SV: Palau - Palau
+
+                        FI: Palau - Palau
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="626">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: &#214;sttimor - &#214;sttimor
+
+                        EN: Timor-Leste (East Timor) - Timor-Leste (East Timor)
+
+                        FI: It&#228;-Timor - It&#228;-Timor
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="175">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Mayotte - Mayotte
+
+                        SV: Mayotte - Mayotte
+
+                        EN: Mayotte - Mayotte
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="508">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Mosambik - Mosambik
+
+                        EN: Mozambique - Mozambique
+
+                        SV: Mosambique - Mosambique
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="616">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Polen - Polen
+
+                        EN: Poland - Poland
+
+                        FI: Puola - Puola
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="642">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Rum&#228;nien - Rum&#228;nien
+
+                        EN: Romania - Romania
+
+                        FI: Romania - Romania
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="876">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Wallis och Futuna - Wallis och Futuna
+
+                        EN: Wallis and Futuna - Wallis and Futuna
+
+                        FI: Wallis ja Futuna - Wallis ja Futuna
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="112">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Valko-Ven&#228;j&#228; - Valko-Ven&#228;j&#228;
+
+                        SV: Vitryssland - Vitryssland
+
+                        EN: Belarus - Belarus
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="732">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: L&#228;nsi-Sahara - L&#228;nsi-Sahara
+
+                        EN: Western Sahara - Western Sahara
+
+                        SV: V&#228;stsahara - V&#228;stsahara
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="524">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Nepal - Nepal
+
+                        EN: Nepal - Nepal
+
+                        FI: Nepal - Nepal
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="703">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Slovakia - Slovakia
+
+                        EN: Slovakia - Slovakia
+
+                        SV: Slovakien - Slovakien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="784">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: F&#246;renade Arabemirate - F&#246;renade Arabemirate
+
+                        EN: United Arab Emirates - United Arab Emirates
+
+                        FI: Arabiemiirikunnat - Arabiemiirikunnat
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="776">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Tonga - Tonga
+
+                        EN: Tonga - Tonga
+
+                        SV: Tonga - Tonga
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="466">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Mali - Mali
+
+                        SV: Mali - Mali
+
+                        FI: Mali - Mali
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="558">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Nicaragua - Nicaragua
+
+                        SV: Nicaragua - Nicaragua
+
+                        FI: Nicaragua - Nicaragua
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="276">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Saksa - Saksa
+
+                        SV: Tyskland - Tyskland
+
+                        EN: Germany - Germany
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="262">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Djibouti - Djibouti
+
+                        SV: Djibouti - Djibouti
+
+                        EN: Djibouti - Djibouti
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="566">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Nigeria - Nigeria
+
+                        EN: Nigeria - Nigeria
+
+                        SV: Nigeria - Nigeria
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="344">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Hongkong - Hongkong
+
+                        EN: Hong Kong - Hong Kong
+
+                        SV: Hongkong - Hongkong
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="832">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Jersey - Jersey
+
+                        SV: Jersey - Jersey
+
+                        EN: Jersey - Jersey
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="275">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Palestine - Palestine
+
+                        FI: Palestiina - Palestiina
+
+                        SV: De palestinska omr&#229;dena - De palestinska omr&#229;dena
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="643">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Russian Federation - Russian Federation
+
+                        FI: Ven&#228;j&#228; - Ven&#228;j&#228;
+
+                        SV: Ryssland - Ryssland
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="074">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Bouvet Island - Bouvet Island
+
+                        SV: Bouvet&#246;n - Bouvet&#246;n
+
+                        FI: Bouvet&apos;nsaari - Bouvet&apos;nsaari
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="340">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Honduras - Honduras
+
+                        FI: Honduras - Honduras
+
+                        EN: Honduras - Honduras
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="492">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Monaco - Monaco
+
+                        EN: Monaco - Monaco
+
+                        SV: Monaco - Monaco
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="334">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Heard Island and McDonald Islands - Heard Island and McDonald Islands
+
+                        SV: Heard och McDonald&#246;arna - Heard och McDonald&#246;arna
+
+                        FI: Heard ja McDonaldinsaaret - Heard ja McDonaldinsaaret
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="498">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Moldova - Moldova
+
+                        FI: Moldova - Moldova
+
+                        SV: Moldavien - Moldavien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="748">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Swaziland - Swaziland
+
+                        EN: Swaziland - Swaziland
+
+                        FI: Swazimaa - Swazimaa
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="096">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Brunei - Brunei
+
+                        FI: Brunei - Brunei
+
+                        EN: Brunei - Brunei
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="997">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kosovo - Kosovolla ei ole viel&#228; virallista maakoodia.
+
+                        EN: Kosovo - Kosovo
+
+                        SV: Kosovo - Kosovo
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="010">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Antarktis - Antarktis
+
+                        SV: Antarktis - Antarktis
+
+                        EN: Antarctica - Antarctica
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="654">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Saint Helena - Saint Helena
+
+                        SV: Saint Helena - Saint Helena
+
+                        FI: Saint Helena - Saint Helena
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="376">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Israel - Israel
+
+                        EN: Israel - Israel
+
+                        SV: Israel - Israel
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="156">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kiina - Kiina
+
+                        SV: Kina - Kina
+
+                        EN: China - China
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="108">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Burundi - Burundi
+
+                        FI: Burundi - Burundi
+
+                        SV: Burundi - Burundi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="336">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Vatikaani - Vatikaani
+
+                        SV: Vatikanstaten - Vatikanstaten
+
+                        EN: Holy See (Vatican City State) - Holy See (Vatican City State)
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="012">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Algeria - Algeria
+
+                        FI: Algeria - Algeria
+
+                        SV: Algeriet - Algeriet
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="533">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Aruba - Aruba
+
+                        SV: Aruba - Aruba
+
+                        EN: Aruba - Aruba
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="744">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Svalbard ja Jan Mayen - Svalbard ja Jan Mayen
+
+                        SV: Svalbard och Jan Mayen - Svalbard och Jan Mayen
+
+                        EN: Svalbard and Jan Mayen - Svalbard and Jan Mayen
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="100">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Bulgaria - Bulgaria
+
+                        SV: Bulgarien - Bulgarien
+
+                        FI: Bulgaria - Bulgaria
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="581">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: United States Minor Outlying Islands - United States Minor Outlying Islands
+
+                        FI: Yhdysvaltain pienet erillissaaret - Yhdysvaltain pienet erillissaaret
+
+                        SV: F&#246;renta Staternas mindre &#246;ar i Oceanien och V&#228;stindien - F&#246;renta Staternas mindre &#246;ar i Oceanien och V&#228;stindien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="064">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Bhutan - Bhutan
+
+                        EN: Bhutan - Bhutan
+
+                        FI: Bhutan - Bhutan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="140">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Central African Republic - Central African Republic
+
+                        SV: Centralafrikanska republiken - Centralafrikanska republiken
+
+                        FI: Keski-Afrikkan tasavalta - Keski-Afrikkan tasavalta
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="562">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Niger - Niger
+
+                        SV: Niger - Niger
+
+                        EN: Niger - Niger
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="398">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Kazakstan - Kazakstan
+
+                        FI: Kazakstan - Kazakstan
+
+                        EN: Kazakhstan - Kazakhstan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="862">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Venezuela - Venezuela
+
+                        SV: Venezuela - Venezuela
+
+                        EN: Venezuela - Venezuela
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="620">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Portugal - Portugal
+
+                        EN: Portugal - Portugal
+
+                        FI: Portugali - Portugali
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="242">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Fidzi - Fidzi
+
+                        SV: Fiji - Fiji
+
+                        EN: Fiji - Fiji
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="024">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Angola - Angola
+
+                        EN: Angola - Angola
+
+                        SV: Angola - Angola
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="474">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Martinique - Martinique
+
+                        EN: Martinique - Martinique
+
+                        FI: Martinique - Martinique
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="634">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Qatar - Qatar
+
+                        FI: Qatar - Qatar
+
+                        SV: Qatar - Qatar
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="364">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Iran - Iran
+
+                        FI: Iran - Iran
+
+                        SV: Iran - Iran
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="212">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Dominica - Dominica
+
+                        FI: Dominica - Dominica
+
+                        EN: Dominica - Dominica
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="608">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Filippinerna - Filippinerna
+
+                        FI: Filippiinit - Filippiinit
+
+                        EN: Philippines - Philippines
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="132">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kap Verde - Kap Verde
+
+                        EN: Cape Verde - Cape Verde
+
+                        SV: Kap Verde - Kap Verde
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="028">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Antigua and Barbuda - Antigua and Barbuda
+
+                        SV: Antigua och Barbuda - Antigua och Barbuda
+
+                        FI: Antigua ja Barbuda - Antigua ja Barbuda
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="580">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Northern Mariana Islands - Northern Mariana Islands
+
+                        FI: Pohjois-Mariaanit - Pohjois-Mariaanit
+
+                        SV: Nordmarianerna - Nordmarianerna
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="090">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Salomonsaaret - Salomonsaaret
+
+                        EN: Solomon Islands - Solomon Islands
+
+                        SV: Salomon&#246;arna - Salomon&#246;arna
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="332">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Haiti - Haiti
+
+                        SV: Haiti - Haiti
+
+                        EN: Haiti - Haiti
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="056">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Belgien - Belgien
+
+                        EN: Belgium - Belgium
+
+                        FI: Belgia - Belgia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="052">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Barbados - Barbados
+
+                        EN: Barbados - Barbados
+
+                        SV: Barbados - Barbados
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="729">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Sudan - Sudan
+
+                        SV: Sudan - Sudan
+
+                        FI: Sudan - Sudan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="410">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Republiken Korea (Sydkorea) - Republiken Korea (Sydkorea)
+
+                        EN: Korea, Republic of (South Korea) - Korea, Republic of (South Korea)
+
+                        FI: Korean Tasavalta (Etel&#228;-Korea) - Korean Tasavalta (Etel&#228;-Korea)
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="674">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: San Marino - San Marino
+
+                        EN: San Marino - San Marino
+
+                        SV: San Marino - San Marino
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="531">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Curacao - Curacao
+
+                        SV: Curacao - Curacao
+
+                        EN: Cura&#231;ao - Cura&#231;ao
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="352">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Iceland - Iceland
+
+                        FI: Islanti - Islanti
+
+                        SV: Island - Island
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="484">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Meksiko - Meksiko
+
+                        SV: Mexiko - Mexiko
+
+                        EN: Mexico - Mexico
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="072">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Botswana - Botswana
+
+                        FI: Botswana - Botswana
+
+                        SV: Botswana - Botswana
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="504">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Marocko - Marocko
+
+                        EN: Morocco - Morocco
+
+                        FI: Marokko - Marokko
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="218">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Ecuador - Ecuador
+
+                        FI: Ecuador - Ecuador
+
+                        EN: Ecuador - Ecuador
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="258">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Franska Polynesien - Franska Polynesien
+
+                        EN: French Plynesia - French Plynesia
+
+                        FI: Ranskan Polynesia - Ranskan Polynesia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="716">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Zimbabwe - Zimbabwe
+
+                        EN: Zimbabwe - Zimbabwe
+
+                        FI: Zimbabwe - Zimbabwe
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="670">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Saint Vincent ja Grenadiinit - Saint Vincent ja Grenadiinit
+
+                        SV: Saint Vincent och Grenadinerna - Saint Vincent och Grenadinerna
+
+                        EN: Saint Vincent and the Grenadines - Saint Vincent and the Grenadines
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="208">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Danmark - Danmark
+
+                        FI: Tanska - Tanska
+
+                        EN: Denmark - Denmark
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="450">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Madagaskar - Madagaskar
+
+                        EN: Madagascar - Madagascar
+
+                        SV: Madagaskar - Madagaskar
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="512">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Oman - Oman
+
+                        FI: Oman - Oman
+
+                        EN: Oman - Oman
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="178">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kongo (Kongo-Brazzaville) - Kongo (Kongo-Brazzaville)
+
+                        EN: Congo - Congo
+
+                        SV: Kongo (Kongo-Brazzaville) - Kongo (Kongo-Brazzaville)
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="548">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Vanuatu - Vanuatu
+
+                        SV: Vanuatu - Vanuatu
+
+                        EN: Vanuatu - Vanuatu
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="496">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Mongolia - Mongolia
+
+                        FI: Mongolia - Mongolia
+
+                        SV: Mongoliet - Mongoliet
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="384">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: C&#244;te d&apos;lvoire - C&#244;te d&apos;lvoire
+
+                        FI: Norsunluurannikko - Norsunluurannikko
+
+                        SV: Elfenbenskusten - Elfenbenskusten
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="356">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Indien - Indien
+
+                        EN: India - India
+
+                        FI: Intia - Intia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="232">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Eritrea - Eritrea
+
+                        EN: Eritrea - Eritrea
+
+                        FI: Eritrea - Eritrea
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="092">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Virgin Island, British - Virgin Island, British
+
+                        SV: Brittiska Jungfru&#246;arna - Brittiska Jungfru&#246;arna
+
+                        FI: Brittil&#228;iset Neitsytsaaret - Brittil&#228;iset Neitsytsaaret
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="372">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Irland - Irland
+
+                        FI: Irlanti - Irlanti
+
+                        EN: Ireland - Ireland
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="858">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Uruguay - Uruguay
+
+                        FI: Uruguay - Uruguay
+
+                        SV: Uruguay - Uruguay
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="304">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Gr&#246;nlanti - Gr&#246;nlanti
+
+                        SV: Gr&#246;nland - Gr&#246;nland
+
+                        EN: Greenland - Greenland
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="184">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Cook&#246;arna - Cook&#246;arna
+
+                        FI: Cookinsaaret - Cookinsaaret
+
+                        EN: Cook Islands - Cook Islands
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="388">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Jamaica - Jamaica
+
+                        FI: Jamaika - Jamaika
+
+                        EN: Jamaica - Jamaica
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="600">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Paraguay - Paraguay
+
+                        EN: Paraguay - Paraguay
+
+                        FI: Paraguay - Paraguay
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="772">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Tokelau - Tokelau
+
+                        EN: Tokelau - Tokelau
+
+                        FI: Tokelau - Tokelau
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="591">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Panama - Panama
+
+                        EN: Panama - Panama
+
+                        SV: Panama - Panama
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="196">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kypros - Kypros
+
+                        EN: Cyprus - Cyprus
+
+                        SV: Cypern - Cypern
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="662">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Saint Lucia - Saint Lucia
+
+                        FI: Saint Lucia - Saint Lucia
+
+                        EN: Saint Lucia - Saint Lucia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="762">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Tajikistan - Tajikistan
+
+                        FI: Tadzikistan - Tadzikistan
+
+                        SV: Tadzjikistan - Tadzjikistan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="796">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Turks- ja Caicossaaret - Turks- ja Caicossaaret
+
+                        SV: Turks- och Caicos&#246;arna - Turks- och Caicos&#246;arna
+
+                        EN: Turks and Caicos Islands - Turks and Caicos Islands
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="348">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Hungary - Hungary
+
+                        SV: Ungern - Ungern
+
+                        FI: Unkari - Unkari
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="050">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Bangladesh - Bangladesh
+
+                        EN: Bangladesh - Bangladesh
+
+                        FI: Bangladesh - Bangladesh
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="300">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kreikka - Kreikka
+
+                        EN: Greece - Greece
+
+                        SV: Grekland - Grekland
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="162">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Christmas Island - Christmas Island
+
+                        FI: Joulusaari - Joulusaari
+
+                        SV: Jul&#246;n - Jul&#246;n
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="191">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Kroatien - Kroatien
+
+                        EN: Croatia - Croatia
+
+                        FI: Kroatia - Kroatia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="499">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Montenegro - Montenegro
+
+                        EN: Montenegro - Montenegro
+
+                        SV: Montenegro - Montenegro
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="222">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: El Salvador - El Salvador
+
+                        EN: El Salvador - El Salvador
+
+                        SV: El Salvador - El Salvador
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="288">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Ghana - Ghana
+
+                        FI: Ghana - Ghana
+
+                        EN: Ghana - Ghana
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="458">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Malesia - Malesia
+
+                        SV: Malaysia - Malaysia
+
+                        EN: Malaysia - Malaysia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="328">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Guyana - Guyana
+
+                        FI: Guyana - Guyana
+
+                        SV: Guyana - Guyana
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="850">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Yhdysvaltain Neitsytsaaret - Yhdysvaltain Neitsytsaaret
+
+                        SV: Amerikanska Jungfru&#246;arna - Amerikanska Jungfru&#246;arna
+
+                        EN: Virgin Islands, U.S. - Virgin Islands, U.S.
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="008">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Albanien - Albanien
+
+                        EN: Albania - Albania
+
+                        FI: Albania - Albania
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="268">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Georgia - Georgia
+
+                        EN: Georgia - Georgia
+
+                        SV: Georgien - Georgien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="404">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Kenya - Kenya
+
+                        FI: Kenia - Kenia
+
+                        SV: Kenya - Kenya
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="031">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Azerbajdzjan - Azerbajdzjan
+
+                        FI: Azerbaidzan - Azerbaidzan
+
+                        EN: Azerbaijan - Azerbaijan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="704">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Vietnam - Vietnam
+
+                        EN: Viet Nam - Viet Nam
+
+                        FI: Vietnam - Vietnam
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="528">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Nederl&#228;nderna - Nederl&#228;nderna
+
+                        EN: Netherlands - Netherlands
+
+                        FI: Alankomaat - Alankomaat
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="570">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Niue - Niue
+
+                        EN: Niue - Niue
+
+                        FI: Niue - Niue
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="624">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Guinea-Bissau - Guinea-Bissau
+
+                        SV: Guinea-Bissau - Guinea-Bissau
+
+                        FI: Guinea-Bissau - Guinea-Bissau
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="478">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Mauritania - Mauritania
+
+                        EN: Mauritania - Mauritania
+
+                        SV: Mauretanien - Mauretanien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="158">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Taiwan - Taiwan
+
+                        FI: Taiwan - Taiwan
+
+                        EN: Taiwan, Province of China - Taiwan, Province of China
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="296">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kiribati - Kiribati
+
+                        SV: Kiribati - Kiribati
+
+                        EN: Kiribati - Kiribati
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="084">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Belize - Belize
+
+                        FI: Belize - Belize
+
+                        SV: Belize - Belize
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="854">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Burkina Faso - Burkina Faso
+
+                        EN: Burkina Faso - Burkina Faso
+
+                        SV: Burkina Faso - Burkina Faso
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="752">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Sweden - Sweden
+
+                        FI: Ruotsi - Ruotsi
+
+                        SV: Sverige - Sverige
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="360">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Indonesien - Indonesien
+
+                        FI: Indonesia - Indonesia
+
+                        EN: Indonesia - Indonesia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="798">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Tuvalu - Tuvalu
+
+                        SV: Tuvalu - Tuvalu
+
+                        FI: Tuvalu - Tuvalu
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="239">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Etel&#228;-Georgia ja Etel&#228;iset Sandwichsaaret - Etel&#228;-Georgia ja Etel&#228;iset Sandwichsaaret
+
+                        SV: Sydgeorgien och Sydsandwich&#246;arna - Sydgeorgien och Sydsandwich&#246;arna
+
+                        EN: South Georgia and the South Sandwich Islands - South Georgia and the South Sandwich Islands
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="231">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Etiopien - Etiopien
+
+                        EN: Ethiopia - Ethiopia
+
+                        FI: Etiopia - Etiopia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="418">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Laos - Laos
+
+                        EN: Laos - Laos
+
+                        SV: Laos - Laos
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="470">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Malta - Malta
+
+                        FI: Malta - Malta
+
+                        EN: Malta - Malta
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="792">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Turkki - Turkki
+
+                        SV: Turkiet - Turkiet
+
+                        EN: Turkey - Turkey
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="788">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Tunisia - Tunisia
+
+                        SV: Tunisien - Tunisien
+
+                        FI: Tunisia - Tunisia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="152">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Chile - Chile
+
+                        SV: Chile - Chile
+
+                        FI: Chile - Chile
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="826">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Britannia - Britannia
+
+                        SV: Storbritannien - Storbritannien
+
+                        EN: United Kingdom - United Kingdom
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="124">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Kanada - Kanada
+
+                        FI: Kanada - Kanada
+
+                        EN: Canada - Canada
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="068">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Bolivia - Bolivia
+
+                        EN: Bolivia - Bolivia
+
+                        FI: Bolivia - Bolivia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="646">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Rwanda - Rwanda
+
+                        FI: Ruanda - Ruanda
+
+                        EN: Rwanda - Rwanda
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="417">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Kyrgyzstan - Kyrgyzstan
+
+                        SV: Kirgizistan - Kirgizistan
+
+                        FI: Kirgisia - Kirgisia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="706">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Somalia - Somalia
+
+                        SV: Somalia - Somalia
+
+                        EN: Somalia - Somalia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="004">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Afganistan - Afganistan
+
+                        EN: Afghanistan - Afghanistan
+
+                        SV: Afghanistan - Afghanistan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="408">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Korea, Democratic People&apos;s Republic of (North Korea) - Korea, Democratic People&apos;s Republic of (North Korea)
+
+                        SV: Demokratiska folkrepubliken Korea (Nordkorea) - Demokratiska folkrepubliken Korea (Nordkorea)
+
+                        FI: Korean demokraattinen kansantasavalta (Pohjois-Korea) - Korean demokraattinen kansantasavalta (Pohjois-Korea)
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="250">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: France - France
+
+                        FI: Ranska - Ranska
+
+                        SV: Frankrike - Frankrike
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="270">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Gambia - Gambia
+
+                        EN: Gambia - Gambia
+
+                        FI: Gambia - Gambia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="428">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Latvia - Latvia
+
+                        SV: Lettland - Lettland
+
+                        FI: Latvia - Latvia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="020">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Andorra - Andorra
+
+                        SV: Andorra - Andorra
+
+                        FI: Andorra - Andorra
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="414">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Kuwait - Kuwait
+
+                        EN: Kuwait - Kuwait
+
+                        FI: Kuwait - Kuwait
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="710">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Sydafrika - Sydafrika
+
+                        FI: Etel&#228;-Afrikka - Etel&#228;-Afrikka
+
+                        EN: South Africa - South Africa
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="188">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Costa Rica - Costa Rica
+
+                        FI: Costa Rica - Costa Rica
+
+                        SV: Costa Rica - Costa Rica
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="174">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Comoros - Comoros
+
+                        FI: Komorit - Komorit
+
+                        SV: Komorerna - Komorerna
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="612">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Pitcairn - Pitcairn
+
+                        SV: Pitcairn - Pitcairn
+
+                        EN: Pitcairn - Pitcairn
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="998">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Ilman kansalaisuutta - Ei kuuluu viralliseen koodistoon
+
+                        EN: Without Citizenship - Without Citizenship
+
+                        SV: Utan nationalitet - Utan nationalitet
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="324">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Guinea - Guinea
+
+                        EN: Guinea - Guinea
+
+                        FI: Guinea - Guinea
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="705">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Slovenia - Slovenia
+
+                        SV: Slovenien - Slovenien
+
+                        EN: Slovenia - Slovenia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="682">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Saudiarabien - Saudiarabien
+
+                        EN: Saudi Arabia - Saudi Arabia
+
+                        FI: Saudi-Arabia - Saudi-Arabia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="316">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Guam - Guam
+
+                        EN: Guam - Guam
+
+                        FI: Guam - Guam
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="652">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Saint Barth&#233;lemy - Saint Barth&#233;lemy
+
+                        SV: Saint Barth&#233;lemy - Saint Barth&#233;lemy
+
+                        FI: Saint Barth&#233;lemy - Saint Barth&#233;lemy
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="422">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Lebanon - Lebanon
+
+                        SV: Libanon - Libanon
+
+                        FI: Libanon - Libanon
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="308">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Grenada - Grenada
+
+                        SV: Grenada - Grenada
+
+                        EN: Grenada - Grenada
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="238">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Falklands&#246;arna - Falklands&#246;arna
+
+                        EN: Falkland Islands - Falkland Islands
+
+                        FI: Falklandinsaaret - Falklandinsaaret
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="266">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Gabon - Gabon
+
+                        FI: Gabon - Gabon
+
+                        EN: Gabon - Gabon
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="312">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Guadeloupe - Guadeloupe
+
+                        EN: Guadeloupe - Guadeloupe
+
+                        FI: Guadeloupe - Guadeloupe
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="728">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Etel&#228;-Sudan - Etel&#228;-Sudan
+
+                        EN: South Sudan - South Sudan
+
+                        SV: Etel&#228;-Sudan - Etel&#228;-Sudan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="442">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Luxembourg - Luxembourg
+
+                        FI: Luxemburg - Luxemburg
+
+                        SV: Luxemburg - Luxemburg
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="690">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Seychelles - Seychelles
+
+                        SV: Seychellerna - Seychellerna
+
+                        FI: Seychellit - Seychellit
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="032">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Argentiina - Argentiina
+
+                        EN: Argentina - Argentina
+
+                        SV: Argentina - Argentina
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="999">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Unknown - Unknown
+
+                        SV: Ok&#228;nt land - Ok&#228;nt land
+
+                        FI: Tuntematon - Ei kuuluu viralliseen koodistoon
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="040">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Austria - Austria
+
+                        FI: It&#228;valta - It&#228;valta
+
+                        SV: &#214;sterrike - &#214;sterrike
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="807">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Makedonia - Makedonia
+
+                        EN: Macedonia - Macedonia
+
+                        SV: Makedonien - Makedonien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="516">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Namibia - Namibia
+
+                        FI: Namibia - Namibia
+
+                        SV: Namibia - Namibia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="070">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Bosnia ja Hertsegovina - Bosnia ja Hertsegovina
+
+                        EN: Bosnia and Herzegovina - Bosnia and Herzegovina
+
+                        SV: Bosnien och Hercegovina - Bosnien och Hercegovina
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="430">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Liberia - Liberia
+
+                        FI: Liberia - Liberia
+
+                        EN: Liberia - Liberia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="535">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Bonaire,Sint Eustatius ja Saba - Bonaire,Sint Eustatius ja Saba
+
+                        SV: Bonaire,Sint Eustatius ja Saba - Bonaire,Sint Eustatius ja Saba
+
+                        EN: Bonaire, Sint Eustatius and Saba - Bonaire, Sint Eustatius and Saba
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="204">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Benin - Benin
+
+                        FI: Benin - Benin
+
+                        SV: Benin - Benin
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="426">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Lesotho - Lesotho
+
+                        FI: Lesotho - Lesotho
+
+                        SV: Lesotho - Lesotho
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="260">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Ranskan etel&#228;iset alueet - Ranskan etel&#228;iset alueet
+
+                        SV: De franska territorierna i s&#246;dra Indiska Oceanen - De franska territorierna i s&#246;dra Indiska Oceanen
+
+                        EN: French Southern Territories - French Southern Territories
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="584">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Marshall Islands - Marshall Islands
+
+                        FI: Marshallinsaaret - Marshallinsaaret
+
+                        SV: Marshall&#246;arna - Marshall&#246;arna
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="740">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Suriname - Suriname
+
+                        FI: Suriname - Suriname
+
+                        SV: Suninam - Suninam
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="226">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Equatorial Guinea - Equatorial Guinea
+
+                        SV: Ekvatorialguinea - Ekvatorialguinea
+
+                        FI: P&#228;iv&#228;ntasaajan Guinea - P&#228;iv&#228;ntasaajan Guinea
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="462">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Maldiverna - Maldiverna
+
+                        FI: Malediivit - Malediivit
+
+                        EN: Maldives - Maldives
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="438">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Liechtenstein - Liechtenstein
+
+                        EN: Liechtenstein - Liechtenstein
+
+                        SV: Liechtenstein - Liechtenstein
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="818">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Egypt - Egypt
+
+                        SV: Egypten - Egypten
+
+                        FI: Egypti - Egypti
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="148">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: T&#353;ad - T&#353;ad
+
+                        SV: Tchad - Tchad
+
+                        EN: Chad - Chad
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="036">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Australien - Australien
+
+                        EN: Australia - Australia
+
+                        FI: Australia - Australia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="180">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Kongo (Kongo-Kinshasa) - Kongo (Kongo-Kinshasa)
+
+                        FI: Kongo (Kongo-Kinshasa) - Kongo (Kongo-Kinshasa)
+
+                        EN: Congo, The Democratic Republic of the - Congo, The Democratic Republic of the
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="678">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: S&#227;o Tom&#233; och Pr&#237;ncipe - S&#227;o Tom&#233; och Pr&#237;ncipe
+
+                        FI: S&#227;o Tom&#233; ja Pr&#237;ncipe - S&#227;o Tom&#233; ja Pr&#237;ncipe
+
+                        EN: S&#227;o Tom&#233; and Pr&#237;ncipe - S&#227;o Tom&#233; and Pr&#237;ncipe
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="400">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Jordan - Jordan
+
+                        FI: Jordania - Jordania
+
+                        SV: Jordanien - Jordanien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="768">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Togo - Togo
+
+                        EN: Togo - Togo
+
+                        SV: Togo - Togo
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="659">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Saint Kitts ja Nevis - Saint Kitts ja Nevis
+
+                        EN: Saint Kitts and Nevis - Saint Kitts and Nevis
+
+                        SV: Saint Kitts och Nevis - Saint Kitts och Nevis
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="688">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Serbia - Serbia
+
+                        SV: Serbien - Serbien
+
+                        FI: Serbia - Serbia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="702">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Singapore - Singapore
+
+                        EN: Singapore - Singapore
+
+                        FI: Singapore - Singapore
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="016">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: American Samoa - American Samoa
+
+                        FI: Amerikan Samoa - Amerikan Samoa
+
+                        SV: Amerikanska Samoa - Amerikanska Samoa
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="434">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Libyen - Libyen
+
+                        FI: Libya - Libya
+
+                        EN: Libyan Arab Jamahiriya - Libyan Arab Jamahiriya
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="800">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Uganda - Uganda
+
+                        FI: Uganda - Uganda
+
+                        EN: Uganda - Uganda
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="248">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: &#197;land Islands - &#197;land Islands
+
+                        SV: &#197;land - &#197;land
+
+                        FI: Ahvenanmaa - Ahvenanmaa
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="554">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: New Zealand - New Zealand
+
+                        SV: Nya Zeeland - Nya Zeeland
+
+                        FI: Uusi-Seelanti - Uusi-Seelanti
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="894">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Sambia - Sambia
+
+                        EN: Zambia - Zambia
+
+                        SV: Zambia - Zambia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="116">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Kambodja - Kambodja
+
+                        EN: Cambodia - Cambodia
+
+                        FI: Kambodza - Kambodza
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="604">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Peru - Peru
+
+                        SV: Peru - Peru
+
+                        EN: Peru - Peru
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="764">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Thailand - Thailand
+
+                        FI: Thaimaa - Thaimaa
+
+                        EN: Thailand - Thailand
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="104">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Myanmar - Myanmar
+
+                        SV: Myanmar - Myanmar
+
+                        EN: Myanmar - Myanmar
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="060">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Bermuda - Bermuda
+
+                        SV: Bermuda - Bermuda
+
+                        EN: Bermuda - Bermuda
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="044">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Bahamas - Bahamas
+
+                        FI: Bahama - Bahama
+
+                        SV: Bahamas - Bahamas
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="048">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Bahrain - Bahrain
+
+                        SV: Bahrain - Bahrain
+
+                        FI: Bahrain - Bahrain
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="578">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Norge - Norge
+
+                        FI: Norja - Norja
+
+                        EN: Norway - Norway
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="076">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Brasilien - Brasilien
+
+                        EN: Brazil - Brazil
+
+                        FI: Brasilia - Brasilia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="520">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Nauru - Nauru
+
+                        EN: Nauru - Nauru
+
+                        SV: Nauru - Nauru
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="500">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Montserrat - Montserrat
+
+                        EN: Montserrat - Montserrat
+
+                        SV: Montserrat - Montserrat
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="136">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Cayman Islands - Cayman Islands
+
+                        SV: Cayman&#246;arna - Cayman&#246;arna
+
+                        FI: Caymansaaret - Caymansaaret
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="840">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Yhdysvallat (USA) - Yhdysvallat (USA)
+
+                        SV: F&#246;renta Staterna (USA) - F&#246;renta Staterna (USA)
+
+                        EN: United States, USA - United States, USA
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="214">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Dominikanska republiken - Dominikanska republiken
+
+                        EN: Dominican Republic - Dominican Republic
+
+                        FI: Dominikaaninen tasavalta - Dominikaaninen tasavalta
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="724">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Spain - Spain
+
+                        FI: Espanja - Espanja
+
+                        SV: Spanien - Spanien
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="760">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Syrien - Syrien
+
+                        EN: Syria - Syria
+
+                        FI: Syyria - Syyria
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="320">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Guatemala - Guatemala
+
+                        EN: Guatemala - Guatemala
+
+                        SV: Guatemala - Guatemala
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="254">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: French Guiana - French Guiana
+
+                        FI: Ranskan Guayana - Ranskan Guayana
+
+                        SV: Franska Guyana - Franska Guyana
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="170">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Columbia - Columbia
+
+                        EN: Colombia - Colombia
+
+                        FI: Kolumbia - Kolumbia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="292">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Gibraltar - Gibraltar
+
+                        SV: Gibraltar - Gibraltar
+
+                        EN: Gibraltar - Gibraltar
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="756">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Schweiz - Schweiz
+
+                        EN: Switzerland - Switzerland
+
+                        FI: Sveitsi - Sveitsi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="120">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Cameroon - Cameroon
+
+                        FI: Kamerun - Kamerun
+
+                        SV: Kamerun - Kamerun
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="666">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Saint Pierre and Miquelon - Saint Pierre and Miquelon
+
+                        SV: Saint Pierre och Miquelon - Saint Pierre och Miquelon
+
+                        FI: Saint-Pierre ja Miquelon - Saint-Pierre ja Miquelon
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="887">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Jemen - Jemen
+
+                        SV: Jemen - Jemen
+
+                        EN: Yemen - Yemen
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="051">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Armenien - Armenien
+
+                        FI: Armenia - Armenia
+
+                        EN: Armenia - Armenia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="834">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Tanzania - Tanzania
+
+                        FI: Tansania - Tansania
+
+                        EN: Tanzania - Tanzania
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="246">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Finland - Finland
+
+                        SV: Finland - Finland
+
+                        FI: Suomi - Suomi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="663">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Saint Martin (French Part) - Saint Martin (French Part)
+
+                        SV: Saint Martin (Ranska) - Saint Martin (Ranska)
+
+                        FI: Saint Martin (Ranska) - Saint Martin (Ranska)
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="694">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Sierra Leone - Sierra Leone
+
+                        SV: Sierra Leone - Sierra Leone
+
+                        FI: Sierra Leone - Sierra Leone
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="086">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Brittil&#228;inen Intian valtameren alue - Brittil&#228;inen Intian valtameren alue
+
+                        EN: British Indian Ocean Territory - British Indian Ocean Territory
+
+                        SV: Brittiska territoriet i Indiska Oceanen - Brittiska territoriet i Indiska Oceanen
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="831">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Guernsey - Guernsey
+
+                        EN: Guernsey - Guernsey
+
+                        SV: Guernsey - Guernsey
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="540">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Uusi-Kaledonia - Uusi-Kaledonia
+
+                        SV: Nya Kaledonien - Nya Kaledonien
+
+                        EN: New Caledonia - New Caledonia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="454">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Malawi - Malawi
+
+                        EN: Malawi - Malawi
+
+                        FI: Malawi - Malawi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="686">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Senegal - Senegal
+
+                        EN: Senegal - Senegal
+
+                        SV: Senegal - Senegal
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="583">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Mikronesia - Mikronesia
+
+                        SV: Mikronesien - Mikronesien
+
+                        EN: Micronesia, Federated States of - Micronesia, Federated States of
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="446">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Macao - Macao
+
+                        EN: Macao - Macao
+
+                        SV: Macao - Macao
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="368">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Irak - Irak
+
+                        FI: Irak - Irak
+
+                        EN: Iraq - Iraq
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="586">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Pakistan - Pakistan
+
+                        SV: Pakistan - Pakistan
+
+                        FI: Pakistan - Pakistan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="234">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: F&#228;r&#246;arna - F&#228;r&#246;arna
+
+                        EN: Faroe Islands - Faroe Islands
+
+                        FI: F&#228;rsaaret - F&#228;rsaaret
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="203">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: T&#353;ekki - T&#353;ekki
+
+                        SV: Tjeckien - Tjeckien
+
+                        EN: Czech Republic - Czech Republic
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="780">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: Trinidad och Tobago - Trinidad och Tobago
+
+                        EN: Trinidad and Tobago - Trinidad and Tobago
+
+                        FI: Trinidad ja Tobago - Trinidad ja Tobago
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="598">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Papua New Guinea - Papua New Guinea
+
+                        SV: Papua Nya Guinea - Papua Nya Guinea
+
+                        FI: Papua-Uusi-Guinea - Papua-Uusi-Guinea
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="233">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Estonia - Estonia
+
+                        SV: Estland - Estland
+
+                        FI: Viro - Viro
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="630">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Puerto Rico - Puerto Rico
+
+                        FI: Puerto Rico - Puerto Rico
+
+                        SV: Puerto Rico - Puerto Rico
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="534">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Sint Maarten (Dutch part) - Sint Maarten (Dutch part)
+
+                        FI: Sint Maarten(Alankomaat) - Sint Maarten(Alankomaat)
+
+                        SV: Sint Maarten(Alankomaat) - Sint Maarten(Alankomaat)
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="192">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kuuba - Kuuba
+
+                        SV: Kuba - Kuba
+
+                        EN: Cuba - Cuba
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="638">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: R&#233;union - R&#233;union
+
+                        EN: R&#233;union - R&#233;union
+
+                        SV: R&#233;union - R&#233;union
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="833">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Isle of Man - Isle of Man
+
+                        SV: Mansaari - Mansaari
+
+                        FI: Mansaari - Mansaari
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="166">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Kookossaaret - Kookossaaret
+
+                        EN: Cocos (Keeling) Islands - Cocos (Keeling) Islands
+
+                        SV: Cocos&#246;arna - Cocos&#246;arna
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="574">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Norfolkinsaari - Norfolkinsaari
+
+                        EN: Norfolk Island - Norfolk Island
+
+                        SV: Norfolk&#246;n - Norfolk&#246;n
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="860">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: Uzbekistan - Uzbekistan
+
+                        EN: Uzbekistan - Uzbekistan
+
+                        SV: Uzbekistan - Uzbekistan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="392">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Japan - Japan
+
+                        FI: Japani - Japani
+
+                        SV: Japan - Japan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

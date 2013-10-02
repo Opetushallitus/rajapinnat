@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://service.henkilo.sade.vm.fi/types/valitut"
+           xmlns="http://service.henkilo.sade.vm.fi/types/valitut"
+           xmlns:common="http://service.henkilo.sade.vm.fi/types/common"
+           xmlns:koodisto="http://service.koodisto.sade.vm.fi/types/koodisto"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://service.henkilo.sade.vm.fi/types/common" schemaLocation="common.xsd"/>
+    <xs:import namespace="http://service.koodisto.sade.vm.fi/types/koodisto" schemaLocation="common_koodisto.xsd"/>
+
+    <!-- todo: pakollisuus... -->
+
+    <xs:element name="Hakijat">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Hakija" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Hetu" minOccurs="1" maxOccurs="1" type="common:HETU"/>
+                            <xs:element name="Oppijanumero" minOccurs="1" maxOccurs="1" type="common:OPPIJANUMERO"/>
+                            <xs:element name="Sukunimi" minOccurs="1" maxOccurs="1" type="common:SUKUNIMI"/>
+                            <xs:element name="Etunimet" minOccurs="1" maxOccurs="1" type="common:ETUNIMET"/>
+                            <xs:element name="Kutsumanimi" minOccurs="0" maxOccurs="1" type="common:KUTSUMANIMI"/>
+                            <xs:element name="Lahiosoite" minOccurs="1" maxOccurs="1" type="common:LAHIOSOITE"/>
+                            <xs:element name="Postinumero" minOccurs="1" maxOccurs="1" type="koodisto:posti"/>
+                            <xs:element name="Maa" minOccurs="1" maxOccurs="1" type="koodisto:maatjavaltiot2"/>
+                            <xs:element name="Kansalaisuus" minOccurs="1" maxOccurs="1" type="koodisto:maatjavaltiot2"/>
+                            <xs:element name="Matkapuhelin" minOccurs="0" maxOccurs="1" type="common:PUHELINNUMERO"/>
+                            <xs:element name="Muupuhelin" minOccurs="0" maxOccurs="1" type="common:PUHELINNUMERO"/>
+                            <xs:element name="Sahkoposti" minOccurs="0" maxOccurs="1" type="common:SAHKOPOSTI"/>
+                            <xs:element name="Kotikunta" minOccurs="0" maxOccurs="1" type="koodisto:kunta"/>
+                            <xs:element name="Sukupuoli" minOccurs="1" maxOccurs="1" type="koodisto:sukupuoli"/>
+                            <xs:element name="Aidinkieli" minOccurs="1" maxOccurs="1" type="koodisto:kieli"/>
+                            <xs:element name="Koulutusmarkkinointilupa" minOccurs="1" maxOccurs="1" type="common:BOOLEANX"/>
+                            <xs:element name="Hakemus" minOccurs="1" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Vuosi" minOccurs="1" maxOccurs="1" type="common:VUOSI"/>
+                                        <xs:element name="Kausi" minOccurs="1" maxOccurs="1" type="koodisto:kausi"/>
+                                        <xs:element name="Hakemusnumero" minOccurs="1" maxOccurs="1" type="koodisto:oppilaitosnumero"/>
+                                        <xs:element name="Lahtokoulu" minOccurs="0" maxOccurs="1" type="koodisto:oppilaitosnumero"/>
+                                        <xs:element name="Lahtokoulunnimi" minOccurs="0" maxOccurs="1" type="common:OPETUSPISTENIMI"/>
+                                        <xs:element name="Luokka" minOccurs="0" maxOccurs="1" type="common:LUOKKA"/>
+                                        <xs:element name="Luokkataso" minOccurs="0" maxOccurs="1" type="common:LUOKKATASO"/>
+                                        <xs:element name="Pohjakoulutus" minOccurs="1" maxOccurs="1" type="koodisto:pohjakoulutustoinenaste"/>
+                                        <xs:element name="Todistusvuosi" minOccurs="0" maxOccurs="1" type="common:VUOSI"/>
+                                        <xs:element name="Julkaisulupa" minOccurs="0" maxOccurs="1" type="common:BOOLEANX"/>
+                                        <xs:element name="Yhteisetaineet" minOccurs="0" maxOccurs="1" type="common:AINEIDENKESKIARVO"/>
+                                        <xs:element name="Lukiontasapisteet" minOccurs="0" maxOccurs="1" type="common:AINEIDENKESKIARVO"/>
+                                        <xs:element name="Yleinenkoulumenestys" minOccurs="0" maxOccurs="1" type="common:AINEIDENKESKIARVO"/>
+                                        <xs:element name="Painotettavataineet" minOccurs="0" maxOccurs="1" type="common:AINEIDENKESKIARVO"/>
+                                        <!--vuosi,kausi...-->
+                                        <xs:element name="Hakutoiveet" minOccurs="1" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Hakutoive" minOccurs="1" maxOccurs="5">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Hakujno" minOccurs="1" maxOccurs="1" type="common:HAKUJONO"/>
+                                                                <xs:element name="Oppilaitos" minOccurs="1" maxOccurs="1" type="koodisto:oppilaitosnumero"/>
+                                                                <xs:element name="Opetuspiste" minOccurs="0" maxOccurs="1" type="koodisto:opetuspisteet"/>
+                                                                <xs:element name="Opetuspisteennimi" minOccurs="0" maxOccurs="1" type="common:OPETUSPISTENIMI"/>
+                                                                <xs:element name="Koulutus" minOccurs="1" maxOccurs="1" type="koodisto:hakukohteet"/>
+                                                                <xs:element name="Harkinnanvaraisuusperuste" minOccurs="0" maxOccurs="1" type="common:HARKINNANVARAISUUSPERUSTE"/>
+                                                                <xs:element name="Urheilijanammatillinenkoulutus" minOccurs="0" maxOccurs="1" type="common:BOOLEAN10"/>
+                                                                <xs:element name="Yhteispisteet" minOccurs="0" maxOccurs="1" type="common:AINEIDENKESKIARVO"/>
+                                                                <!-- todo: koodistossa myohemmin -->
+                                                                <xs:element name="Valinta" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+                                                                <!-- todo: koodistossa myohemmin -->
+                                                                <xs:element name="Vastaanotto" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+                                                                <!-- todo: koodistossa myohemmin -->
+                                                                <xs:element name="Lasnaolo" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+                                                                <xs:element name="Terveys" minOccurs="0" maxOccurs="1" type="common:BOOLEANX"/>
+                                                                <xs:element name="Aiempiperuminen" minOccurs="0" maxOccurs="1" type="common:BOOLEANX"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

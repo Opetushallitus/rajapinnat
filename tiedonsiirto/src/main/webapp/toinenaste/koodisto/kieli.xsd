@@ -1,0 +1,2545 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://service.koodisto.sade.vm.fi/types/koodisto"
+           xmlns="http://service.koodisto.sade.vm.fi/types/koodisto"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="kieli">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TL">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: tagalog, pilipino - tagalog, pilipino
+
+                        SV: tagalog, pilipino - tagalog, pilipino
+
+                        EN: Tagalog - Tagalog
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="RO">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: rum&#228;nska - rum&#228;nska
+
+                        FI: romania - romania
+
+                        EN: Romanian - Romanian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="DZ">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Bhutani, Dzongkha - Bhutani, Dzongkha
+
+                        SV: dzongkha - dzongkha
+
+                        FI: bhutani, dzongkha - bhutani, dzongkha
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SV">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: svenska - svenska
+
+                        FI: ruotsi - ruotsi
+
+                        EN: Swedish - Swedish
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="PA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: panjabi - panjabi
+
+                        FI: pandzabi - pandzabi
+
+                        EN: Punjabi, Panjabi - Punjabi, Panjabi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CU">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Old Slavonic - Old Slavonic
+
+                        FI: kirkkoslaavi - kirkkoslaavi
+
+                        SV: kyrkoslaviska - kyrkoslaviska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SK">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: slovakiska - slovakiska
+
+                        EN: Slovak - Slovak
+
+                        FI: slovakki - slovakki
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="GG">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: guernsey - guernsey
+
+                        EN: Guernesiais - Guernesiais
+
+                        FI: guernsey - guernsey
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ZH">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: kiina - kiina
+
+                        SV: kinesiska - kinesiska
+
+                        EN: Chinese - Chinese
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NO">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: norja - norja
+
+                        SV: norska - norska
+
+                        EN: Norwegian - Norwegian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CV">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Chuvash - Chuvash
+
+                        SV: tjuvasjiska - tjuvasjiska
+
+                        FI: tsuvassi - tsuvassi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SL">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Slovenian - Slovenian
+
+                        FI: sloveeni - sloveeni
+
+                        SV: slovenska - slovenska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SI">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: singalesiska - singalesiska
+
+                        EN: Singalesiska, Singhalesiska - Singalesiska, Singhalesiska
+
+                        FI: singali - singali
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HR">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: kroatiska - kroatiska
+
+                        FI: kroatia - kroatia
+
+                        EN: Croatian - Croatian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="PI">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: pali - pali
+
+                        EN: Pali - Pali
+
+                        FI: pali - pali
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CS">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Czech - Czech
+
+                        SV: tjeckiska - tjeckiska
+
+                        FI: tsekki - tsekki
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SS">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Siswati, Swazi, Swati - Siswati, Swazi, Swati
+
+                        FI: siswati, swazi - siswati, swazi
+
+                        SV: swazi - swazi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LO">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: lao - lao
+
+                        EN: Laotian, Lao - Laotian, Lao
+
+                        SV: lao, laotiska - lao, laotiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="FJ">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: fidianska, fiji - fidianska, fiji
+
+                        FI: fidzi - fidzi
+
+                        EN: Fijian - Fijian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="UR">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: urdu - urdu
+
+                        SV: urdu - urdu
+
+                        EN: Urdu - Urdu
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TI">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: tigrinja - tigrinja
+
+                        SV: tigrinja, tigrinya - tigrinja, tigrinya
+
+                        EN: Tigrinya - Tigrinya
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ID">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: indonesiska - indonesiska
+
+                        FI: indonesia, bahasa indonesia - indonesia, bahasa indonesia
+
+                        EN: Indonesian - Indonesian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HZ">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: herero - herero
+
+                        EN: Herero - Herero
+
+                        SV: herero - herero
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="EU">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: baski, euskera, euskara - baski, euskera, euskara
+
+                        EN: Basque - Basque
+
+                        SV: baskiska - baskiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KO">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: korea - korea
+
+                        EN: Korean - Korean
+
+                        SV: koreanska - koreanska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ML">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Malayalam - Malayalam
+
+                        FI: malajalam - malajalam
+
+                        SV: malayalam - malayalam
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="VI">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Vietnamese - Vietnamese
+
+                        SV: vietnamesiska - vietnamesiska
+
+                        FI: vietnam - vietnam
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SN">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: shona - shona
+
+                        EN: Shona - Shona
+
+                        FI: shona - shona
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HY">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: armenia - armenia
+
+                        SV: armeniska - armeniska
+
+                        EN: Armenian - Armenian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KW">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: korni - korni
+
+                        EN: Cornish - Cornish
+
+                        SV: korniska - korniska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="YI">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Yiddish - Yiddish
+
+                        FI: jiddi, jiddis - jiddi, jiddis
+
+                        SV: jiddisch - jiddisch
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="OM">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: galla, afan oromo, oromo - galla, afan oromo, oromo
+
+                        EN: Afan Oromo, Oromo, Galla - Afan Oromo, Oromo, Galla
+
+                        SV: galla, oromo - galla, oromo
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BI">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: bislama - bislama
+
+                        SV: bislama - bislama
+
+                        EN: Bislama - Bislama
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AM">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: amhara - amhara
+
+                        SV: amhariska, amharinya - amhariska, amharinya
+
+                        EN: Amharic - Amharic
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LT">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: liettua - liettua
+
+                        EN: Lithuanian - Lithuanian
+
+                        SV: litauiska - litauiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="GN">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: guarani - guarani
+
+                        EN: Guarani - Guarani
+
+                        SV: guarani - guarani
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NB">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: norsk bokm&#229;l - norsk bokm&#229;l
+
+                        FI: kirjanorja - kirjanorja
+
+                        EN: Norwegian Bokm&#229;l - Norwegian Bokm&#229;l
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="UG">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Uighur - Uighur
+
+                        FI: uiguuri - uiguuri
+
+                        SV: uiguriska - uiguriska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="DV">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: divehi, malediivi - divehi, malediivi
+
+                        EN: Dhivehi, Maldivian - Dhivehi, Maldivian
+
+                        SV: divehi - divehi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KI">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: kikuju - kikuju
+
+                        SV: kikuyu - kikuyu
+
+                        EN: Kikuyu, Gikuyu - Kikuyu, Gikuyu
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SE">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: samiska - samiska
+
+                        EN: Northern Sami - Northern Sami
+
+                        FI: saame, lappi - saame, lappi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MR">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: marathi - marathi
+
+                        EN: Marathi - Marathi
+
+                        FI: marathi - marathi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AK">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: akan - akan
+
+                        EN: Akan - Akan
+
+                        FI: akan - akan
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="OR">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: oriya - oriya
+
+                        EN: Oriya - Oriya
+
+                        FI: orija - orija
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CO">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: korsikanska - korsikanska
+
+                        EN: Corsican - Corsican
+
+                        FI: korsika - korsika
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SG">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Sango, Sangho - Sango, Sangho
+
+                        FI: sango - sango
+
+                        SV: sango - sango
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="II">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: sichuan yi - sichuan yi
+
+                        SV: sichuan yi - sichuan yi
+
+                        EN: Sichuan Yi - Sichuan Yi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TY">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: tahiti - tahiti
+
+                        EN: Tahitian - Tahitian
+
+                        SV: tahitiska - tahitiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="98">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: ei virallinen kieli - ei virallinen kieli
+
+                        SV: inte officielt spr&#229;k - inte officielt spr&#229;k
+
+                        EN: Non-official language - Non-official language
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="VK">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Sign language - Sign language
+
+                        FI: viittomakieli - viittomakieli
+
+                        SV: teckenspr&#229;k - teckenspr&#229;k
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="UZ">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Uzbek - Uzbek
+
+                        SV: uzbekiska - uzbekiska
+
+                        FI: uzbekki, usbekki, &#246;sbekki - uzbekki, usbekki, &#246;sbekki
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="RN">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: rundi, kirundi - rundi, kirundi
+
+                        SV: rundi, kirundi - rundi, kirundi
+
+                        EN: Kirundi, Rundi - Kirundi, Rundi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KU">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Kurdish - Kurdish
+
+                        SV: kurdiska - kurdiska
+
+                        FI: kurdi - kurdi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IE">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: interlingue - interlingue
+
+                        EN: Interlingua - Interlingua
+
+                        FI: interlingue - interlingue
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BE">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: vitryska - vitryska
+
+                        FI: valkoven&#228;j&#228; - valkoven&#228;j&#228;
+
+                        EN: Belarusian - Belarusian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TN">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Setswana, Tswana - Setswana, Tswana
+
+                        FI: tswana, setswana - tswana, setswana
+
+                        SV: tswana - tswana
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KL">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: gr&#246;nlanti, gr&#246;nlannineskimo - gr&#246;nlanti, gr&#246;nlannineskimo
+
+                        EN: Greenlandic, Kalaallisut - Greenlandic, Kalaallisut
+
+                        SV: gr&#246;nl&#228;ndska - gr&#246;nl&#228;ndska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MY">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: burmanska, burmesiska - burmanska, burmesiska
+
+                        EN: Burmese, Myanmar - Burmese, Myanmar
+
+                        FI: burma - burma
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="GU">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Gujarati - Gujarati
+
+                        FI: gudzarati, gujarati - gudzarati, gujarati
+
+                        SV: gujarati - gujarati
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="FF">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: fulani, fulfulde - fulani, fulfulde
+
+                        SV: fulani - fulani
+
+                        EN: Fulah, Fula, Fulani - Fulah, Fula, Fulani
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="FO">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Faroese, Faeroese - Faroese, Faeroese
+
+                        FI: f&#228;&#228;ri - f&#228;&#228;ri
+
+                        SV: f&#228;riska, f&#228;r&#246;iska - f&#228;riska, f&#228;r&#246;iska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TH">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Thai - Thai
+
+                        FI: thai - thai
+
+                        SV: thail&#228;ndska, thai - thail&#228;ndska, thai
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KA">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: georgia, gruusia - georgia, gruusia
+
+                        SV: georgiska - georgiska
+
+                        EN: Georgian - Georgian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HT">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: haiti - haiti
+
+                        FI: haiti - haiti
+
+                        EN: Haitian, Haitian Creole - Haitian, Haitian Creole
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NA">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Nauru - Nauru
+
+                        SV: nauru - nauru
+
+                        FI: nauru - nauru
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SC">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: sardiska - sardiska
+
+                        EN: Sardinian - Sardinian
+
+                        FI: sardi - sardi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ND">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: ndebele nord - ndebele nord
+
+                        EN: North Ndebele - North Ndebele
+
+                        FI: pohjoisndebele - pohjoisndebele
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MK">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: makedonska - makedonska
+
+                        FI: makedonia - makedonia
+
+                        EN: Macedonian - Macedonian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NL">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: hollanti - hollanti
+
+                        SV: holl&#228;ndska - holl&#228;ndska
+
+                        EN: Dutch - Dutch
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ST">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: sotho, sesotho - sotho, sesotho
+
+                        SV: sotho - sotho
+
+                        EN: Sesotho, Southern Sotho - Sesotho, Southern Sotho
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NR">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: etel&#228;ndebele - etel&#228;ndebele
+
+                        EN: South Ndebele - South Ndebele
+
+                        SV: ndebele syd - ndebele syd
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="RU">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Russian - Russian
+
+                        SV: ryska - ryska
+
+                        FI: ven&#228;j&#228; - ven&#228;j&#228;
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="JA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: japanska - japanska
+
+                        FI: japani - japani
+
+                        EN: Japanese - Japanese
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BR">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: bretonska - bretonska
+
+                        FI: bretoni - bretoni
+
+                        EN: Breton - Breton
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ES">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: espanja - espanja
+
+                        EN: Spanish, Castilian - Spanish, Castilian
+
+                        SV: spanska - spanska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="GL">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Galician, Gallegan - Galician, Gallegan
+
+                        FI: galicia - galicia
+
+                        SV: galiciska - galiciska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="RI">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: romani - romani
+
+                        EN: Romani - Romani
+
+                        SV: romani - romani
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IM">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: mansaari - mansaari
+
+                        FI: mansaari - mansaari
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HE">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: hebreiska - hebreiska
+
+                        FI: heprea, ivrit - heprea, ivrit
+
+                        EN: Hebrew - Hebrew
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MO">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Moldavian - Moldavian
+
+                        FI: moldavia - moldavia
+
+                        SV: moldaviska - moldaviska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IS">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: isl&#228;ndska - isl&#228;ndska
+
+                        EN: Icelandic - Icelandic
+
+                        FI: islanti - islanti
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BN">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: bengali - bengali
+
+                        EN: Bengali, Bangla - Bengali, Bangla
+
+                        FI: bengali - bengali
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AR">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Arabic - Arabic
+
+                        SV: arabiska - arabiska
+
+                        FI: arabia - arabia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TG">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Tajiki - Tajiki
+
+                        SV: tadzjikiska - tadzjikiska
+
+                        FI: tadzikki - tadzikki
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IG">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: ibo - ibo
+
+                        FI: igbo - igbo
+
+                        EN: Igbo - Igbo
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AF">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Afrikaans - Afrikaans
+
+                        FI: afrikaans - afrikaans
+
+                        SV: afrikaans - afrikaans
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="UK">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Ukrainian - Ukrainian
+
+                        FI: ukraina - ukraina
+
+                        SV: ukrainska - ukrainska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="OC">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Occitan, Provencal - Occitan, Provencal
+
+                        SV: occitanska, provensalska - occitanska, provensalska
+
+                        FI: oksitaani, provensaali - oksitaani, provensaali
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="JV">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: javanesiska - javanesiska
+
+                        EN: Javanese - Javanese
+
+                        FI: jaava - jaava
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BH">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: bihari - bihari
+
+                        EN: Bihari - Bihari
+
+                        FI: bihari - bihari
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TK">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: turkmeniska - turkmeniska
+
+                        EN: Turkmen - Turkmen
+
+                        FI: turkmeeni - turkmeeni
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KM">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Cambodian, Khmer - Cambodian, Khmer
+
+                        FI: khmer, kambodza - khmer, kambodza
+
+                        SV: khmeriska, kambodjanska - khmeriska, kambodjanska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IO">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: ido - ido
+
+                        FI: ido - ido
+
+                        EN: Ido - Ido
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HU">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Hungarian - Hungarian
+
+                        FI: unkari - unkari
+
+                        SV: ungerska - ungerska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AS">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Assamese - Assamese
+
+                        SV: assamesiska - assamesiska
+
+                        FI: assami - assami
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="DE">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: German - German
+
+                        FI: saksa - saksa
+
+                        SV: tyska - tyska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LU">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: luba-katanga - luba-katanga
+
+                        EN: Luba-Katanga - Luba-Katanga
+
+                        FI: luba-katanga - luba-katanga
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SR">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: serbiska - serbiska
+
+                        FI: serbia - serbia
+
+                        EN: Serbian - Serbian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SD">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: sindhi - sindhi
+
+                        FI: sindhi - sindhi
+
+                        EN: Sindhi - Sindhi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MS">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: malajiska - malajiska
+
+                        EN: Malay - Malay
+
+                        FI: malaiji - malaiji
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="FY">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: friisi - friisi
+
+                        SV: frisiska - frisiska
+
+                        EN: Frisian - Frisian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ZU">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: zulu - zulu
+
+                        EN: Zulu - Zulu
+
+                        SV: zuluspr&#229;k, zulu - zuluspr&#229;k, zulu
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IK">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Inupiaq - Inupiaq
+
+                        FI: inupiak - inupiak
+
+                        SV: inupiak - inupiak
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BM">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Bambara - Bambara
+
+                        FI: bambara - bambara
+
+                        SV: bambara - bambara
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NY">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: njandza, tseva - njandza, tseva
+
+                        SV: nyanja - nyanja
+
+                        EN: Chichewa, Cheva, Nyanja - Chichewa, Cheva, Nyanja
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="GA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: iriska, irl&#228;ndsk, g&#228;liska - iriska, irl&#228;ndsk, g&#228;liska
+
+                        EN: Irish - Irish
+
+                        FI: iiri - iiri
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="QU">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: kechua, quechua - kechua, quechua
+
+                        EN: Quechua - Quechua
+
+                        FI: ketsua - ketsua
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ZA">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: tsuang - tsuang
+
+                        SV: tsuang - tsuang
+
+                        EN: Zhuang, Chuang - Zhuang, Chuang
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TT">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: tataari - tataari
+
+                        SV: tatariska - tatariska
+
+                        EN: Tatar - Tatar
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="EE">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: ewe - ewe
+
+                        EN: Ewe - Ewe
+
+                        FI: ewe - ewe
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CH">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: chamorro - chamorro
+
+                        FI: chamorro - chamorro
+
+                        EN: Chamorro - Chamorro
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MH">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: marshallese - marshallese
+
+                        SV: marshall - marshall
+
+                        EN: Marshallese - Marshallese
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IU">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: eskimo - eskimo
+
+                        SV: eskim&#229;iska - eskim&#229;iska
+
+                        EN: Inuktitut - Inuktitut
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IT">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: italienska - italienska
+
+                        FI: italia - italia
+
+                        EN: Italian - Italian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="PS">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Pashto, Pushto - Pashto, Pushto
+
+                        FI: afgaani, pasto - afgaani, pasto
+
+                        SV: pashto - pashto
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HI">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: hindi - hindi
+
+                        FI: hindi - hindi
+
+                        EN: Hindi - Hindi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CE">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: tsetseeni - tsetseeni
+
+                        EN: Chechen - Chechen
+
+                        SV: tjetjenska - tjetjenska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TA">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: tamili - tamili
+
+                        EN: Tamil - Tamil
+
+                        SV: tamiliska, tamil - tamiliska, tamil
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SQ">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: albanska - albanska
+
+                        FI: albania - albania
+
+                        EN: Albanian - Albanian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="EL">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: grekiska - grekiska
+
+                        FI: kreikka - kreikka
+
+                        EN: Greek - Greek
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="WO">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: wolof - wolof
+
+                        SV: wolof - wolof
+
+                        EN: Wolof - Wolof
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MI">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: maori - maori
+
+                        EN: Maori - Maori
+
+                        SV: maori - maori
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KG">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Kongo - Kongo
+
+                        FI: kikongo, kongo - kikongo, kongo
+
+                        SV: kikongo - kikongo
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CY">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: kymri, wales - kymri, wales
+
+                        EN: Welsh - Welsh
+
+                        SV: kymriska, walesiska - kymriska, walesiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NG">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Ndonga - Ndonga
+
+                        FI: ambo, ndonga - ambo, ndonga
+
+                        SV: ndonga - ndonga
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="PT">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Portuguese - Portuguese
+
+                        FI: portugali - portugali
+
+                        SV: portugisiska - portugisiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="GV">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: manx - manx
+
+                        FI: manx - manx
+
+                        EN: Manx - Manx
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LG">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Luganda, Ganda - Luganda, Ganda
+
+                        SV: luganda - luganda
+
+                        FI: ganda, luganda - ganda, luganda
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="JE">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: jersey - jersey
+
+                        SV: jersey - jersey
+
+                        EN: Jerriais - Jerriais
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NV">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: navaho - navaho
+
+                        SV: navaho - navaho
+
+                        EN: Navajo, Navaho - Navajo, Navaho
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AN">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: aragonia - aragonia
+
+                        EN: Aragonese - Aragonese
+
+                        SV: aragonia - aragonia
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="EN">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: englanti - englanti
+
+                        EN: English - English
+
+                        SV: engelska - engelska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CA">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: katalaani - katalaani
+
+                        EN: Catalan - Catalan
+
+                        SV: katalanska - katalanska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LI">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: limburg - limburg
+
+                        EN: Limburgan, Limburger - Limburgan, Limburger
+
+                        FI: limburg - limburg
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KS">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: kasmiri - kasmiri
+
+                        SV: kashmiriska, kashmiri - kashmiriska, kashmiri
+
+                        EN: Kashmiri - Kashmiri
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KE">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: karjala - karjala
+
+                        FI: karjala - karjala
+
+                        EN: Karjala - Karjala
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="99">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: tuntematon - tuntematon
+
+                        SV: ok&#228;nt - ok&#228;nt
+
+                        EN: Other - Other
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TE">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: telugu - telugu
+
+                        EN: Telegu - Telegu
+
+                        SV: telugu - telugu
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SM">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: samoa - samoa
+
+                        EN: Samoan - Samoan
+
+                        SV: samoanska - samoanska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TW">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: twi - twi
+
+                        FI: twi - twi
+
+                        EN: Twi - Twi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="GD">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: skotti, gaeli - skotti, gaeli
+
+                        SV: skotsk g&#228;liska - skotsk g&#228;liska
+
+                        EN: Gaelic, Scottish Gaelic - Gaelic, Scottish Gaelic
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KY">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: kirgiisi - kirgiisi
+
+                        SV: kirgisiska - kirgisiska
+
+                        EN: Kirghiz, Kyrgyz - Kirghiz, Kyrgyz
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="XX">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: muu kieli - muu kieli
+
+                        EN: Other languages - Other languages
+
+                        SV: &#246;vrigt spr&#229;k - &#246;vrigt spr&#229;k
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AV">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: avaari - avaari
+
+                        SV: avariskt spr&#229;k - avariskt spr&#229;k
+
+                        EN: Avar, Avarish - Avar, Avarish
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MT">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: maltesiska - maltesiska
+
+                        FI: malta - malta
+
+                        EN: Maltese - Maltese
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="IA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: interlingua - interlingua
+
+                        FI: interlingua - interlingua
+
+                        EN: Interlingua - Interlingua
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: basjkiriska - basjkiriska
+
+                        EN: Bashkir - Bashkir
+
+                        FI: baskiiri - baskiiri
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="FA">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Persian, Farsi - Persian, Farsi
+
+                        SV: persiska - persiska
+
+                        FI: persia, nykypersia, farsi - persia, nykypersia, farsi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MN">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: mongoli - mongoli
+
+                        EN: Mongolian - Mongolian
+
+                        SV: mongoliska - mongoliska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SO">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: somali - somali
+
+                        EN: Somali - Somali
+
+                        SV: somaliska - somaliska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="OJ">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: ojibwa - ojibwa
+
+                        FI: ojibwa - ojibwa
+
+                        EN: Ojibwa - Ojibwa
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HO">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: hiri-motu - hiri-motu
+
+                        EN: Hiri Motu - Hiri Motu
+
+                        SV: hirimotu - hirimotu
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LV">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Latvian - Latvian
+
+                        FI: latvia, l&#228;tti - latvia, l&#228;tti
+
+                        SV: lettiska - lettiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="FR">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: ranska - ranska
+
+                        EN: French - French
+
+                        SV: franska - franska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="PL">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: polska - polska
+
+                        EN: Polish - Polish
+
+                        FI: puola - puola
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LN">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Lingala - Lingala
+
+                        FI: lingala - lingala
+
+                        SV: lingala - lingala
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AY">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: aimara, aymara - aimara, aymara
+
+                        EN: Aymara - Aymara
+
+                        SV: aymar&#225; - aymar&#225;
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="VE">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: venda - venda
+
+                        FI: venda - venda
+
+                        EN: Venda - Venda
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AB">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: abhaasi - abhaasi
+
+                        EN: Abkhazian - Abkhazian
+
+                        SV: abchaziska - abchaziska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NN">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: uusnorja - uusnorja
+
+                        SV: nynorsk - nynorsk
+
+                        EN: Norwegian Nynorsk - Norwegian Nynorsk
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="FI">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: finska - finska
+
+                        FI: suomi - suomi
+
+                        EN: Finnish - Finnish
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LA">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: latina - latina
+
+                        SV: latin - latin
+
+                        EN: Latin - Latin
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TR">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Turkish - Turkish
+
+                        FI: turkki - turkki
+
+                        SV: turkiska - turkiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KR">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: kanuri - kanuri
+
+                        EN: Kanuri - Kanuri
+
+                        SV: kanuri - kanuri
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ET">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Estonian - Estonian
+
+                        FI: viro, eesti - viro, eesti
+
+                        SV: estniska - estniska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="EO">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: esperanto - esperanto
+
+                        EN: Esperanto - Esperanto
+
+                        SV: esperanto - esperanto
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KJ">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Kwanyama, Kuanyama - Kwanyama, Kuanyama
+
+                        FI: kuanjama - kuanjama
+
+                        SV: kuanyama - kuanyama
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KV">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: komi - komi
+
+                        FI: komi - komi
+
+                        EN: Komi - Komi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="VO">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Volap&#252;k - Volap&#252;k
+
+                        SV: volapyk - volapyk
+
+                        FI: volap&#252;k - volap&#252;k
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: afar - afar
+
+                        FI: afar - afar
+
+                        EN: Afar - Afar
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SU">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: sunda - sunda
+
+                        EN: Sundanese - Sundanese
+
+                        SV: sundanesiska - sundanesiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="NE">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: nepali - nepali
+
+                        EN: Nepali - Nepali
+
+                        SV: nepalesiska, nepali - nepalesiska, nepali
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TO">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Tongan - Tongan
+
+                        SV: tonga, tonganska - tonga, tonganska
+
+                        FI: tonga - tonga
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KN">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: kannada, kanaresiska - kannada, kanaresiska
+
+                        EN: Kannada - Kannada
+
+                        FI: kannada - kannada
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="CR">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Cree - Cree
+
+                        SV: cree - cree
+
+                        FI: cree - cree
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="LB">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Luxembourgish - Luxembourgish
+
+                        FI: letzeburg, luxemburg - letzeburg, luxemburg
+
+                        SV: letzebuergesch - letzebuergesch
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="DA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: danska - danska
+
+                        FI: tanska - tanska
+
+                        EN: Danish - Danish
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="WA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: vallonska - vallonska
+
+                        EN: Walloon - Walloon
+
+                        FI: walloon - walloon
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AE">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: avestiska - avestiska
+
+                        EN: Avestan - Avestan
+
+                        FI: avesta - avesta
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="HA">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Hausa - Hausa
+
+                        SV: hausa - hausa
+
+                        FI: hausa - hausa
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SH">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Serbo-Croatian - Serbo-Croatian
+
+                        FI: serbokroatia, serbokroatiska - serbokroatia, serbokroatiska
+
+                        SV: serbokroatiska - serbokroatiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BS">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: bosniska - bosniska
+
+                        FI: bosnia - bosnia
+
+                        EN: Bosnian - Bosnian
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="RM">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Rhaeto-Romance - Rhaeto-Romance
+
+                        FI: retoromaani - retoromaani
+
+                        SV: r&#228;toromanska - r&#228;toromanska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BO">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Tibetan - Tibetan
+
+                        SV: tibetanska - tibetanska
+
+                        FI: tiibet - tiibet
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="AZ">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Azerbaijani - Azerbaijani
+
+                        FI: azeri, azerbaidzani - azeri, azerbaidzani
+
+                        SV: azerbajdzjanska - azerbajdzjanska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="OS">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: ossetiska - ossetiska
+
+                        FI: osseetti - osseetti
+
+                        EN: Ossetian, Ossetic - Ossetian, Ossetic
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="TS">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: tsonga - tsonga
+
+                        EN: Tsonga - Tsonga
+
+                        FI: tsonga - tsonga
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SW">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Swahili, Kiswahili - Swahili, Kiswahili
+
+                        SV: swahili - swahili
+
+                        FI: suahili - suahili
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="BG">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: bulgaria - bulgaria
+
+                        EN: Bulgarian - Bulgarian
+
+                        SV: bulgariska - bulgariska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="YO">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: joruba, yoruba - joruba, yoruba
+
+                        FI: joruba - joruba
+
+                        EN: Yoruba - Yoruba
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="KK">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Kazakh - Kazakh
+
+                        FI: kazakki, kasakki - kazakki, kasakki
+
+                        SV: kazakiska - kazakiska
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="MG">
+                <xs:annotation>
+                    <xs:documentation>
+                        EN: Malagasy - Malagasy
+
+                        SV: malagassiska - malagassiska
+
+                        FI: malagasi, madagassi - malagasi, madagassi
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="RW">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: kinyarwanda - kinyarwanda
+
+                        EN: Kinyarwanda, Rwanda - Kinyarwanda, Rwanda
+
+                        FI: ruanda, kinjaruanda, njaruanda - ruanda, kinjaruanda, njaruanda
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="SA">
+                <xs:annotation>
+                    <xs:documentation>
+                        SV: sanskrit - sanskrit
+
+                        FI: sanskrit - sanskrit
+
+                        EN: Sanskrit - Sanskrit
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="XH">
+                <xs:annotation>
+                    <xs:documentation>
+                        FI: xhosa, kafferi, hosa - xhosa, kafferi, hosa
+
+                        EN: Xhosa - Xhosa
+
+                        SV: xhosa, xosa, kafir, kosa - xhosa, xosa, kafir, kosa
+
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
