@@ -4,15 +4,6 @@
            xmlns="http://service.henkilo.sade.vm.fi/types/common"
            elementFormDefault="qualified">
 
-    <!-- todo: copypaste from authentication-api common.xsd -->
-    <xs:simpleType name="OidStringType">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[0-9\.]*" />
-            <xs:minLength value="14" />
-            <xs:maxLength value="30" />
-        </xs:restriction>
-    </xs:simpleType>
-
     <xs:simpleType name="VUOSI">
         <xs:restriction base="xs:integer">
             <xs:pattern value="[0-9]{4}"/>
@@ -148,6 +139,15 @@
         <xs:restriction base="xs:string">
             <xs:pattern value="[^@]+@[^\.]+\..+"/>
             <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- note: copypaste from elsewhere -->
+    <xs:simpleType name="OidStringType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9\.]*" />
+            <xs:minLength value="14" />
+            <xs:maxLength value="30" />
         </xs:restriction>
     </xs:simpleType>
 

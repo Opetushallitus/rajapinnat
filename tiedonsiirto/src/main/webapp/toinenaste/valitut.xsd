@@ -9,8 +9,6 @@
     <xs:import namespace="http://service.henkilo.sade.vm.fi/types/common" schemaLocation="common.xsd"/>
     <xs:import namespace="http://service.koodisto.sade.vm.fi/types/koodisto" schemaLocation="common_koodisto.xsd"/>
 
-    <!-- todo: pakollisuus... -->
-
     <xs:element name="Hakijat">
         <xs:complexType>
             <xs:sequence>
