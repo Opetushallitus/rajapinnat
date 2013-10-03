@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="TiedonSiirtoToinenAsteService"
+                  targetNamespace="http://service.henkilo.sade.vm.fi/"
+                  xmlns:perusopetus="http://service.henkilo.sade.vm.fi/types/perusopetus"
+                  xmlns:tns="http://service.henkilo.sade.vm.fi/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://service.henkilo.sade.vm.fi/types">
+            <xsd:import namespace="http://service.henkilo.sade.vm.fi/types/perusopetus" schemaLocation="perusopetusHenkiloTiedot.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="importHenkilotiedotRequest">
+        <wsdl:part name="parameters" element="perusopetus:ROWSET"/>
+    </wsdl:message>
+
+    <wsdl:message name="importHenkilotiedotResponse">
+        <!-- TODO: mita responseen? -->
+    </wsdl:message>
+
+    <wsdl:message name="importHenkilotiedotFault">
+        <!-- TODO: mita faultiin? -->
+    </wsdl:message>
+
+    <wsdl:portType name="TiedonSiirtoToinenAsteService">
+        <wsdl:documentation><!-- TODO: --></wsdl:documentation>
+
+        <wsdl:operation name="importHenkilotiedot">
+            <wsdl:documentation><!-- TODO: --></wsdl:documentation>
+            <wsdl:input message="tns:importHenkilotiedotRequest"/>
+            <wsdl:output message="tns:importHenkilotiedotResponse"/>
+            <wsdl:fault name="fault" message="tns:importHenkilotiedotFault"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="TiedonSiirtoToinenAsteServiceSoapBinding" type="tns:TiedonSiirtoToinenAsteService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="importHenkilotiedot">
+            <soap:operation soapAction="http://service.authentication.sade.vm.fi/importHenkilotiedot"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="TiedonSiirtoToinenAsteService">
+        <wsdl:port binding="tns:TiedonSiirtoToinenAsteServiceSoapBinding" name="TiedonSiirtoToinenAsteServicePort">
+            <soap:address location="http://localhost:8080/tiedonsiirto/cxf/TiedonSiirtoToinenAsteService"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

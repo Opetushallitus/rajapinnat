@@ -1,5 +1,6 @@
 package fi.vm.sade.tiedonsiirto.toinenaste;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -11,6 +12,7 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * @author Antti Salonen
@@ -18,8 +20,17 @@ import java.io.IOException;
 public class TiedonSiirtoValidationTest {
 
     SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-    String sampleDir = "src/main/webapp/toinenaste/";
-    String schemaDir = "src/main/webapp/toinenaste/";
+    String sampleDir = "src/main/resources/toinenaste/";
+    String schemaDir = "src/main/resources/toinenaste/";
+
+    public static void main(String[] args) throws IOException {
+        // temp lataa tuoreet skeemat koodistosta sorsien alle
+        String koodistos[] = new String[]{"oppilaitosnumero","posti","maatjavaltiot2","kunta","sukupuoli","kieli","kausi","pohjakoulutustoinenaste","opetuspisteet","hakukohteet",};
+        for (String koodisto : koodistos) {
+            FileUtils.copyURLToFile(new URL("https://itest-virkailija.oph.ware.fi/koodisto-service/rest/"+koodisto+".xsd"), new File("C:\\work\\GitHub\\rajapinnat\\tiedonsiirto\\src\\main\\webapp\\toinenaste\\koodisto\\"+koodisto+".xsd"));
+            System.out.println("copied "+koodisto);
+        }
+    }
 
     @Test
     public void valitut() throws IOException, SAXException {

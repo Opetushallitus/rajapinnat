@@ -8,27 +8,17 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="2">
                 <xs:annotation>
-                    <xs:documentation>
-                        SV: Kvinna - Kvinna
-
-                        FI: Nainen - Nainen
-
-                        EN: Woman - Woman
-
-                    </xs:documentation>
+                    <xs:documentation xml:lang="sv">Kvinna</xs:documentation>
+                    <xs:documentation xml:lang="fi">Nainen</xs:documentation>
+                    <xs:documentation xml:lang="en">Woman</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
 
             <xs:enumeration value="1">
                 <xs:annotation>
-                    <xs:documentation>
-                        SV: Man - Man
-
-                        EN: Man - Man
-
-                        FI: Mies - Mies
-
-                    </xs:documentation>
+                    <xs:documentation xml:lang="sv">Man</xs:documentation>
+                    <xs:documentation xml:lang="en">Man</xs:documentation>
+                    <xs:documentation xml:lang="fi">Mies</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
 

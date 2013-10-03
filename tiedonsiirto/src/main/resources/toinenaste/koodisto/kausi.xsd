@@ -8,27 +8,17 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="K">
                 <xs:annotation>
-                    <xs:documentation>
-                        SV: V&#229;r - V&#229;r
-
-                        FI: Kev&#228;t - Voi olla joko koulutuksen alkamiskausi tai hakukausi
-
-                        EN: Spring - Spring
-
-                    </xs:documentation>
+                    <xs:documentation xml:lang="sv">V&#229;r</xs:documentation>
+                    <xs:documentation xml:lang="fi">Kev&#228;t</xs:documentation>
+                    <xs:documentation xml:lang="en">Spring</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
 
             <xs:enumeration value="S">
                 <xs:annotation>
-                    <xs:documentation>
-                        FI: Syksy - Voi olla joko koulutuksen alkamiskausi tai hakukausi
-
-                        EN: Autumn - Autumn
-
-                        SV: H&#246;st - H&#246;st
-
-                    </xs:documentation>
+                    <xs:documentation xml:lang="fi">Syksy</xs:documentation>
+                    <xs:documentation xml:lang="en">Autumn</xs:documentation>
+                    <xs:documentation xml:lang="sv">H&#246;st</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
 
