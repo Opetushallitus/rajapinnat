@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Hakijat xmlns="http://service.henkilo.sade.vm.fi/types/valitut"
+<Hakijat xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus/hakijat"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://service.henkilo.sade.vm.fi/types/valitut common.xsd">
+        xsi:schemaLocation="http://service.henkilo.sade.vm.fi/types/perusopetus/hakijat common.xsd">
 
     <Hakija>
         <Hetu>020202-0202</Hetu>

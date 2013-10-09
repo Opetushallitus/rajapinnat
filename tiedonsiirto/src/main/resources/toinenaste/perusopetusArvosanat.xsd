@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://service.henkilo.sade.vm.fi/types/perusopetus"
-           xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus"
+           targetNamespace="http://service.henkilo.sade.vm.fi/types/perusopetus/arvosanat"
+           xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus/arvosanat"
            xmlns:common="http://service.henkilo.sade.vm.fi/types/common"
            xmlns:koodisto="http://service.koodisto.sade.vm.fi/types/koodisto"
            elementFormDefault="qualified">

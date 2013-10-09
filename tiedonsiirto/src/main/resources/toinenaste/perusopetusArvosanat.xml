@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ROWSET xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus"
+<ROWSET xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus/arvosanat"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://service.henkilo.sade.vm.fi/types/perusopetus perusopetusArvosanat.xsd">
+        xsi:schemaLocation="http://service.henkilo.sade.vm.fi/types/perusopetus/arvosanat perusopetusArvosanat.xsd">
     <ROW>
-        <!--<Arvosana 9 - luokan oppilas>-->
         <VUOSI>2013</VUOSI>
         <KAUSI>S</KAUSI>
-        <!--<PKTILA>3</PKTILA>-->
         <LAHTOKOULU>05536</LAHTOKOULU>
         <LUOKKA>9A</LUOKKA>
         <LUOKKATASO>9</LUOKKATASO>

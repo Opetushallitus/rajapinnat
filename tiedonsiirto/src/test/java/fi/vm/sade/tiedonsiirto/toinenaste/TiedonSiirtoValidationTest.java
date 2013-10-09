@@ -33,8 +33,8 @@ public class TiedonSiirtoValidationTest {
     }
 
     @Test
-    public void valitut() throws IOException, SAXException {
-        validate("valitut");
+    public void hakijat() throws IOException, SAXException {
+        validate("hakijat");
     }
 
     @Test

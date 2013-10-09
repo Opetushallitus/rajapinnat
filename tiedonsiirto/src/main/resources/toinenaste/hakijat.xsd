@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://service.henkilo.sade.vm.fi/types/valitut"
-           xmlns="http://service.henkilo.sade.vm.fi/types/valitut"
+           targetNamespace="http://service.henkilo.sade.vm.fi/types/perusopetus/hakijat"
+           xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus/hakijat"
            xmlns:common="http://service.henkilo.sade.vm.fi/types/common"
            xmlns:koodisto="http://service.koodisto.sade.vm.fi/types/koodisto"
            elementFormDefault="qualified">
@@ -87,5 +87,15 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:element name="hakijatRequestParametersType">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="oppilaitosnumero" minOccurs="0" maxOccurs="1" type="koodisto:oppilaitosnumero"/>
+                <xs:element name="ytunnus" minOccurs="0" maxOccurs="1" type="xs:string"/> <!-- todo: y-tunnus validointi -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
 
 </xs:schema>

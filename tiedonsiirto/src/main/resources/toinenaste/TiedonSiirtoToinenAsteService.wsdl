@@ -2,26 +2,59 @@
 <wsdl:definitions name="TiedonSiirtoToinenAsteService"
                   targetNamespace="http://service.henkilo.sade.vm.fi/"
                   xmlns:perusopetus="http://service.henkilo.sade.vm.fi/types/perusopetus"
+                  xmlns:henkilotiedot="http://service.henkilo.sade.vm.fi/types/perusopetus/henkilotiedot"
+                  xmlns:arvosanat="http://service.henkilo.sade.vm.fi/types/perusopetus/arvosanat"
+                  xmlns:hakijat="http://service.henkilo.sade.vm.fi/types/perusopetus/hakijat"
                   xmlns:tns="http://service.henkilo.sade.vm.fi/"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
 
     <wsdl:types>
-        <xsd:schema targetNamespace="http://service.henkilo.sade.vm.fi/types">
-            <xsd:import namespace="http://service.henkilo.sade.vm.fi/types/perusopetus" schemaLocation="perusopetusHenkiloTiedot.xsd"/>
+        <xsd:schema targetNamespace="http://service.henkilo.sade.vm.fi/types/perusopetus">
+            <!-- must be in own namespace because perusopetusHenkiloTiedot and perusopetusArvosanat has to have different ROWSET/ROW elements -->
+            <xsd:import namespace="http://service.henkilo.sade.vm.fi/types/perusopetus/henkilotiedot" schemaLocation="perusopetusHenkiloTiedot.xsd"/>
+            <xsd:import namespace="http://service.henkilo.sade.vm.fi/types/perusopetus/arvosanat" schemaLocation="perusopetusArvosanat.xsd"/>
+            <xsd:import namespace="http://service.henkilo.sade.vm.fi/types/perusopetus/hakijat" schemaLocation="hakijat.xsd"/>
+            <xsd:element name="genericResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="responseMessage" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="genericFault">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="errorCode" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+                        <xsd:element name="errorMessage" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:schema>
     </wsdl:types>
 
+    <wsdl:message name="genericResponse">
+        <wsdl:part name="response" element="perusopetus:genericResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="genericFault">
+        <wsdl:part name="fault" element="perusopetus:genericFault"/>
+    </wsdl:message>
+
     <wsdl:message name="importHenkilotiedotRequest">
-        <wsdl:part name="parameters" element="perusopetus:ROWSET"/>
+        <wsdl:part name="data" element="henkilotiedot:ROWSET"/>
     </wsdl:message>
 
-    <wsdl:message name="importHenkilotiedotResponse">
-        <!-- TODO: mita responseen? -->
+    <wsdl:message name="importArvosanatRequest">
+        <wsdl:part name="data" element="arvosanat:ROWSET"/>
     </wsdl:message>
 
-    <wsdl:message name="importHenkilotiedotFault">
-        <!-- TODO: mita faultiin? -->
+    <wsdl:message name="exportHakijatRequest">
+        <wsdl:part name="parameters" element="hakijat:hakijatRequestParametersType"/>
+    </wsdl:message>
+
+    <wsdl:message name="exportHakijatResponse">
+        <wsdl:part name="hakijat" element="hakijat:Hakijat"/>
     </wsdl:message>
 
     <wsdl:portType name="TiedonSiirtoToinenAsteService">
@@ -30,8 +63,22 @@
         <wsdl:operation name="importHenkilotiedot">
             <wsdl:documentation><!-- TODO: --></wsdl:documentation>
             <wsdl:input message="tns:importHenkilotiedotRequest"/>
-            <wsdl:output message="tns:importHenkilotiedotResponse"/>
-            <wsdl:fault name="fault" message="tns:importHenkilotiedotFault"/>
+            <wsdl:output message="tns:genericResponse"/>
+            <wsdl:fault name="fault" message="tns:genericFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="importArvosanat">
+            <wsdl:documentation><!-- TODO: --></wsdl:documentation>
+            <wsdl:input message="tns:importArvosanatRequest"/>
+            <wsdl:output message="tns:genericResponse"/>
+            <wsdl:fault name="fault" message="tns:genericFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="exportHakijat">
+            <wsdl:documentation><!-- TODO: --></wsdl:documentation>
+            <wsdl:input message="tns:exportHakijatRequest"/>
+            <wsdl:output message="tns:exportHakijatResponse"/>
+            <wsdl:fault name="fault" message="tns:genericFault"/>
         </wsdl:operation>
 
     </wsdl:portType>
@@ -41,6 +88,32 @@
 
         <wsdl:operation name="importHenkilotiedot">
             <soap:operation soapAction="http://service.authentication.sade.vm.fi/importHenkilotiedot"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="importArvosanat">
+            <soap:operation soapAction="http://service.authentication.sade.vm.fi/importArvosanat"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="exportHakijat">
+            <soap:operation soapAction="http://service.authentication.sade.vm.fi/exportHakijat"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>

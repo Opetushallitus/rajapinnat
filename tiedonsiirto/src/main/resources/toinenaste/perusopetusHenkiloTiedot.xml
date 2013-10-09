@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ROWSET xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus"
+<ROWSET xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus/henkilotiedot"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="
-     http://service.henkilo.sade.vm.fi/types/perusopetus perusopetusHenkiloTiedot.xsd
+     http://service.henkilo.sade.vm.fi/types/perusopetus/henkilotiedot perusopetusHenkiloTiedot.xsd
      http://service.henkilo.sade.vm.fi/types/common common.xsd
      http://service.henkilo.sade.vm.fi/types/koodisto common_koodisto.xsd
      ">
