@@ -22,7 +22,7 @@
                             <xs:element name="LUOKKATASO" minOccurs="1" maxOccurs="1" type="common:LUOKKATASO"/>
                             <xs:element name="HETU" minOccurs="1" maxOccurs="1" type="common:HETU"/>
                             <xs:element name="TODISTUS" minOccurs="1" maxOccurs="1" type="common:TODISTUS"/>
-                            <xs:element name="AINE" minOccurs="1" maxOccurs="1" type="common:AINE"/>
+                            <xs:element name="AINE" minOccurs="1" maxOccurs="1" type="koodisto:oppiaineetyleissivistava"/>
                             <xs:element name="KIELI" minOccurs="0" maxOccurs="1" type="koodisto:kieli"/>
                             <xs:element name="TYYPPI" minOccurs="1" maxOccurs="1" type="common:TYYPPI"/>
                             <xs:element name="ARVOSANA" minOccurs="1" maxOccurs="1" type="common:ARVOSANA_4_10"/>

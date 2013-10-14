@@ -70,12 +70,6 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="AINE">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[\w]{2,5}"/>
-        </xs:restriction>
-    </xs:simpleType>
-
     <xs:simpleType name="TYYPPI">
         <xs:restriction base="xs:string">
             <xs:pattern value="[BC]{1}"/>
