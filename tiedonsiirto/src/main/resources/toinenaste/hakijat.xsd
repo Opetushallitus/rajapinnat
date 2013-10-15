@@ -40,7 +40,7 @@
                                         <xs:element name="Lahtokoulu" minOccurs="0" maxOccurs="1" type="koodisto:oppilaitosnumero"/>
                                         <xs:element name="Lahtokoulunnimi" minOccurs="0" maxOccurs="1" type="common:OPETUSPISTENIMI"/>
                                         <xs:element name="Luokka" minOccurs="0" maxOccurs="1" type="common:LUOKKA"/>
-                                        <xs:element name="Luokkataso" minOccurs="0" maxOccurs="1" type="common:LUOKKATASO"/>
+                                        <xs:element name="Luokkataso" minOccurs="1" maxOccurs="1" type="common:LUOKKATASO"/>
                                         <xs:element name="Pohjakoulutus" minOccurs="1" maxOccurs="1" type="koodisto:pohjakoulutustoinenaste"/>
                                         <xs:element name="Todistusvuosi" minOccurs="0" maxOccurs="1" type="common:VUOSI"/>
                                         <xs:element name="Julkaisulupa" minOccurs="0" maxOccurs="1" type="common:BOOLEANX"/>

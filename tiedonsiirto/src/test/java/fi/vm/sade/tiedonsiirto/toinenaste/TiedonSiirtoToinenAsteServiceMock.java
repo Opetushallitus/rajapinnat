@@ -11,6 +11,7 @@ import javax.jws.WebParam;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import java.math.BigInteger;
 
 /**
  * @author Antti Salonen
@@ -48,6 +49,8 @@ public class TiedonSiirtoToinenAsteServiceMock implements TiedonSiirtoToinenAste
     private GenericResponse genericResponse(String message) {
         GenericResponse response = new GenericResponse();
         response.setResponseMessage(message);
+        response.setSuccessRowCount(BigInteger.valueOf(0));
+        response.setErrorRowCount(BigInteger.valueOf(0));
         return response;
     }
 
