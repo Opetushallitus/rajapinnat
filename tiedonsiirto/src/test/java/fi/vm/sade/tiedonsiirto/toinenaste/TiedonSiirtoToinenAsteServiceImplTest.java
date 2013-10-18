@@ -3,7 +3,6 @@ package fi.vm.sade.tiedonsiirto.toinenaste;
 import fi.vm.sade.henkilo.service.types.perusopetus.GenericResponse;
 import fi.vm.sade.henkilo.service.types.perusopetus.arvosanat.ROWSET;
 import org.junit.Test;
-import org.springframework.dao.DataIntegrityViolationException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,7 +41,7 @@ public class TiedonSiirtoToinenAsteServiceImplTest {
         });
         service.setSuoritusrekisteriIntegration(new TiedonSiirtoToinenAsteSuoritusrekisteriIntegration(){
             @Override
-            public void importArvosanaToSuoritusRekisteri(String henkiloOid, ROWSET.ROW row) {
+            public void importArvosanaToSuoritusRekisteri(String henkiloOid, String komotoOid, ROWSET.ROW row) {
                 if (row.getHETU().equals(HETU_ARVOSANA_IMPORT_FAILS)) throw new RuntimeException("HETU_ARVOSANA_IMPORT_FAILS");
             }
         });

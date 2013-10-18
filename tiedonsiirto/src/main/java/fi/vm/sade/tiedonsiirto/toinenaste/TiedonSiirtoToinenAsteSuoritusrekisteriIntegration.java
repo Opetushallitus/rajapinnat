@@ -9,7 +9,7 @@ import fi.vm.sade.henkilo.service.types.perusopetus.arvosanat.ROWSET;
  */
 public class TiedonSiirtoToinenAsteSuoritusrekisteriIntegration {
 
-    public void importArvosanaToSuoritusRekisteri(String henkiloOid, ROWSET.ROW row) {
+    public void importArvosanaToSuoritusRekisteri(String henkiloOid, String komotoOid, ROWSET.ROW row) {
         throw new RuntimeException("not impl"); // todo:
     }
 

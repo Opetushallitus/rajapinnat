@@ -45,9 +45,9 @@ public class TiedonSiirtoToinenAsteServiceImpl implements TiedonSiirtoToinenAste
                 if (henkiloOid == null) throw new NullPointerException("no henkilo for hetu "+row.getHETU());
                 if (komotoOid == null) throw new NullPointerException("no komoto for arvosana row "+row);
                 // todo: pitäisi varmaan tässä pureskella arvosanoista todistukset, ja vasta niillä ampua suoritusrekisteriä
-                suoritusrekisteriIntegration.importArvosanaToSuoritusRekisteri(henkiloOid, row);
+                suoritusrekisteriIntegration.importArvosanaToSuoritusRekisteri(henkiloOid, komotoOid, row);
             } catch (Exception e) {
-                log.warn("failed to import arvosanat row, hetu: "+row.getHETU()+", row: "+row+", error: "+e);
+                log.warn("failed to import arvosanat row, hetu: "+row.getHETU()+", row: "+row+", error: "+e, e);
                 errors.put(row, e);
             }
         }
