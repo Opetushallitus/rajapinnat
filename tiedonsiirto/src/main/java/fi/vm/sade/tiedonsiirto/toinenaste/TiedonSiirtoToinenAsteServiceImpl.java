@@ -16,14 +16,23 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * Business service for 2.aste tiedonsiirto.
+ * For now implements WSDL generated interface, but will be used as a business service for other APIs, such as XML and EXEL,
+ * because they use the same XSD generated domain in the end.
+ *
+ * TODO: auditlog, oikeudet
+ *
  * @author Antti Salonen
  */
 public class TiedonSiirtoToinenAsteServiceImpl implements TiedonSiirtoToinenAsteService {
 
     private static final Logger log = LoggerFactory.getLogger(TiedonSiirtoToinenAsteServiceImpl.class);
-    // TODO: auditlog?
     @Autowired
-    private TiedonSiirtoToinenAsteIntegrations integrations;
+    private TiedonSiirtoToinenAsteHenkiloIntegration henkiloIntegration;
+    @Autowired
+    private TiedonSiirtoToinenAsteTarjontaIntegration tarjontaIntegration;
+    @Autowired
+    private TiedonSiirtoToinenAsteSuoritusrekisteriIntegration suoritusrekisteriIntegration;
 
     @Override
     public GenericResponse importArvosanat(ROWSET data) throws GenericFault {
@@ -31,9 +40,12 @@ public class TiedonSiirtoToinenAsteServiceImpl implements TiedonSiirtoToinenAste
         for (ROWSET.ROW row : data.getROW()) {
             log.info("import arvosanat row, hetu: "+row.getHETU()+", row: "+row);
             try {
-                String henkiloOid = integrations.getHenkiloOidFromAuthenticationService(row.getHETU());
+                String henkiloOid = henkiloIntegration.findHenkiloOidFromAuthenticationService(row.getHETU());
+                String komotoOid = tarjontaIntegration.findKomotoFromTarjonta(row);
                 if (henkiloOid == null) throw new NullPointerException("no henkilo for hetu "+row.getHETU());
-                integrations.importArvosanaToSuoritusRekisteri(henkiloOid, row);
+                if (komotoOid == null) throw new NullPointerException("no komoto for arvosana row "+row);
+                // todo: pitäisi varmaan tässä pureskella arvosanoista todistukset, ja vasta niillä ampua suoritusrekisteriä
+                suoritusrekisteriIntegration.importArvosanaToSuoritusRekisteri(henkiloOid, row);
             } catch (Exception e) {
                 log.warn("failed to import arvosanat row, hetu: "+row.getHETU()+", row: "+row+", error: "+e);
                 errors.put(row, e);
@@ -59,15 +71,24 @@ public class TiedonSiirtoToinenAsteServiceImpl implements TiedonSiirtoToinenAste
 
     @Override
     public GenericResponse importHenkilotiedot(fi.vm.sade.henkilo.service.types.perusopetus.henkilotiedot.ROWSET data) throws GenericFault {
-        throw new RuntimeException("not impl"); // todo:
+        throw new RuntimeException("not impl"); // todo: vasta arvosana import työn alla
     }
 
     @Override
     public Hakijat exportHakijat(@WebParam(partName = "parameters", name = "hakijatRequestParametersType", targetNamespace = "http://service.henkilo.sade.vm.fi/types/perusopetus/hakijat") HakijatRequestParametersType parameters) throws GenericFault {
-        throw new RuntimeException("not impl"); // todo:
+        throw new RuntimeException("not impl"); // todo: vasta arvosana import työn alla
     }
 
-    public void setIntegrations(TiedonSiirtoToinenAsteIntegrations integrations) {
-        this.integrations = integrations;
+    public void setHenkiloIntegration(TiedonSiirtoToinenAsteHenkiloIntegration henkiloIntegration) {
+        this.henkiloIntegration = henkiloIntegration;
     }
+
+    public void setTarjontaIntegration(TiedonSiirtoToinenAsteTarjontaIntegration tarjontaIntegration) {
+        this.tarjontaIntegration = tarjontaIntegration;
+    }
+
+    public void setSuoritusrekisteriIntegration(TiedonSiirtoToinenAsteSuoritusrekisteriIntegration suoritusrekisteriIntegration) {
+        this.suoritusrekisteriIntegration = suoritusrekisteriIntegration;
+    }
+
 }
