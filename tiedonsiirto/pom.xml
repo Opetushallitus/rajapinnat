@@ -12,6 +12,18 @@
     <name>${project.artifactId}</name>
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
@@ -21,6 +33,7 @@
                     <!--<source>1.6</source>-->
                     <!--<target>1.6</target>-->
                     <encoding>ISO-8859-1</encoding>
+                    <generatedSourcesDirectory>target/generated-sources</generatedSourcesDirectory>
                 </configuration>
             </plugin>
             <plugin>
