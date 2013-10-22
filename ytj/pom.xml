@@ -10,7 +10,7 @@
   <parent>
     <artifactId>rajapinnat</artifactId>
     <groupId>fi.vm.sade.rajapinnat</groupId>
-    <version>6.2.1</version>
+    <version>6.2.2</version>
     <relativePath>..</relativePath>
   </parent>
   
