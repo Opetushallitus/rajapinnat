@@ -1,36 +1,103 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
-<head>
-    <meta charset="utf-8">
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-    <script type="text/javascript" src="http://www.alpacajs.org/js/alpaca.min.js"></script>
-    <link type="text/css" href="http://www.alpacajs.org/css/alpaca.min.css" rel="stylesheet"/>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.js"></script>
-    <link type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.css" rel="stylesheet"/>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script type="text/javascript">
-        var app = angular.module('myApp', ['ngGrid']);
-        function TodoCtrl($scope,$http) {
-        }
-    </script>
-</head>
-<body ng-controller="TodoCtrl" style="padding-left: 20px;">
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+        <style type="text/css">
+            .progress { margin-top: 20px; }
+            .percent { float: left; margin-left: 5px; }
+            #uploadButton { margin-top: 15px; }
+        </style>
 
-<h1>Toisen asteen tiedonsiirto</h1>
+        <script src="jquery.min.js"></script>
+        <script src="jquery.form.js"></script>
+        <!--[if lt IE 9]>
+        <script src="bootstrap/js/html5shiv.js"></script>
+        <![endif]-->
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <h1>Perusopetuksen päättöluokkalaisten perustietojen tiedonsiirto</h1>
 
-<ol>
-    <li>Lataa esimerkki-arvosana-xml <a href="perusopetusArvosanat.xml">täältä</a></li>
-    <li>Muokkaa tiedostoa halutunlaiseksi</li>
-    <li>Uploadaa tiedosto <a href="#uploadArvosanatForm">(lomake alempana)</a></li>
-    <li>Katsele suorituksia <a href="/suoritusrekisteri/gui/index.html">suoritusrekisterin käyttöliittymästä</a> (filtteröi henkilöllä, joka on ym esimerkki xml:ssä '111193-111V', nyt kun henkilö oid integraatiota ei vielä ole)</li>
-</ol>
+            <ol>
+                <li>Lataa <a href="perusopetusHenkiloTiedot.xml">esimerkki-perustiedot-XML -tiedosto</a>.</li>
+                <li>Muokkaa tiedostoa ja lisää oppilastiedot.</li>
+                <li>Lähetä tiedosto alla olevalla lomakkeella.</li>
+                <li>Katsele tietoja <a href="/suoritusrekisteri/gui/index.html">suoritusrekisterin käyttöliittymästä</a>
+                    (suodata henkilöllä, joka on ym esimerkki xml:ssä '111193-111V', nyt kun henkilö oid integraatiota ei vielä
+                    ole).
+                </li>
+            </ol>
 
-<form id="uploadArvosanatForm" method="POST" action="upload" enctype="multipart/form-data">
-    <h1>Upload arvasanat xml</h1>
-    <input type="file" name="arvosanatXml"/>
-    <input type="submit"/>
-</form>
+            <form id="fileupload" class="well" action="upload" method="post" enctype="multipart/form-data">
+                <h3>Lähetä XML-tiedosto</h3>
 
-</body>
+                <div>
+                    <input type="file" id="file" name="henkilotiedotXml[]" />
+                    <span id="filename"></span>
+                </div>
+                <div>
+                    <input type="submit" id="uploadButton" class="btn btn-success" value="Lähetä" />
+                </div>
+
+                <div class="progress progress-striped">
+                    <div class="bar" style="width: 0%"></div>
+                    <div class="percent">0%</div>
+                </div>
+
+                <div id="status"></div>
+            </form>
+        </div>
+
+        <script type="text/javascript">
+            (function() {
+                var uploadButton = $("#uploadButton");
+                var file = $("#file");
+
+                uploadButton.prop("disabled", true);
+
+                file.on("change", function(e) {
+                    uploadButton.removeProp("disabled");
+                    setStatus("");
+                    setProgress("0%");
+                });
+
+                uploadButton.click(function() {
+                    $(this).prop("disabled", true);
+                });
+
+                $("form").ajaxForm({
+                    dataType: "json",
+                    clearForm: true,
+                    beforeSend: function(xhr, o) {
+                        setStatus("");
+                        setProgress("0%");
+                    },
+                    uploadProgress: function(event, position, total, percentComplete) {
+                        setProgress(percentComplete + "%");
+                    },
+                    success: function(responseText, statusText, xhr, $form) {
+                        setStatus(responseText.responseMessage);
+                        setProgress("100%");
+                    },
+                    error: function() {
+                        setStatus("Virhe lähetyksessä. Yritä uudelleen.");
+                        setProgress("100%");
+                    }
+                });
+            })();
+
+            function setProgress(percentVal) {
+                $(".bar").width(percentVal);
+                $(".percent").text(percentVal);
+            }
+            function setStatus(message) {
+                $("#status").hide().html(message).slideDown();
+            }
+        </script>
+    </body>
 </html>

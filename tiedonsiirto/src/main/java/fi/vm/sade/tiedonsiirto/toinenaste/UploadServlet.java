@@ -50,10 +50,8 @@ public class UploadServlet extends HttpServlet {
             List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
             for (FileItem item : items) {
                 if (item.isFormField()) {
-                    // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
                     String fieldname = item.getFieldName();
                     String fieldvalue = item.getString();
-                    // ... (do your job here)
                 } else {
                     // Process form file field (input type="file").
                     String fieldname = item.getFieldName();
@@ -63,7 +61,6 @@ public class UploadServlet extends HttpServlet {
                     if (log.isDebugEnabled()) {
                         log.debug("content: "+IOUtils.toString(item.getInputStream()));
                     }
-                    // ... (do your job here)
 
                     // todo: siirrä logiikka serviceen
 
@@ -127,13 +124,19 @@ public class UploadServlet extends HttpServlet {
                             log.info("import suoritus to suoritusrekisteri OK: "+suoritusUri);
                         }
                     });
+
                     GenericResponse result = service.importArvosanat(arvosanaRowset);
                     response.setContentType("application/json");
                     response.getWriter().print(new Gson().toJson(result));
                 }
             }
         } catch (Exception e) {
-            throw new ServletException("error in upload", e);
+            log.error("Error in upload", e);
+
+            final GenericResponse result = new GenericResponse();
+            result.setResponseMessage("Error in upload: " + e.toString());
+            response.setContentType("application/json");
+            response.getWriter().print(new Gson().toJson(result));
         }
     }
 
