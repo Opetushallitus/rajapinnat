@@ -22,4 +22,7 @@ public class TiedonSiirtoToinenAsteHenkiloIntegration {
         return henkilo.get("oidHenkilo");
     }
 
+    public String importHenkilo(fi.vm.sade.henkilo.service.types.perusopetus.henkilotiedot.ROWSET.ROW hlotiedot) {
+        throw new RuntimeException("not impl");
+    }
 }

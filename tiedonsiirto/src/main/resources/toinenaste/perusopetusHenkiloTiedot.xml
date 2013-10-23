@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ROWSET xmlns="http://service.henkilo.sade.vm.fi/types/perusopetus/henkilotiedot"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="
-     http://service.henkilo.sade.vm.fi/types/perusopetus/henkilotiedot perusopetusHenkiloTiedot.xsd">
+     xsi:schemaLocation="http://service.henkilo.sade.vm.fi/types/perusopetus/henkilotiedot perusopetusHenkiloTiedot.xsd">
     <ROW>
         <VUOSI>2013</VUOSI>
         <KAUSI>S</KAUSI>
