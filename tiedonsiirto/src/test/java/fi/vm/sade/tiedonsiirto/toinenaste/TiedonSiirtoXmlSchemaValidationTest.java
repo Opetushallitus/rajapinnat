@@ -17,7 +17,7 @@ import java.net.URL;
 /**
  * @author Antti Salonen
  */
-public class TiedonSiirtoValidationTest {
+public class TiedonSiirtoXmlSchemaValidationTest {
 
     SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
     String sampleDir = "src/main/resources/toinenaste/";

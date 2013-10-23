@@ -12,6 +12,11 @@ import java.math.BigInteger;
 public class TiedonSiirtoTstUtils {
     public static ROWSET createSampleRowsetHenkilotiedot() {
         ROWSET rowset = new ROWSET();
+        rowset.getROW().add(createSampleRowHlotiedot("111193-111V"));
+        return rowset;
+    }
+
+    public static ROWSET.ROW createSampleRowHlotiedot(String hetu) {
         ROWSET.ROW row = new ROWSET.ROW();
         row.setVUOSI(BigInteger.valueOf(2013));
         row.setKAUSI(Kausi.S);
@@ -20,7 +25,7 @@ public class TiedonSiirtoTstUtils {
         row.setOPETUSKIELI("FI");
         row.setLUOKKA("9A");
         row.setLUOKKATASO(BigInteger.valueOf(10));
-        row.setHETU("111193-111V");
+        row.setHETU(hetu);
         row.setSUKUPUOLI("1");
         row.setSUKUNIMI("Virtanen");
         row.setETUNIMET("Ville Valtteri");
@@ -34,8 +39,7 @@ public class TiedonSiirtoTstUtils {
         row.setMATKAPUHELIN("040 1234567");
         row.setMUUPUHELIN("5278091");
         row.setERA("PKERA1_2013S_05536");
-        rowset.getROW().add(row);
-        return rowset;
+        return row;
     }
 
     public static fi.vm.sade.henkilo.service.types.perusopetus.arvosanat.ROWSET createSampleRowsetArvosanat() {

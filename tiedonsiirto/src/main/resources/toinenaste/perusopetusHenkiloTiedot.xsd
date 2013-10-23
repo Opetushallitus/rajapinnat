@@ -16,12 +16,55 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="VUOSI" minOccurs="1" maxOccurs="1" type="common:VUOSI"/>
-                            <xs:element name="KAUSI" minOccurs="1" maxOccurs="1" type="koodisto:kausi"/>
-                            <xs:element name="LAHTOKOULU" minOccurs="1" maxOccurs="1" type="koodisto:oppilaitosnumero"/>
-                            <xs:element name="POHJAKOULUTUS" minOccurs="1" maxOccurs="1" type="koodisto:pohjakoulutustoinenaste"/>
-                            <xs:element name="OPETUSKIELI" minOccurs="1" maxOccurs="1" type="koodisto:kieli"/>
-                            <xs:element name="LUOKKA" minOccurs="1" maxOccurs="1" type="common:LUOKKA"/>
-                            <xs:element name="LUOKKATASO" minOccurs="1" maxOccurs="1" type="common:LUOKKATASO"/>
+                            <xs:element name="KAUSI" minOccurs="1" maxOccurs="1" type="koodisto:kausi">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="fi">
+                                        Pakollinen tieto. Lukukausi jolloin siirto tapahtuu. S/K
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="LAHTOKOULU" minOccurs="1" maxOccurs="1" type="koodisto:oppilaitosnumero">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="fi">
+                                        Lähettävän koulun oppilaitoskoodi.
+                                        Tilastokeskuksen käyttämä 5-numeroinen koodi, jossa tarvittaessa tulee olla mukana myös etunollat (ei yhteishakukoodi). Esim jos oppilaitoksen koodi on 1234, tähän laitetaan 01234.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="POHJAKOULUTUS" minOccurs="1" maxOccurs="1" type="koodisto:pohjakoulutustoinenaste">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="fi">
+                                        Hakijan pohjakoulutus:
+                                        1 = perusopetuksen oppimäärä
+                                        2 = perusopetuksen osittain yksilöllistetty oppimäärä
+                                        3 = perusopetuksen yksilöllistetty oppimäärä, opetus järjestetty toiminta-alueittain
+                                        6 = perusopetuksen pääosin tai kokonaan yksilöllistetty oppimäärä
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="OPETUSKIELI" minOccurs="1" maxOccurs="1" type="koodisto:kieli">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="fi">
+                                        Oppilaitoksen opetuskieli,
+                                        virallinen Tilastokeskuksen ylläpitämä kielikoodisto
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="LUOKKA" minOccurs="1" maxOccurs="1" type="common:LUOKKA">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="fi">
+                                        Tähän tulee oppilaitoksen itsensä käyttämä luokkatieto. esim. 9A
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="LUOKKATASO" minOccurs="1" maxOccurs="1" type="common:LUOKKATASO">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="fi">
+                                        NUMERO (luokkataso)
+                                        kertoo onko kyseessä ysi- vai kymppiluokkalainen
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
                             <xs:element name="HETU" minOccurs="1" maxOccurs="1" type="common:HETU"/>
                             <xs:element name="SUKUPUOLI" minOccurs="1" maxOccurs="1" type="koodisto:sukupuoli"/>
                             <xs:element name="SUKUNIMI" minOccurs="1" maxOccurs="1" type="common:SUKUNIMI"/>
@@ -35,7 +78,14 @@
                             <xs:element name="MAA" minOccurs="1" maxOccurs="1" type="koodisto:maatjavaltiot2"/>
                             <xs:element name="MATKAPUHELIN" minOccurs="0" maxOccurs="1" type="common:PUHELINNUMERO"/>
                             <xs:element name="MUUPUHELIN" minOccurs="0" maxOccurs="1" type="common:PUHELINNUMERO"/>
-                            <xs:element name="ERA" minOccurs="1" maxOccurs="1" type="common:ERA"/>
+                            <xs:element name="ERA" minOccurs="1" maxOccurs="1" type="common:ERA">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="fi">
+                                        PKERA1_2013S_09999
+                                        09999-koodin paikalle laitetaan oman lähtökoulun Tilastokeskuksen käyttämä 5-numeroinen oppilaitoskoodi.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

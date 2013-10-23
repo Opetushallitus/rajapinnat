@@ -13,4 +13,7 @@ public class TiedonSiirtoToinenAsteSuoritusrekisteriIntegration {
         throw new RuntimeException("not impl"); // todo:
     }
 
+    public void importOpiskeluoikeus(String henkiloOid, fi.vm.sade.henkilo.service.types.perusopetus.henkilotiedot.ROWSET.ROW hlotiedot) {
+        throw new RuntimeException("not impl"); // todo:
+    }
 }
