@@ -4,7 +4,7 @@
 
     <groupId>fi.vm.sade.rajapinnat</groupId>
     <artifactId>rajapinnat</artifactId>
-    <version>7.0</version>
+    <version>8.0</version>
     <packaging>pom</packaging>
     <name>Rajapinnat :: Parent - ${version}</name>
 
