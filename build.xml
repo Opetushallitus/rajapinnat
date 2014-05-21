@@ -40,7 +40,7 @@
              keyfile="${ssh.keyfile}" passphrase="${ssh.keypass}" >
 
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${vtj.version}" ><include name="*-${vtj.version}.war"/></fileset>
-            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset>
+<!--            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset> -->
 
         </scp>
 
@@ -51,10 +51,8 @@ cd ${tomcat.home}/webapps
 ls -la 
 
 mkdir vtj-service;
-mkdir tiedonsiirto;
 
 unzip -qo -dvtj-service vtj-service-*.war;
-unzip -qo -dtiedonsiirto tiedonsiirto-*.war;
 
 rm -rf *.war"
 
@@ -68,21 +66,21 @@ rm -rf *.war"
 
         <echo>Wait for service http-url</echo>
         <waitfor maxwait="3000" checkevery="500" >
-            <and>
+<!--            <and> -->
                 <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/>
-                <http url="http://${tomcat-host}:${tomcat-port}/tiedonsiirto/buildversion.txt"/>
-            </and>
+<!--                <http url="http://${tomcat-host}:${tomcat-port}/tiedonsiirto/buildversion.txt"/> -->
+<!--            </and> -->
         </waitfor>
         <fail message="App did not come up.  Check your log files, fix and try again.  Good Luck :-).">
             <condition>
-                <or>
+<!--                <or> -->
                     <not>
                         <http url="http://${tomcat-host}:${tomcat-port}/vtj-service/buildversion.txt" />
                     </not>
-                    <not>
+<!--                    <not>
                         <http url="http://${tomcat-host}:${tomcat-port}/tiedonsiirto/buildversion.txt" />
                     </not>
-                </or>
+                </or> -->
             </condition>
         </fail>
 
