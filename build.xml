@@ -40,7 +40,7 @@
              keyfile="${ssh.keyfile}" passphrase="${ssh.keypass}" >
 
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${vtj.version}" ><include name="*-${vtj.version}.war"/></fileset>
-            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset>
+<!--            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset> -->
 
         </scp>
 
