@@ -40,7 +40,7 @@
              keyfile="${ssh.keyfile}" passphrase="${ssh.keypass}" >
 
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${vtj.version}" ><include name="*-${vtj.version}.war"/></fileset>
-<!--            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset> -->
+            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset>
 
         </scp>
 
@@ -62,7 +62,7 @@ rm -rf *.war"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
         <echo>Start Tomcat</echo>
-        <sshexec command="/data00/oph/tomcat/ctltomcat ${oph.name} start"
+        <sshexec command="/data00/oph/tomcat/ophtomcat ${oph.name} start"
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
@@ -77,7 +77,9 @@ rm -rf *.war"
             <condition>
                 <or>
                     <not>
-                        <http url="http://${tomcat-host}:${tomcat-port}/vtj-service" />
+                        <http url="http://${tomcat-host}:${tomcat-port}/vtj-service/buildversion.txt" />
+                    </not>
+                    <not>
                         <http url="http://${tomcat-host}:${tomcat-port}/tiedonsiirto/buildversion.txt" />
                     </not>
                 </or>
