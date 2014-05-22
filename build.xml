@@ -9,6 +9,7 @@
         -->
         <property name="oph.name" value="rajapinnat"/>
         <property name="pom.version" value="9.0-SNAPSHOT"/>
+	<property name="vtj.version" value="7.0-SNAPSHOT"/>
 
         <property name="maven.repo" value="${user.home}/.m2/repository"/>
         <property name="tomcat.name" value="tomcat_${oph.name}"/>
@@ -38,8 +39,8 @@
         <scp todir="tomcat@${tomcat-host}:${tomcat.home}/webapps/"
              keyfile="${ssh.keyfile}" passphrase="${ssh.keypass}" >
 
-            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${pom.version}" ><include name="*-${pom.version}.war"/></fileset>
-            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset>
+            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${vtj.version}" ><include name="*-${vtj.version}.war"/></fileset>
+<!--            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset> -->
 
         </scp>
 
@@ -50,10 +51,8 @@ cd ${tomcat.home}/webapps
 ls -la 
 
 mkdir vtj-service;
-mkdir tiedonsiirto;
 
 unzip -qo -dvtj-service vtj-service-*.war;
-unzip -qo -dtiedonsiirto tiedonsiirto-*.war;
 
 rm -rf *.war"
 
@@ -61,25 +60,27 @@ rm -rf *.war"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
         <echo>Start Tomcat</echo>
-        <sshexec command="/data00/oph/tomcat/ctltomcat ${oph.name} start"
+        <sshexec command="/data00/oph/tomcat/ophtomcat ${oph.name} start"
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
         <echo>Wait for service http-url</echo>
-        <waitfor maxwait="3000" checkevery="500" >
-            <and>
+        <waitfor maxwait="10000" checkevery="500" >
+<!--            <and> -->
                 <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/>
-                <http url="http://${tomcat-host}:${tomcat-port}/tiedonsiirto/buildversion.txt"/>
-            </and>
+<!--                <http url="http://${tomcat-host}:${tomcat-port}/tiedonsiirto/buildversion.txt"/> -->
+<!--            </and> -->
         </waitfor>
         <fail message="App did not come up.  Check your log files, fix and try again.  Good Luck :-).">
             <condition>
-                <or>
+<!--                <or> -->
                     <not>
-                        <http url="http://${tomcat-host}:${tomcat-port}/vtj-service						
+                        <http url="http://${tomcat-host}:${tomcat-port}/vtj-service/buildversion.txt" />
+                    </not>
+<!--                    <not>
                         <http url="http://${tomcat-host}:${tomcat-port}/tiedonsiirto/buildversion.txt" />
                     </not>
-                </or>
+                </or> -->
             </condition>
         </fail>
 
