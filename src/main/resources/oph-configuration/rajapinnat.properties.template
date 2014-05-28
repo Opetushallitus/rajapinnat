@@ -13,6 +13,12 @@ env.loglevel={{env_loglevel}}
 host.cas={{host_cas}}
 host.ilb={{host_ilb}}
 host.virkailija={{host_virkailija}}
+kela.ftp.username={{kela_ftp_username}}
+kela.ftp.password={{kela_ftp_password}}
+kela.ftp.host={{kela_ftp_host}}
+kela.ftp.port={{kela_ftp_port}}
+kela.ftp.protocol={{kela_ftp_protocol}}
+kela.ftp.path={{kela_ftp_path}}
 server.name={{ansible_hostname}}
 
 # Oletusarvoja
