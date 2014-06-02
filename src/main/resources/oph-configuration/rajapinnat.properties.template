@@ -62,8 +62,6 @@ ldap.port=10389
 ldap.search.base.people=ou=People,dc=opintopolku,dc=fi
 ldap.url=ldap://${host.ldap}\:${ldap.port}
 ldap.url.with.base=ldap\://${host.ldap}\:${ldap.port}/dc\=opintopolku,dc\=fi
-log.mongo.uri=${mongodb.virkailija.uri}/auditlog
-log.mongo.dbname=auditlog
 log4j.properties.file=${user.home.conf}/log4j.properties
 oid.rest.url.backend=${host.ilb}/oid-service/rest/oid
 oid-service.swagger.basepath=https://${host.virkailija}:${port.oid-service}/oid-service/rest
