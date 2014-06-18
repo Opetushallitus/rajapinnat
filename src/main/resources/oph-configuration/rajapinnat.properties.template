@@ -12,6 +12,7 @@ auth.mode={{auth_mode}}
 env.loglevel={{env_loglevel}}
 host.cas={{host_cas}}
 host.ilb={{host_ilb}}
+host.ldap={{host_ldap}}
 host.virkailija={{host_virkailija}}
 kela.ftp.username={{kela_ftp_username}}
 kela.ftp.password={{kela_ftp_password}}
@@ -36,7 +37,12 @@ activeMq.targetDestination.learningopportunityprovider.public=fi.vm.sade.learnin
 activeMq.targetDestination.organisaatio=fi.vm.sade.organisaatio.service
 activeMq.targetDestinationAdmin.tarjonta=fi.vm.sade.tarjonta.admin.service
 activeMq.targetDestinationPublic.tarjonta=fi.vm.sade.tarjonta.public.service
+cas.group-role-attribute=cn
+cas.group-search-base=ou\=groups
+cas.group-search-filter=(uniqueMember\={0})
 cas.sendRenew=false
+cas.user-search-base=ou\=people
+cas.user-search-filter=(|(mail\={0})(uid\={0}))
 cas.service.vtj-service=${host.ilb}/vtj-service
 customAttribute.webservice.url.backend=https://${host.virkailija}/authentication-service/services/customAttributeService
 flyway.initOnMigrate=true
