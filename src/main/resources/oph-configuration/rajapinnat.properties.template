@@ -21,6 +21,14 @@ kela.ftp.port={{kela_ftp_port}}
 kela.ftp.protocol={{kela_ftp_protocol}}
 kela.ftp.path={{kela_ftp_path}}
 server.name={{ansible_hostname}}
+vtj.address={{vtj_address}}
+vtj.cert.alias={{vtj_cert_alias}}
+vtj.keystore.password={{vtj_keystore_password}}
+vtj.keystore.file={{vtj_keystore_file}}
+vtj.password={{vtj_password}}
+vtj.username={{vtj_username}}
+vtj.truststore.file={{vtj_truststore_file}}
+vtj.truststore.password={{vtj_truststore_password}}
 
 # Oletusarvoja
 accessRight.webservice.url.backend=https\://${host.virkailija}/authentication-service/services/accessRightService
