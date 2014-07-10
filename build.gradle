@@ -27,6 +27,8 @@ task(zipIt, type: Zip) {
     archiveName zipFileName
     from 'src/main/resources'
     from 'vtj/vtj-service/target'
+    from 'kela/kela-service/target'
+    from 'kela/kela-opti/target'
 }
 
 // Task for copying the .zip file to

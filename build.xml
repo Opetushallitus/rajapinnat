@@ -10,7 +10,8 @@
         <property name="oph.name" value="rajapinnat"/>
         <property name="pom.version" value="9.0-SNAPSHOT"/>
 	<property name="vtj.version" value="7.0-SNAPSHOT"/>
-
+	<property name="kela.version" value="9.0-SNAPSHOT"/>
+	
         <property name="maven.repo" value="${user.home}/.m2/repository"/>
         <property name="tomcat.name" value="tomcat_${oph.name}"/>
         <property name="tomcat.home" value="/data00/oph/${oph.name}/tomcat"/>
@@ -18,7 +19,7 @@
         <property name="ssh.keypass" value=""/>
 
         <echo>Stop Tomcat</echo>
-        <sshexec command="/data00/oph/tomcat/ctltomcat ${oph.name} stop"
+        <sshexec command="/data00/oph/tomcat/ophtomcat ${oph.name} stop"
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false" />
 
@@ -40,6 +41,7 @@
              keyfile="${ssh.keyfile}" passphrase="${ssh.keypass}" >
 
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${vtj.version}" ><include name="*-${vtj.version}.war"/></fileset>
+            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/kela-service/${kela.version}" ><include name="*-${kela.version}.war"/></fileset>
 <!--            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/tiedonsiirto/${pom.version}" ><include name="*-${pom.version}.war"/></fileset> -->
 
         </scp>
@@ -51,8 +53,10 @@ cd ${tomcat.home}/webapps
 ls -la 
 
 mkdir vtj-service;
+mkdir kela-service;
 
 unzip -qo -dvtj-service vtj-service-*.war;
+unzip -qo -dkela-service kela-service-*.war;
 
 rm -rf *.war"
 
@@ -66,8 +70,12 @@ rm -rf *.war"
 
         <echo>Wait for service http-url</echo>
         <waitfor maxwait="10000" checkevery="500" >
+        	<and>
+                <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/>        	
+                <http url="http://${tomcat-host}:${tomcat-port}/kela-service"/>        	
+        	</and>
 <!--            <and> -->
-                <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/>
+<!--                <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/> -->
 <!--                <http url="http://${tomcat-host}:${tomcat-port}/tiedonsiirto/buildversion.txt"/> -->
 <!--            </and> -->
         </waitfor>
