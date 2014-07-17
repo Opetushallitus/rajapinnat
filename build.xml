@@ -44,15 +44,31 @@
         </scp>
 
         <echo>unzip files to tomcat webapps-dir...</echo>
+        <!--
         <sshexec command="
 				mkdir ${tomcat.home}/webapps/kela-service;
-				<!-- mkdir ${tomcat.home}/webapps/vtj-service; X-->
+				mkdir ${tomcat.home}/webapps/vtj-service;
 				
 				unzip -qo -d${tomcat.home}/webapps/kela-service ${tomcat.home}/webapps/kela-service-*.war;
-				<!-- unzip -qo -d${tomcat.home}/webapps/vtj-service ${tomcat.home}/webapps/vtj-service-*.war; X-->
+				unzip -qo -d${tomcat.home}/webapps/vtj-service ${tomcat.home}/webapps/vtj-service-*.war;
 				
 		rm -rf ${tomcat.home}/webapps/kela-service-*.war;
-                 <!-- rm -rf ${tomcat.home}/webapps/vtj-service-*.war"  X-->
+                rm -rf ${tomcat.home}/webapps/vtj-service-*.war"
+
+                 host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
+                 passphrase="${ssh.keypass}" trust="true" failonerror="false"/>
+        X-->
+
+		<echo>Remove extra log4j config-files</echo>
+		<sshexec command="find ${tomcat.home} -name 'log4j.properties' -exec rm -rf {} \;"
+                 host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
+                 passphrase="${ssh.keypass}" trust="true" failonerror="false" />
+
+        <sshexec command="
+				mkdir ${tomcat.home}/webapps/kela-service;
+				unzip -qo -d${tomcat.home}/webapps/kela-service ${tomcat.home}/webapps/kela-service-*.war;
+				
+  		rm -rf ${tomcat.home}/webapps/kela-service-*.war;
 
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false"/>
