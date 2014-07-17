@@ -36,7 +36,7 @@
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/kela-service/${pom.version}">
                 <include name="*.war"/>
             </fileset>
-            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${pom.version}"" >
+            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${pom.version}" >
                 <include name="*.war"/>
             </fileset>
         </scp>
