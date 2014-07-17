@@ -36,21 +36,23 @@
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/kela-service/${pom.version}">
                 <include name="*.war"/>
             </fileset>
+            <!--
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${pom.version}"" >
                 <include name="*.war"/>
             </fileset>
+             X-->
         </scp>
 
         <echo>unzip files to tomcat webapps-dir...</echo>
         <sshexec command="
 				mkdir ${tomcat.home}/webapps/kela-service;
-				mkdir ${tomcat.home}/webapps/vtj-service;
+				<!-- mkdir ${tomcat.home}/webapps/vtj-service; X-->
 				
 				unzip -qo -d${tomcat.home}/webapps/kela-service ${tomcat.home}/webapps/kela-service-*.war;
-				unzip -qo -d${tomcat.home}/webapps/vtj-service ${tomcat.home}/webapps/vtj-service-*.war;
+				<!-- unzip -qo -d${tomcat.home}/webapps/vtj-service ${tomcat.home}/webapps/vtj-service-*.war; X-->
 				
 		rm -rf ${tomcat.home}/webapps/kela-service-*.war;
-                rm -rf ${tomcat.home}/webapps/vtj-service-*.war"
+                 <!-- rm -rf ${tomcat.home}/webapps/vtj-service-*.war"  X-->
 
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false"/>
@@ -69,7 +71,7 @@
         <waitfor maxwait="3000" checkevery="500">
             <and>
                 <http url="http://${tomcat-host}:${tomcat-port}/kela-service"/>
-                <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/>
+            <!--    <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/>  X-->
             </and>
         </waitfor>
         <fail message="kela-service -webapp did not come up.  Check your log files, fix and try again.  Good Luck :-).">
@@ -79,13 +81,14 @@
                 </not>
             </condition>
         </fail>
+        <!--
         <fail message="vtj-service -webapp did not come up.  Check your log files, fix and try again.  Good Luck :-).">
             <condition>
                 <not>
                     <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/>
                 </not>
             </condition>
-        </fail>
+        </fail> X-->
         <echo>Successfully deployed to ${tomcat-host}</echo>
 
     </target>

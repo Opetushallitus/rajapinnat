@@ -41,7 +41,7 @@
     <modules>
       <!--<module>ytj</module> -->
       <module>kela</module>
-      <module>vtj</module>
+      <!--<module>vtj</module> -->
     </modules>
     
     <dependencyManagement>
