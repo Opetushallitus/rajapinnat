@@ -44,7 +44,7 @@
 				
 				unzip -qo -d${tomcat.home}/webapps/kela-service ${tomcat.home}/webapps/kela-service-*.war;
 				
-		rm -rf ${tomcat.home}/webapps/kela-service-*.war;
+		 rm -rf ${tomcat.home}/webapps/kela-service-*.war"
 
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false"/>
