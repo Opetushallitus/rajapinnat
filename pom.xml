@@ -6,21 +6,58 @@
     <artifactId>rajapinnat</artifactId>
     <version>8.0</version>
     <packaging>pom</packaging>
-    <name>Rajapinnat :: Parent - ${version}</name>
+    <name>Rajapinnat :: Parent - ${project.version}</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+        <authentication.api.version>7.0-SNAPSHOT</authentication.api.version>
+        <generic.version>9.0-SNAPSHOT</generic.version>
+        <sade-generic.version>9.0-SNAPSHOT</sade-generic.version>
+        <log.client.version>7.0-SNAPSHOT</log.client.version>
+        <oid.api.version>8.0-SNAPSHOT</oid.api.version>
+        <rajapinnat.ytj.version>7.0-SNAPSHOT</rajapinnat.ytj.version>
+        <rajapinnat.kela-opti.version>9.0-SNAPSHOT</rajapinnat.kela-opti.version>
+
+      	<organisaatio.api.version>10.0-SNAPSHOT</organisaatio.api.version>
+      	<koodisto.api.version>10.2-SNAPSHOT</koodisto.api.version>
+      	<tarjonta.api.version>9.7-SNAPSHOT</tarjonta.api.version>        
+
+        <maven.war.plugin.version>2.4</maven.war.plugin.version>
+        <swagger.version>1.3.0</swagger.version>
+        <solr.version>4.2.0</solr.version>
+        <modelmapper.version>0.6.3</modelmapper.version>
+        <ehcache.version>2.5.0</ehcache.version>
+        <ehcache-jgroupsreplication.version>1.5</ehcache-jgroupsreplication.version>
+        <jgroups.version>2.10.0.GA</jgroups.version>
+    </properties>
 
     <parent>
         <groupId>fi.vm.sade.generic</groupId>
         <artifactId>build-parent</artifactId>
-        <version>7.0</version>
+        <version>9.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-    </properties>
-
     <modules>
-      <module>ytj</module>
+      <!--<module>ytj</module> -->
       <module>kela</module>
       <module>vtj</module>
     </modules>
     
+    <dependencyManagement>
+    	<dependencies>
+
+    		<dependency>
+			<groupId>org.jasig.cas.client</groupId>
+			<artifactId>cas-client-support-distributed-ehcache</artifactId>
+			<version>3.1.12</version>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.ehcache</groupId>
+					<artifactId>ehcache</artifactId>
+				</exclusion>
+			</exclusions>
+	    </dependency>
+	</dependencies>
+   </dependencyManagement>
 </project>
