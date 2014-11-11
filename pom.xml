@@ -16,7 +16,7 @@
         <sade-generic.version>9.0-SNAPSHOT</sade-generic.version>
         <log.client.version>7.0-SNAPSHOT</log.client.version>
         <oid.api.version>8.0-SNAPSHOT</oid.api.version>
-        <rajapinnat.ytj.version>7.0-SNAPSHOT</rajapinnat.ytj.version>
+        <rajapinnat.ytj.version>9.0-SNAPSHOT</rajapinnat.ytj.version>
         <rajapinnat.kela-opti.version>9.0-SNAPSHOT</rajapinnat.kela-opti.version>
 
       	<organisaatio.api.version>10.0-SNAPSHOT</organisaatio.api.version>
@@ -39,7 +39,7 @@
     </parent>
 
     <modules>
-      <!--<module>ytj</module> -->
+      <module>ytj</module>
       <module>kela</module>
       <module>vtj</module>
     </modules>
