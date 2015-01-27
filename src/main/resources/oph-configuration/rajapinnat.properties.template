@@ -34,19 +34,19 @@ vtj.truststore.file={{vtj_truststore_file}}
 vtj.truststore.password={{vtj_truststore_password}}
 
 #KELA-OPTI
-exportdir={{kela-opti.exportdir}}
-transferhost={{kela-opti.transferhost}}
-transferuser={{kela-opti.transferuser}}
-transferpassword={{kela-opti.transferpassword}}
-targetPath={{kela-opti.targetPath}}
-kela-tarjontadb.url={{kela-opti.kela-tarjontadb.url}}
-kela-tarjontadb.username={{kela-opti.kela-tarjontadb.username}}
-kela-tarjontadb.password={{kela-opti.kela-tarjontadb.password}}
-kela-organisaatiodb.url={{kela-opti.kela-organisaatiodb.url}}
-kela-organisaatiodb.username={{kela-opti.kela-organisaatiodb.username}}
-kela-organisaatiodb.password={{kela-opti.kela-organisaatiodb.password}}
-organisaatio.solr.url={{kela-opti.organisaatio.solr.url}}
-tarjonta.solr.baseurl={{kela-opti.tarjonta.solr.baseurl}}
+exportdir={{kela_opti_exportdir}}
+transferhost={{kela_opti_transferhost}}
+transferuser={{kela_opti_transferuser}}
+transferpassword={{kela_opti_transferpassword}}
+targetPath={{kela_opti_targetPath}}
+kela-tarjontadb.url="jdbc:postgresql://{{ host_postgresql_tarjonta }}:{{ port_postgresql }}/tarjonta"
+kela-tarjontadb.username={{ host_postgresql_tarjonta_user }}
+kela-tarjontadb.password={{ host_postgresql_tarjonta_password }}
+kela-organisaatiodb.url="jdbc:postgresql://{{ host_postgresql_organisaatio }}:{{ port_postgresql }}/organisaatio"
+kela-organisaatiodb.username={{ host_postgresql_organisaatio_user }}
+kela-organisaatiodb.password={{ host_postgresql_organisaatio_password }}
+organisaatio.solr.url={{ organisaatio_solr_url }}
+tarjonta.solr.baseurl={{ tarjonta_solr_baseurl }}
 
 # Oletusarvoja
 accessRight.webservice.url.backend=https\://${host.virkailija}/authentication-service/services/accessRightService
