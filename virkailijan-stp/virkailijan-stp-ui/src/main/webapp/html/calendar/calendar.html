@@ -1,0 +1,98 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<ul class="breadcrumb" style="background-color: white">
+				<li>
+					<a href="#/etusivu" class="link"> <span
+						class="icon-breadcrumb-home"></span>
+					</a>
+				</li>
+				<li>
+					<a href="#/etusivu"> <span> &gt; Virkailijan
+							ty&ouml;p&ouml;yt&auml;</span>
+					</a>
+					</li>
+				<li>
+					<span>
+						 &gt; Tapahtumakalenteri
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<p />
+
+	<table style="width: 10%">
+		<tbody>
+			<tr>
+				<td>
+					<div class="eventcalendar">
+						<div style="display: inline-block;">
+							<datepicker min-date="dummyDate" starting-day="1"
+								date-disabled="isDateDisabled(mode, date)"
+								datepicker-mode="datepickerMode" ng-model="eventdate"
+								min-date="minDate" show-weeks="true" class="well">
+							</datepicker>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr ng-if="eventdatename">
+				<td style="vertical-align: top">
+					<h2>{{eventdatename | toFinnishDate}}</h2>
+					{{model.events.length}} tapahtuma(a)
+					</a>
+				</td>
+			</tr>
+			<tr ng-if="eventdatename">
+				<td style="width: 8%; vertical-align: top">
+					<table class="table" ng-repeat="event in model.events">
+						<tbody>
+							<tr>
+								<td class="align-left">
+									<hr/>
+								</td>
+							</tr>
+							<tr>
+        		 				<td class="align-left">
+        		 					<div>
+        		 						<h5>{{event.title}}</h5>
+        		 					</div>
+        		 				</td>
+        		 			</tr>
+        		 			<tr>
+        		 				<td>
+        		 					<div style="color: #999999">
+        		 						{{event.event_date_time.event_start_date | toFinnishDate}} {{event.event_date_time.event_start_time | limitTo:5 }} - {{event.event_date_time.event_end_date | toFinnishDate}} {{event.event_date_time.event_end_time | limitTo:5 }}
+        		 					</div>
+        		 				</td>
+        		 			</tr>
+        		 			<tr ng-if="event.event_location">
+        		 				<td>
+        		 					<div style="color: #999999">
+        		 						{{event.event_location }}
+        		 					</div>
+        		 				</td>
+        		 			</tr>        		 			
+							<tr>        		 											
+								<td class="align-left">
+									<span ng-html-compile="event.content"/>
+								</td>
+							</tr>								
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="align-left">
+					<hr />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="row-fluid">
+		<a href="#/etusivu" class="link"> <span>Takaisin</span>
+		</a>
+	</div>
+</div>
+

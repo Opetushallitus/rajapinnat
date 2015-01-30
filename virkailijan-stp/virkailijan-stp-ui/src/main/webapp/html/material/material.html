@@ -1,0 +1,41 @@
+<div class="container" ng-if="loadingReady">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="breadcrumb" style="background-color: white">
+            <li>
+              <a href="#/etusivu" class="link">
+                <span class="icon-breadcrumb-home"></span>
+              </a>
+            </li>
+            <li >
+              <a href="#/etusivu">
+               	<span> &gt; Virkailijan ty&ouml;p&ouml;yt&auml;</span>
+              </a>
+            </li>
+            <li >
+               	<span> &gt; Materiaalit</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <h1>{{model.material.title_plain}}</h1>
+        </div>
+    </div>
+    <div style="color: #999999">
+    	{{model.material.date  | toFinnishDate}} {{model.material.author.name}}
+    </div>
+    <ul>
+		<li  ng-repeat="attachment in model.material.attachments"><i class="icon-file"></i> <a href="{{attachment.url}}" target="_blank">{{attachment.title}}</a></li>
+	</ul>
+    <p/>
+   	<div ng-bind-html="htmlContent"/>
+   	 <div class="row-fluid">
+   	<a href="#/etusivu" class="link">
+    	<span>Takaisin</span>
+    </a>
+    </div>
+    <p/>
+</div>
+  
