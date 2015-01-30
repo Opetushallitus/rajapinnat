@@ -143,3 +143,9 @@ koodisto.public.webservice.url.backend=https://${host.virkailija}/koodisto-servi
 organisaatio.webservice.url.backend=https://${host.virkailija}/organisaatio-service/services/organisaatioService
 organisaatio.api.rest.url=https://${host.virkailija}/organisaatio-service/rest
 
+#Virkailijan sahkoinen tyopoyta
+cas.service.virkailijan-stp-service=https://${host.virkailija}/virkailijan-stp-service
+cas.callback.virkailijan-stp-service=https://${host.virkailija}/virkailijan-stp-service
+virkailijan-stp-ui.virkailijan-stp-service-url.rest=https://${host.virkailija}/virkailijan-stp-service/rest/
+virkailijan-stp-ui.wp-api-url=https://${host.virkailija}/wp/api/
+
