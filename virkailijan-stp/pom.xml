@@ -7,7 +7,13 @@
   </parent>
   <artifactId>virkailijan-stp</artifactId>
   <packaging>pom</packaging>
-  <name>Rajapinnat :: Virkailijan sähköinen työpöytä :: parent - ${project.version}</name>
+  <name>Rajapinnat :: Virkailijan sï¿½hkï¿½inen tyï¿½pï¿½ytï¿½ :: parent - ${project.version}</name>
+      <properties>
+              <spring.version>3.1.3.RELEASE</spring.version>
+              <spring.security.version>3.1.3.RELEASE</spring.security.version>
+              <spring.asm.version>3.1.3.RELEASE</spring.asm.version>
+	      	  <organisaatio.api.version>2015-05</organisaatio.api.version>
+      </properties>  
   <modules>
   	<module>virkailijan-stp-service</module>
 	<module>virkailijan-stp-ui</module>
