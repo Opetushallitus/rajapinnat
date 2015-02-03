@@ -29,6 +29,8 @@ task(zipIt, type: Zip) {
     from 'vtj/vtj-service/target'
     from 'kela/kela-service/target'
     from 'kela/kela-opti/target'
+    from 'virkailijan-stp/virkailijan-stp-service/target'
+    from 'virkailijan-stp/virkailijan-stp-ui/target'
 }
 
 // Task for copying the .zip file to
