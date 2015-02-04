@@ -61,18 +61,18 @@ var outsideMonthB =
 var weekendDayB = " ($index > 4) ";
 
 var monthNameS =
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 0)\">{{'calendar.january' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 1)\">{{'calendar.february' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 2)\">{{'calendar.march' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 3)\">{{'calendar.april' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 4)\">{{'calendar.may' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 5)\">{{'calendar.june' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 6)\">{{'calendar.july' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 7)\">{{'calendar.august' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 8)\">{{'calendar.september' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 9)\">{{'calendar.october' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 10)\">{{'calendar.november' | i18n}}</div>"+
-	"<div ng-show=\"(rows[3][3].date.getMonth() == 11)\">{{'calendar.december' | i18n}}</div>";
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 0)\">{{'calendar.january' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 1)\">{{'calendar.february' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 2)\">{{'calendar.march' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 3)\">{{'calendar.april' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 4)\">{{'calendar.may' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 5)\">{{'calendar.june' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 6)\">{{'calendar.july' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 7)\">{{'calendar.august' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 8)\">{{'calendar.september' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 9)\">{{'calendar.october' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 10)\">{{'calendar.november' | i18n}} {{rows[3][3].date.getFullYear()}}</div>"+
+	"<div ng-show=\"(rows[3][3].date.getMonth() == 11)\">{{'calendar.december' | i18n}} {{rows[3][3].date.getFullYear()}}</div>";
 
 var weekdayNameS =
  	"<div ng-show=\"($index == 0)\">{{'calendar.monday' | i18n}}</div>"+

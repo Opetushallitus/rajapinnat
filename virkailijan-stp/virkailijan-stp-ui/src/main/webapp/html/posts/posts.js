@@ -1,5 +1,5 @@
-var INITIALLINES=2;
-var SHOWMORELINES=1;
+var INITIALLINES=5;
+var SHOWMORELINES=5;
 
 
 function PostList(loader) {
@@ -91,7 +91,7 @@ app.factory('EventsLoader', function(Events, $filter) {
         				loadError(alert);
         			}
         		}, function(error) {
-        			alert = { msg:$filter('i18n')("desktop.announcements.messages.errors.loadingevents") }
+        			alert = { msg:$filter('i18n')("desktop.events.messages.errors.loadingevents") }
 			        loadError(alert);
 			    });
         	}
@@ -123,7 +123,7 @@ app.factory('MaterialsLoader', function(Materials, $filter) {
 			        	loadError(alert);
 			        }
         		}, function(error) {
-        			alert = { msg:$filter('i18n')("desktop.announcements.messages.errors.loadingmaterials") }
+        			alert = { msg:$filter('i18n')("desktop.materials.messages.errors.loadingmaterials") }
 			        loadError(alert);
 			    });
         	}

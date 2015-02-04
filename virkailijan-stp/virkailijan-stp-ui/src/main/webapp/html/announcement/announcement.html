@@ -9,11 +9,11 @@
             </li>
             <li >
               <a href="#/etusivu">
-               	<span> &gt; Virkailijan ty&ouml;p&ouml;yt&auml;</span>
+               	<span> &gt; {{'breadcrumb.desktop' | i18n}}</span>
               </a>
             </li>
             <li >
-               	<span> &gt; Tiedotteet</span>
+               	<span> &gt; {{'breadcrumb.announcements' | i18n}}</span>
             </li>
           </ul>
         </div>
@@ -30,12 +30,11 @@
 		<li  ng-repeat="attachment in model.material.attachments"><i class="icon-file"></i> <a href="{{attachment.url}}" target="_blank">{{attachment.title}}</a></li>
 	</ul>    
     <p/>
-	<!-- {{model.announcement.id}}  -->
    	<div ng-bind-html="htmlContent"/>
-   	 <div class="row-fluid">
-   	<a href="#/etusivu" class="link">
-    	<span>Takaisin</span>
-    </a>
+   	<div class="row-fluid">
+   		<a href="#/etusivu" class="link">
+    		<span>{{'generic.goback' | i18n}}</span>
+    	</a>
     </div>
     <p/>
 </div>
