@@ -204,7 +204,6 @@ app.run(["SessionPoll", function(SessionPoll) {
 
 function toDate(enDateString) {
 	var frags = enDateString.match(/^(\d{4})-(\d{2})-(\d{2})\s*.*$/);
-	console.log(enDateString+" :: "+new Date(frags[1]+"/"+frags[2]+"/"+frags[3]));
 	return new Date(frags[1]+"/"+frags[2]+"/"+frags[3]);
 }
 
