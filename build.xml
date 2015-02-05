@@ -36,6 +36,12 @@
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/kela-service/${pom.version}">
                 <include name="*.war"/>
             </fileset>
+            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/virkailijan-stp-ui/${pom.version}">
+                <include name="*.war"/>
+            </fileset>  
+            <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/virkailijan-stp-service/${pom.version}">
+                <include name="*.war"/>
+            </fileset>
             <fileset dir="${maven.repo}/fi/vm/sade/rajapinnat/vtj-service/${pom.version}" >
                 <include name="*.war"/>
             </fileset>
@@ -44,13 +50,19 @@
         <echo>unzip files to tomcat webapps-dir...</echo>
         <sshexec command="
 				mkdir ${tomcat.home}/webapps/kela-service;
+				mkdir ${tomcat.home}/webapps/virkailijan-stp-ui;
+				mkdir ${tomcat.home}/webapps/virkailijan-stp-service;				
 				mkdir ${tomcat.home}/webapps/vtj-service;
 				
 				unzip -qo -d${tomcat.home}/webapps/kela-service ${tomcat.home}/webapps/kela-service-*.war;
+				unzip -qo -d${tomcat.home}/webapps/kela-service ${tomcat.home}/webapps/virkailijan-stp-ui-*.war;
+				unzip -qo -d${tomcat.home}/webapps/kela-service ${tomcat.home}/webapps/virkailijan-stp-service-*.war;
 				unzip -qo -d${tomcat.home}/webapps/vtj-service ${tomcat.home}/webapps/vtj-service-*.war;
 				
 		rm -rf ${tomcat.home}/webapps/kela-service-*.war;
-                rm -rf ${tomcat.home}/webapps/vtj-service-*.war"
+		rm -rf ${tomcat.home}/webapps/virkailijan-stp-ui-*.war;
+		rm -rf ${tomcat.home}/webapps/virkailijan-stp-service-*.war;
+		rm -rf ${tomcat.home}/webapps/vtj-service-*.war"
 
                  host="${tomcat-host}" username="tomcat" keyfile="${ssh.keyfile}"
                  passphrase="${ssh.keypass}" trust="true" failonerror="false"/>
@@ -69,6 +81,8 @@
         <waitfor maxwait="3000" checkevery="500">
             <and>
                 <http url="http://${tomcat-host}:${tomcat-port}/kela-service"/>
+                <http url="http://${tomcat-host}:${tomcat-port}/virkailijan-stp-ui"/>
+                <http url="http://${tomcat-host}:${tomcat-port}/virkailijan-stp-service"/>
                 <http url="http://${tomcat-host}:${tomcat-port}/vtj-service"/>
             </and>
         </waitfor>
@@ -76,6 +90,20 @@
             <condition>
                 <not>
                     <http url="http://${tomcat-host}:${tomcat-port}/kela-service"/>
+                </not>
+            </condition>
+        </fail>
+        <fail message="kela-service -webapp did not come up.  Check your log files, fix and try again.  Good Luck :-).">
+            <condition>
+                <not>
+                    <http url="http://${tomcat-host}:${tomcat-port}/virkailijan-stp-ui"/>
+                </not>
+            </condition>
+        </fail>
+        <fail message="kela-service -webapp did not come up.  Check your log files, fix and try again.  Good Luck :-).">
+            <condition>
+                <not>
+                    <http url="http://${tomcat-host}:${tomcat-port}/virkailijan-stp-service"/>
                 </not>
             </condition>
         </fail>
