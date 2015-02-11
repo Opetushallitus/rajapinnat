@@ -8,7 +8,7 @@
     </parent>
     <artifactId>virkailijan-stp-service</artifactId>
     <packaging>war</packaging>
-    <name>Rajapinnat :: UI</name>
+    <name>Rajapinnat :: service</name>
 
     <properties>
         <deploy.to.server>tomcat</deploy.to.server>
