@@ -16,7 +16,7 @@ app.factory('LatestEventsPopulator', function(Events, $filter) {
 });
 
 app.factory('LatestEventsUIModel', function(LatestEventsPopulator) {	
-	return new UIListModel(LatestEventsPopulator).setParams({});
+	return new UIFilterModel(LatestEventsPopulator).setParams({});
 });
 
 app.factory('LatestMaterialsPopulator', function(LatestMaterials, $filter) {
@@ -24,7 +24,7 @@ app.factory('LatestMaterialsPopulator', function(LatestMaterials, $filter) {
 });
 
 app.factory('LatestMaterialsUIModel', function(LatestMaterialsPopulator) {	
-	return new UIListModel(LatestMaterialsPopulator).setParams({});
+	return new UIFilterModel(LatestMaterialsPopulator).setParams({});
 });
 
 app.factory('TextSearchAnnoucementsPopulator', function(TextSearchAnnouncements, $filter) {
@@ -100,7 +100,7 @@ app.factory('CategoriesPopulator', function(Categories, $filter) {
 	return new ModelPopulator(Categories, $filter('i18n')("desktop.materials.messages.errors.loadingcategories"), categoriesResultValidator);
 });
 
-app.factory('SelectedCategoriesModel', function(LatestAnnouncementsUIModel, ArchiveAnnouncementsUIModel, ArchiveMaterialsUIModel, CategoriesUIModel, UserOrganisations, Profiles) {
+app.factory('SelectedCategoriesModel', function(LatestAnnouncementsUIModel, LatestEventsUIModel, LatestMaterialsUIModel, ArchiveAnnouncementsUIModel, ArchiveMaterialsUIModel, CategoriesUIModel, UserOrganisations, Profiles) {
 	var model = new function() {
 		this.ready = false;
 		this.rows = [];
@@ -113,6 +113,9 @@ app.factory('SelectedCategoriesModel', function(LatestAnnouncementsUIModel, Arch
 			}
 			CategoriesUIModel.clicked(category);
 			LatestAnnouncementsUIModel.clicked(category, 1);
+			LatestEventsUIModel.clicked(category, 1);
+			LatestMaterialsUIModel.clicked(category, 1);
+
 			ArchiveAnnouncementsUIModel.clicked(category, 1);
 			ArchiveMaterialsUIModel.clicked(category, 1);
 		}
@@ -174,6 +177,9 @@ app.factory('CategoriesUIModel', function(CategoriesPopulator) {
 	model.clicked = function(category) {
 		if (category.checked) {
 			category.f = function(row) {
+				if (_.isUndefined(row.categories)) {
+					return false;
+				}
 				return $.map( row.categories, function( _category ) {
 					return _category.slug;
 				}).contains(category.slug);

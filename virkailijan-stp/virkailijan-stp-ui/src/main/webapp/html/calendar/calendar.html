@@ -16,15 +16,6 @@
         			</td>
         		</tr>
         	</table>
-        	
-        	<!-- 
-                    		<div class="row-fluid" style="vertical-align: middle; line-height:60px; float: right;">
-								<input type="text" ng-model="org_search" style="margin-bottom: 0; height: 30px;" class="input-xxlarge" maxlength="50" placeholder="[DEBUG] t&auml;h&auml;n k&auml;ytt&auml;j&auml;n org.oid"/>
-    								<button class="btn-primary" ng-click="org_search_click(org_search)"  title="{{'desktop.search.hint' | i18n}}">
-    									{{'desktop.search' | i18n}}
-    								</button>
-    						</div>
-    		 -->
         </div>
 	</div>
 	<table style="width: 10%">
@@ -42,13 +33,6 @@
 					</div>
 				</td>
 			</tr>
-			<!-- 
-			<tr ng-if="eventdatename">
-				<td style="vertical-align: top">
-					<h2>{{eventdatename | toFinnishDate}}</h2>
-				</td>
-			</tr>
-			 -->
 			<tr ng-if="eventdatename">
 				<td style="width: 8%; vertical-align: top">
 					<table class="table" ng-repeat="event in model.events">
@@ -70,6 +54,12 @@
         		 					<div style="color: #999999">
         		 						{{event.event_date_time.event_start_date | toFinnishDate}} {{event.event_date_time.event_start_time | limitTo:5 }} - {{event.event_date_time.event_end_date | toFinnishDate}} {{event.event_date_time.event_end_time | limitTo:5 }}
         		 					</div>
+        		 					<td>
+	        							<button class="btn" ng-click="show.alert=true">Aseta muistutus</button>
+	        							<div ng-show="show.alert" class="alert alert-danger" role="alert">
+	  										Not implemented yet!
+										</div>
+        							</td>
         		 				</td>
         		 			</tr>
         		 			<tr ng-if="event.event_location">
