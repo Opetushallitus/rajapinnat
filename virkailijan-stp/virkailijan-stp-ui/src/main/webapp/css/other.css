@@ -1,3 +1,8 @@
+.dropdown-multiselect {
+	background-color: white;  
+	border-color: lightgray;
+}
+
 i {
 padding-right: 0.20em;
 }

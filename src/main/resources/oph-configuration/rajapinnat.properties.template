@@ -150,4 +150,5 @@ cas.service.virkailijan-stp-ui=https://${host.virkailija}/virkailijan-stp-ui
 cas.callback.virkailijan-stp-ui=https://${host.virkailija}/virkailijan-stp-service-ui
 virkailijan-stp-ui.virkailijan-stp-service-url.rest=https://${host.virkailija}/virkailijan-stp-service/rest/
 virkailijan-stp-ui.wp-api-url=https://${host.virkailija}/wp/api/
+virkailijan-stp-ui.authentication-service-url=https://${host.virkailija}/authentication-service/resources/
 

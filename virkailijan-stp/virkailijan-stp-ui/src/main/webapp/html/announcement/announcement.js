@@ -15,8 +15,9 @@ app.factory('AnnouncementModel', function(Announcement) {
     return model;
 });
 
-function ViewAnnouncementController($scope, $routeParams, $sce, AnnouncementModel) {
-    $scope.model = AnnouncementModel;
+function ViewAnnouncementController($scope, breadcrumbs, $routeParams, $sce, AnnouncementModel) {
     $scope.identity = angular.identity;
+	$scope.breadcrumbs = breadcrumbs;
+	$scope.model = AnnouncementModel;
     AnnouncementModel.init($scope, $routeParams.tiedoteid, $sce);
 }

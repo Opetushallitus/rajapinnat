@@ -11,6 +11,7 @@
     <name>Rajapinnat :: service</name>
 
     <properties>
+    	<organisaatio.api.version>2015-05</organisaatio.api.version>
         <deploy.to.server>tomcat</deploy.to.server>
         <webapp.port>8081</webapp.port>
         <skipDbDiagramGenerate>false</skipDbDiagramGenerate>
@@ -136,7 +137,12 @@
 
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>fi.vm.sade.organisaatio</groupId>
+            <artifactId>organisaatio-solr-client</artifactId>
+            <version>${organisaatio.api.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>fi.vm.sade.generic</groupId>
             <artifactId>generic-test-support</artifactId>
