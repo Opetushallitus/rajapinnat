@@ -89,14 +89,14 @@
         							<a ng-click="announcementsmodel.showmore()">&gt;&gt; {{'generic.showmore' | i18n}}</a>
         						</td>
         					</tr>
-    <!-- vaihe 2:         					
         					<tr>
         						<td>
-        							<button class="btn">Tilaa ilmoitus</button>
+        							<button class="btn" ng-click="show.alert=true">Tilaa ilmoitus</button>
+        							<div ng-show="show.alert" class="alert alert-danger" role="alert">
+  										Not implemented yet!
+									</div>
         						</td>
-    
         					</tr>
- 	-->
        					</tbody>
 					</table>
 				</td>

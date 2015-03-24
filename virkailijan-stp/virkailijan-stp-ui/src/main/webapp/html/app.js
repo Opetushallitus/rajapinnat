@@ -274,6 +274,9 @@ function toDate(enDateString) {
 
 app.filter('toFinnishDate', function() {
 	return function(enDateString) {
+		if (_.isUndefined(enDateString)) {
+			return "";
+		}
 		var myDate = toDate(enDateString);
 		return myDate.getDate()+"."+(myDate.getMonth()+1)+"."+myDate.getFullYear();
 	};
