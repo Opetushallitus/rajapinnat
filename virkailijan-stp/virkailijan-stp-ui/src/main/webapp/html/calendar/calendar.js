@@ -139,7 +139,7 @@ app.service("CalendarUtil", function() {
 	}
 });
 
-app.factory("EventDates", function(Events, CalendarUtil, $q) {
+app.factory("EventDates", function(Events, CalendarUtil, SelectedCategoriesModel, $q) {
     var model;
     model = new function() {
     	this.getEventsPromise = function(date) {
@@ -162,26 +162,34 @@ app.factory("EventDates", function(Events, CalendarUtil, $q) {
 	       	Events.get(
 	       	    { 'scope' : CalendarUtil.toWPDate(startDate)+","+CalendarUtil.toWPDate(endDate) }, 
 	       	    function(result) {
-	       	    	var e = {}; //hash for storing retrieved dates for requested span
+	       	    	var e = {}; //hash for storing retrieved dates for requested span of events, the value of item contains array of categories 
+	       	    				//(slug-attribute) i.e. e["K2015-31-12"] = { count : 3,
+	       	    				//											 slugs : ["toinen-aste","perustaso"] }
 	       			var span = CalendarUtil.toArray(startDate,endDate);
-	       			$(span).each(function (idx, el) { e[hashDate(el)] = 0; }); //init to 0
-		       		if (typeof result.events != 'undefined') {
-		       			$(result.events).each(function (i, event) {
+	       			_(span).forEach(function (el) { e[hashDate(el)] = { count: 0 , slugs: [] }; } ); //init 
+		       		if (!_.isUndefined(result.events)) {
+		       			_(result.events).forEach(function (event) {
 	       					var eventDays = CalendarUtil.toArray(CalendarUtil.toDate(event.event_date_time.event_start_date), 
 	       														 CalendarUtil.toDate(event.event_date_time.event_end_date));
-	       					$(eventDays).each(function (i, eventDay) {
-	       						if (typeof e[(key = hashDate(eventDay))] == 'undefined') {
-	       							e[key] = 0;
+	       					_(eventDays).forEach(function (eventDay) {
+	       						if (_.isUndefined(e[(key = hashDate(eventDay))])) {
+	       							e[key] = { count: 0 , slugs: [] };
 	       						}
-	       						e[key]++;
+	       						e[key].count++;
+	       						_(event.event_categories).forEach(function (event_category) {
+	       							if (!e[key].slugs.contains(event_category.slug)) {
+	       								e[key].slugs.push(event_category.slug);
+	       							}
+	       						})
 	       					});
 		       			});
 		       		}
 		       		var returnVal = [];
 		       		for (var i in e) {
 		       			returnVal[returnVal.length] = {
-		       			    "date" : toDate(toWPDate(i)),
-		       				"eventsCount" : e[i]
+		       				"count" : e[i].count,
+		       			    "date"  : toDate(toWPDate(i)),
+		       				"slugs" : e[i].slugs
 		       			}
 		       		}
 		       		deferred.resolve(returnVal);
@@ -193,25 +201,41 @@ app.factory("EventDates", function(Events, CalendarUtil, $q) {
 	}
 );
 
-app.factory('CalendarModel', function(EventDates, CalendarUtil, $q) {
+app.factory('CalendarModel', function(EventDates, CalendarUtil, $q, SelectedCategoriesModel) {
     var model;
     model = new function() {
     	this.init = function(sce, refreshCallback) {
     		model.eventsReady = false;
     		model.sce = sce;
     		model.refreshCallback = refreshCallback;
-    		model.d = {}; //hash for storing retrieved dates
+    		model.d = {}; 	//hash for storing retrieved dates for requested span of events, the value of item contains array of categories 
+							//(slug-attribute) i.e. e["D2015-31-12"] = { count : 3,
+							//											 slugs : ["toinen-aste","perustaso"] }
     		model.ReqsPendingCount = 0;
+    	}
+    	this.refresh = function() {
+    		model.refreshCallback();
     	}
     	this.getEvents = function(date) {
     		model.eventsReady = false;
         	(EventDates.getEventsPromise(date)).then(
              	function(result){
-             		model.events = result.events;
-             		$(model.events).each(function (idx, el) { el.hmlContent = model.sce.trustAsHtml(el.content) }); 
+             		model.events = [];
+             		_(result.events).forEach(function(event) {
+             			if( model.inSelectedCategories(_.pluck(event.event_categories,"slug"))) {
+             				model.events.push(event);
+             			};
+             		});
+             		_(model.events).forEach(function (el) { el.hmlContent = model.sce.trustAsHtml(el.content) }); 
              		model.eventsReady = true;
              	}
             );
+    	}
+    	this.inSelectedCategories = function(slugs) {
+    		if (SelectedCategoriesModel.rows.length == 0) {
+    			return true;
+    		}
+    		return (_.intersection(slugs, _.pluck(SelectedCategoriesModel.rows, "slug"))).length > 0;
     	}
     	this.isDateDisabled = function(mode, date) {
         	if (mode != 'day') {
@@ -221,8 +245,11 @@ app.factory('CalendarModel', function(EventDates, CalendarUtil, $q) {
         		return "D"+CalendarUtil.stringifyDate(date,"_");
         	} 
         	var key = hashDate(date);
-        	if (typeof (val = model.d[key]) != 'undefined') {
-        		return val;
+        	if (!_.isUndefined(_d = model.d[key])) {
+        		if (SelectedCategoriesModel.rows.length==0) {
+        			return _d.count==0;
+        		}
+        		return !model.inSelectedCategories(_d.slugs)
         	}
         	if (model.ReqsPendingCount > 0) {
         		return true;
@@ -232,12 +259,12 @@ app.factory('CalendarModel', function(EventDates, CalendarUtil, $q) {
         	var end = new Date(date.getFullYear(),date.getMonth(),date.getDate()+DAYS_TO_REQUEST_AT_ONCE);
         	(EventDates.countEventsPromise(start, end)).then(
          		function(results){
-         			$(results).each(function (i, result)  {
-         				model.d[hashDate(result.date)] = (result.eventsCount == 0);
+         			_(results).forEach(function (result)  {
+         				model.d[hashDate(result.date)] = result;
          			});
          			model.ReqsPendingCount--;
          			if (model.ReqsPendingCount == 0) {
-         				model.refreshCallback();
+         				model.refresh();
          			}
          		}
          	);
@@ -247,8 +274,16 @@ app.factory('CalendarModel', function(EventDates, CalendarUtil, $q) {
     return model;
 });
 
-function ViewCalendarController($scope, $routeParams, $sce , CalendarModel, CalendarUtil, $log, $q, $http, $sce, Events) {
+function ViewCalendarController($scope, SelectedCategoriesModel, CategoriesUIModel, breadcrumbs, $routeParams, $sce , CalendarModel, CalendarUtil, $log, $q, $http, $sce, Events) {
     $scope.identity = angular.identity;
+    $scope.breadcrumbs = breadcrumbs;
+    $scope.categoriesmodel = CategoriesUIModel;
+	$scope.selectedcategoriesmodel = SelectedCategoriesModel;
+	$scope.$watch('categoriesmodel.ready', function(newValue, oldValue) {
+		if (newValue) {
+			$scope.selectedcategoriesmodel.init();
+		}
+    });
     $scope.model = CalendarModel;
     $scope.model.init($sce,
     	function () {
@@ -256,11 +291,16 @@ function ViewCalendarController($scope, $routeParams, $sce , CalendarModel, Cale
     	}
     );
     $scope.isDateDisabled = $scope.model.isDateDisabled;
-    $scope.$watch('eventdate',function(newValue, oldValue) {
+    $scope.$watch('selectedcategoriesmodel.rows.length', function(newValue, oldValue) {
+    	$scope.model.refresh();
+    	if (!_.isUndefined($scope.eventdate)) {
+    		$scope.model.getEvents($scope.eventdate);
+    	}
+    });
+    $scope.$watch('eventdate', function(newValue, oldValue) {
     	if (newValue) {
     		$scope.eventdatename = CalendarUtil.toWPDate(newValue);
     		$scope.model.getEvents(newValue);
     	}
     });	
 }
-

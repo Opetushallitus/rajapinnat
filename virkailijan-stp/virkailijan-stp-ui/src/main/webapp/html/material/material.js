@@ -15,8 +15,9 @@ app.factory('MaterialModel', function(Material) {
     return model;
 });
 
-function ViewMaterialController($scope, $routeParams, $sce, MaterialModel) {
-    $scope.model = MaterialModel;
+function ViewMaterialController($scope, breadcrumbs, $routeParams, $sce, MaterialModel) {
     $scope.identity = angular.identity;
+    $scope.breadcrumbs = breadcrumbs;
+	$scope.model = MaterialModel;
     MaterialModel.init($scope, $routeParams.materiaaliid, $sce);
 }

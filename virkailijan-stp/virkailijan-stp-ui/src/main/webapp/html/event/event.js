@@ -14,7 +14,8 @@ app.factory('EventModel', function(Event) {
     return model;
 });
 
-function ViewEventController($scope, $routeParams, $sce, EventModel) {
+function ViewEventController($scope, breadcrumbs, $routeParams, $sce, EventModel) {
+	$scope.breadcrumbs = breadcrumbs;
     $scope.model = EventModel;
     $scope.identity = angular.identity;
     EventModel.init($scope, $routeParams.tapahtumaid, $sce);

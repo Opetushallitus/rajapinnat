@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ConfigController {
-
+	
+	@Value("${virkailijan-stp-ui.authentication-service-url}")
+	private String stpAuthURL;
+	  
+	
     @Value("${virkailijan-stp-ui.virkailijan-stp-service-url.rest}")
     private String stpServiceRestURL;
 
@@ -32,6 +36,7 @@ public class ConfigController {
     @ResponseBody
     public String index() {
         StringBuilder b = new StringBuilder();
+        append(b, "AUTH_URL_BASE", stpAuthURL);
         append(b, "SERVICE_URL_BASE", stpServiceRestURL);
         append(b, "WP_API_BASE", wpApiURL);
         append(b, "TEMPLATE_URL_BASE", "");
