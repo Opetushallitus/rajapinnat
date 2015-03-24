@@ -21,10 +21,7 @@ import javax.ws.rs.core.MediaType;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
-
-import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import fi.vm.sade.organisaatio.api.search.OrganisaatioPerustieto;
 import fi.vm.sade.organisaatio.service.search.OrganisaatioSearchService;
@@ -33,10 +30,7 @@ import fi.vm.sade.organisaatio.service.search.OrganisaatioSearchService;
 @Component
 @Path("session")
 public class SessionResource {
-    
-	/*@Value("${root.organisaatio.oid}")
-    private String rootOrganisaatioOid;
-    */
+
     @Autowired
     protected OrganisaatioSearchService organisaatioSearchService;
     public void setOrganisaatioSearchService(
@@ -46,7 +40,6 @@ public class SessionResource {
 
     @GET
     @Path("/maxinactiveinterval")
-    @PreAuthorize("isAuthenticated()")
     @Produces(MediaType.TEXT_PLAIN)
     public String maxInactiveInterval(@Context HttpServletRequest req) {
         return Integer.toString(req.getSession().getMaxInactiveInterval());
@@ -54,7 +47,6 @@ public class SessionResource {
     
     @POST
     @Path("/defaultprofile")
-    @PreAuthorize("isAuthenticated()")
     @Consumes("application/json")
     @Produces("application/json")
     public List defaultprofile(List<String> orgOids) {
@@ -64,7 +56,6 @@ public class SessionResource {
 	    	List<OrganisaatioPerustieto> parents = organisaatioSearchService.findByOidSet(parentOids);
 	    	for(OrganisaatioPerustieto p : parents) {
 	    		if(!StringUtils.isEmpty(p.getOppilaitostyyppi())) {
-	    			System.out.println("tyyppi:"+p.getOppilaitostyyppi());
 	    			for (String slug : slugs.keySet()) {
 	    				if (((List) slugs.get(slug)).contains(p.getOppilaitostyyppi())){
 	    					resultList.add(slug);
