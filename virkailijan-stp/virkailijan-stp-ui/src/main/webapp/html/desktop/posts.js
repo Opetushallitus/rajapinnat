@@ -28,7 +28,7 @@ app.factory('LatestMaterialsUIModel', function(LatestMaterialsPopulator) {
 });
 
 app.factory('TextSearchAnnoucementsPopulator', function(TextSearchAnnouncements, $filter) {
-	return new ModelPopulator(TextSearchAnnouncements, $filter('i18n')("desktop.announcements.messages.errors.XXloadingannouncements"));
+	return new ModelPopulator(TextSearchAnnouncements, $filter('i18n')("desktop.announcements.messages.errors.loadingannouncements"));
 });
 
 app.factory('ArchiveAnnouncementsUIModel', function(TextSearchAnnoucementsPopulator) {
@@ -36,7 +36,7 @@ app.factory('ArchiveAnnouncementsUIModel', function(TextSearchAnnoucementsPopula
 });
 
 app.factory('TextSearchMaterialsPopulator', function(TextSearchMaterials, $filter) {
-	return new ModelPopulator(TextSearchMaterials, $filter('i18n')("desktop.announcements.messages.errors.XXloadingannouncements"));
+	return new ModelPopulator(TextSearchMaterials, $filter('i18n')("desktop.materials.messages.errors.loadingmaterials"));
 });
 
 app.factory('ArchiveMaterialsUIModel', function(TextSearchMaterialsPopulator) {
@@ -97,7 +97,7 @@ app.factory('CategoriesPopulator', function(Categories, $filter) {
 	categoriesResultValidator.result = function(result) {
 		return result.categories;
 	}	
-	return new ModelPopulator(Categories, $filter('i18n')("desktop.announcements.messages.errors.XXloadingannouncements"), categoriesResultValidator);
+	return new ModelPopulator(Categories, $filter('i18n')("desktop.materials.messages.errors.loadingcategories"), categoriesResultValidator);
 });
 
 app.factory('SelectedCategoriesModel', function(LatestAnnouncementsUIModel, ArchiveAnnouncementsUIModel, ArchiveMaterialsUIModel, CategoriesUIModel, UserOrganisations, Profiles) {
