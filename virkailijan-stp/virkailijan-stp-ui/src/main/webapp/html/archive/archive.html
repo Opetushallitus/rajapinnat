@@ -43,8 +43,11 @@
                                                 <a href="#/etusivu/arkisto/materiaali/{{material.id}}" title="{{'desktop.material.show.hint' | i18n}}"><h5>{{material.title_plain | words:8}}</h5></a>
                                             </div>
                                             <div style="color: #999999">
-                                                {{material.date | toFinnishDate}} {{material.author.name}}
+                                                {{material.date | toFinnishDateTime}} {{material.author.name}}
                                             </div>
+                                            <div>
+                                            	<span ng-repeat="tag in material.tags" class="tag">{{tag.title}}</span>
+                                            </div>                                            
                                         </td>
                                     </tr>
                                     <tr ng-if="!materialsmodel.hasalerts() && materialsmodel.rows.length==0">
@@ -75,11 +78,24 @@
                                     <td style="padding-left: 5px;">
                                         {{category.title}}
                                     </td>
-                                    <tr>
-                                        <tr>
-                                            <td colspan="*">&nbsp;</td>
-                                        </tr>
+                                </tr>
+                                <tr>
+                                    <td colspan="*">&nbsp;</td>
+                                </tr>
                             </table>
+    						<h6>{{'archive.text.filter_results_tag' | i18n}}</h6>
+    						<!-- tags -->
+    						<table>
+    							<tr ng-repeat="tag in tagsmodel.rows" ng-if="tagsmodel.ready && tag.slug.length>0">
+    								<td style="vertical-align: top; padding-left: 5px;">
+										 <input type="checkbox" ng-model="tag.checked" ng-change="tagsmodel.clicked(tag)" />
+									</td>
+									<td style="padding-left: 5px;">
+										{{tag.title}}
+									</td>
+								<tr>
+								<tr><td colspan="*">&nbsp;</td></tr>
+    						</table>                            
                             <!-- calendar tree -->
                             <h6>{{'archive.text.filter_results_date' | i18n}}</h6>
                             <table ng-repeat="year in materialsyear_tree.years">
@@ -147,7 +163,10 @@
                                                 <a href="#/etusivu/arkisto/tiedote/{{announcement.id}}" title="{{'desktop.announcement.show.hint' | i18n}}"><h5>{{announcement.title_plain | words:8}}</h5></a>
                                             </div>
                                             <div style="color: #999999">
-                                                {{announcement.date | toFinnishDate}} {{announcement.author.name}}
+                                                {{announcement.date | toFinnishDateTime}} {{announcement.author.name}}
+                                            </div>
+                                            <div>
+                                            	<span ng-repeat="tag in announcement.tags" class="tag">{{tag.title}}</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -179,11 +198,24 @@
                                     <td style="padding-left: 5px;">
                                         {{category.title}}
                                     </td>
-                                    <tr>
-                                        <tr>
-                                            <td colspan="*">&nbsp;</td>
-                                        </tr>
+                                </tr>
+                                <tr>
+                                	<td colspan="*">&nbsp;</td>
+                                </tr>
                             </table>
+    						<h6>{{'archive.text.filter_results_tag' | i18n}}</h6>
+    						<!-- tags -->
+    						<table>
+    							<tr ng-repeat="tag in tagsmodel.rows" ng-if="tagsmodel.ready && tag.slug.length>0">
+    								<td style="vertical-align: top; padding-left: 5px;">
+										 <input type="checkbox" ng-model="tag.checked" ng-change="tagsmodel.clicked(tag)" />
+									</td>
+									<td style="padding-left: 5px;">
+										{{tag.title}}
+									</td>
+								<tr>
+								<tr><td colspan="*">&nbsp;</td></tr>
+    						</table>                             
                             <!-- calendar tree -->
                             <h6>{{'archive.text.filter_results_date' | i18n}}</h6>
                             <table ng-repeat="year in announcementsyear_tree.years">

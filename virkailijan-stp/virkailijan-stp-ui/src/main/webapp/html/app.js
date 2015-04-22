@@ -240,6 +240,28 @@ function getLanguageSpecificValueOrValidValue(fieldArray, fieldName, language) {
     return specificValue;
 }
 
+app.filter('filterTags', [function() {
+    return function(input, tag) {
+    	tag.rows = [];
+    	if(tag.slug.length==0) {
+    		_(input).forEach(function(row) {
+            	if(row.tags.length==0) {
+            		tag.rows.push(row);
+            	}
+    		});
+    	} else {
+	    	_(input).forEach(function(row) {
+	    		console.log("tag:"+tag.slug);
+	    		console.log("slugs:"+ _(row.tags).map("slug"));
+	        	if( _(row.tags).map("slug").contains(tag.slug)) {
+	        		tag.rows.push(row);
+	        	}
+			});
+    	}
+        return tag.rows;
+    };
+}])
+
 // Pagination
 app.filter('startFrom', [function() {
     return function(input, start) {
@@ -272,13 +294,26 @@ function toDate(enDateString) {
 	return new Date(frags[1]+"/"+frags[2]+"/"+frags[3]);
 }
 
+function toFinnishDate(enDateString) {
+	var myDate = toDate(enDateString);
+	return myDate.getDate()+"."+(myDate.getMonth()+1)+"."+myDate.getFullYear();
+}
 app.filter('toFinnishDate', function() {
 	return function(enDateString) {
 		if (_.isUndefined(enDateString)) {
 			return "";
 		}
-		var myDate = toDate(enDateString);
-		return myDate.getDate()+"."+(myDate.getMonth()+1)+"."+myDate.getFullYear();
+		return toFinnishDate(enDateString);
+	};
+});
+
+app.filter('toFinnishDateTime', function() {
+	return function(enDateString) {
+		if (_.isUndefined(enDateString)) {
+			return "";
+		}
+		var i=enDateString.indexOf(" ");
+		return toFinnishDate(enDateString)+enDateString.substring(i, i+6);
 	};
 });
 
