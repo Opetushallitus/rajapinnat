@@ -6,7 +6,10 @@
         </div>
     </div>
     <div style="color: #999999">
-    	{{model.material.date  | toFinnishDate}} {{model.material.author.name}}
+    	{{model.material.date  | toFinnishDateTime}} {{model.material.author.name}}
+    </div>
+    <div>
+    	<span ng-repeat="tag in model.material.tags" class="tag">{{tag.title}}</span>
     </div>
     <ul>
 		<li  ng-repeat="attachment in model.material.attachments"><i class="icon-file"></i> <a href="{{attachment.url}}" target="_blank">{{attachment.title}}</a></li>

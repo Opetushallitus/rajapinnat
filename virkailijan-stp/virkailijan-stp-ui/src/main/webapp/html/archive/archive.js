@@ -64,6 +64,7 @@ function ArchiveController($scope,
 			AnnouncementsSortOrderUIModel,
 			MaterialsSortOrderUIModel,
 			CategoriesUIModel,
+			TagsUIModel,
 			ArchiveAnnouncementsUIModel,
 			ArchiveMaterialsUIModel,
 			AnnouncementsYearTreeUIModel,
@@ -73,6 +74,7 @@ function ArchiveController($scope,
 	$scope.breadcrumbs = breadcrumbs;
 	$scope.selectedcategoriesmodel = SelectedCategoriesModel;
 	$scope.categoriesmodel = CategoriesUIModel;
+	$scope.tagsmodel = TagsUIModel;
 	$scope.$watch('categoriesmodel.ready', function(newValue, oldValue) {
 		if (newValue) {
 			$scope.selectedcategoriesmodel.init();

@@ -19,7 +19,11 @@ app.factory('LatestEventsUIModel', function(LatestEventsPopulator) {
 	return new UIFilterModel(LatestEventsPopulator).setParams({});
 });
 
-app.factory('LatestMaterialsPopulator', function(LatestMaterials, $filter) {
+app.factory('LatestMaterial', function() {	
+	return {post : null};
+});
+
+app.factory('LatestMaterialsPopulator', function(LatestMaterials, LatestMaterial, $filter) {
 	return new ModelPopulator(LatestMaterials, $filter('i18n')("desktop.materials.messages.errors.loadingmaterials"));
 });
 
@@ -136,7 +140,7 @@ app.factory('SelectedCategoriesModel', function(LatestAnnouncementsUIModel, Late
 			},
 			onItemDeselect :  function (item) {
 				//there's bug in library (angularjs-dropdown-multiselect.min.js): item is not category-object (externalIdProp: '') 
-				// - like on 'onItemSelect' - but Object on its own 
+				// - like on 'onItemSelect' - but Object on its own  - so we'll find the actual object by its slug
 				var category = {};
 				category = _.filter(CategoriesUIModel.rows, function(_category) {
 				    return _category.slug == item.slug;
@@ -189,9 +193,49 @@ app.factory('CategoriesUIModel', function(CategoriesPopulator) {
 	return model;
 });
 
-function PostsController($scope, breadcrumbs, LatestAnnouncementsUIModel, LatestEventsUIModel, LatestMaterialsUIModel, SearchTxtUIModel, Profiles, CategoriesUIModel, SelectedCategoriesModel, $location) {
+app.factory('TagsPopulator', function(Tags, $filter) {
+	var tagsResultValidator = new PostResultValidator();
+	tagsResultValidator.result = function(result) {
+		//add a tag, that represents those that have no tag (ie. common messages)
+		result.tags.unshift(
+				{
+					slug : "",
+					title: $filter('i18n')("desktop.materials.title.commonmessages")
+				}
+		);
+		_(result.tags).forEach(function(tag) {
+			tag.rows = [];
+			tag.maxlines = INITIALLINES;
+			tag.showmore = function() {
+				tag.maxlines += SHOWMORELINES;
+	        }			
+		});
+		return result.tags;
+	}	
+	return new ModelPopulator(Tags, $filter('i18n')("desktop.announcements.messages.errors.XXloadingannouncements"), tagsResultValidator);
+});
+
+app.factory('TagsUIModel', function(TagsPopulator,  ArchiveMaterialsUIModel, ArchiveAnnouncementsUIModel) {
+	var model = new UIListModel(TagsPopulator).setParams({});
+	model.clicked = function(tag) {
+		if (tag.checked) {
+			tag.f = function(row) {
+				return $.map( row.tags, function( _tag ) {
+					return _tag.slug;
+				}).contains(tag.slug);				
+			}
+		}
+		ArchiveMaterialsUIModel.clicked(tag, 2);
+		ArchiveAnnouncementsUIModel.clicked(tag, 2);
+	}
+	return model;
+});
+
+function PostsController($scope, TagsUIModel, breadcrumbs, LatestAnnouncementsUIModel, LatestEventsUIModel, LatestMaterialsUIModel, SearchTxtUIModel, Profiles, CategoriesUIModel, SelectedCategoriesModel, $location, LatestMaterial) {
+
 	$scope.selectedcategoriesmodel = SelectedCategoriesModel;
 	$scope.categoriesmodel = CategoriesUIModel;
+	$scope.tagsmodel = TagsUIModel;
 	$scope.$watch('categoriesmodel.ready', function(newValue, oldValue) {
 		if (newValue) {
 			$scope.selectedcategoriesmodel.init();
@@ -208,5 +252,13 @@ function PostsController($scope, breadcrumbs, LatestAnnouncementsUIModel, Latest
 		SearchTxtUIModel.search();
 		$scope.location.path("/etusivu/arkisto");
 	}
+	$scope.latestMaterial = LatestMaterial;
+	$scope.$watch('materialsmodel.ready', function(newValue, oldValue) {
+		if (newValue) {
+			LatestMaterial.post  = _.max($scope.materialsmodel.rows, function(row) {
+				  return toDate(row.date);
+			});
+		}
+    });
 }
 
