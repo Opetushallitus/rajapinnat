@@ -1,0 +1,20 @@
+<div class="row-fluid">
+    <div class="span12">
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <h1>{{'desktop.title' | i18n}}</h1></td>
+                <td style="float: right; padding-top: 20px;">
+                    <table style="width: 100%">
+                        <tr>
+                            <td>{{'userroles.dropbox.label' | i18n}}</td>
+                            <td>
+                                <div ng-dropdown-multiselect="" options="categoriesmodel.rows" selected-model="selectedcategoriesmodel.rows" events="selectedcategoriesmodel.categoriesevents" extra-settings="selectedcategoriesmodel.extraSettings" checkboxes="true" translation-texts="selectedcategoriesmodel.buttonTexts"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

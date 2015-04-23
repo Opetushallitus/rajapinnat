@@ -1,23 +1,6 @@
 <div class="container">
 	<div stp-breadcrumb></div>
-    <div class="row-fluid">
-        <div class="span12">
-        	<table style="width: 100%">
-        		<tr>
-        			<td><h1>{{'calendar.title' | i18n}}</h1></td>
-        			<td  style="float: right; padding-top: 20px;">
-        			<table style="width: 100%">
-        				<tr>
-        				<td>N&auml;ytett&auml;v&auml; sis&auml;lt&ouml; :</td> 
-        				
-        				<td><div ng-model="test" ng-dropdown-multiselect="" options="categoriesmodel.rows" selected-model="selectedcategoriesmodel.rows" events="selectedcategoriesmodel.categoriesevents" extra-settings="selectedcategoriesmodel.extraSettings" checkboxes="true" translation-texts="selectedcategoriesmodel.buttonTexts"></div></td>
-        				</tr>
-        			</table>
-        			</td>
-        		</tr>
-        	</table>
-        </div>
-	</div>
+	<div ng-include="'partials/userroles.html'"/>
 	<table style="width: 10%">
 		<tbody>
 			<tr>
