@@ -21,113 +21,12 @@
                             <h5>{{'archive.text.filter_results' | i18n}}</h5>
                         </td>
                         <td style="vertical-align: top" rowspan="2">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                        	<div stp-pagination></div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-if="materialsmodel.ready && materialsmodel.hasalerts()">
-                                        <td class="align-left">
-                                            <div class="row-fluid">
-                                                <div class="span9">
-                                                    <alert ng-repeat="alert in materialsmodel.alerts" type="alert.type"> <img style="margin-right: 10px;" src="../img/alert-icon28x29.png">{{alert.msg}}</alert>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-repeat="material in materialsmodel.rows | startFrom: materialsmodel.pagesize*(materialsmodel.pagenr-1)  |  limitTo: materialsmodel.pagesize" ng-if="materialsmodel.ready">
-                                        <td class="align-left">
-                                            <div>
-                                                <a href="#/etusivu/arkisto/materiaali/{{material.id}}" title="{{'desktop.material.show.hint' | i18n}}"><h5>{{material.title_plain | words:8}}</h5></a>
-                                            </div>
-                                            <div style="color: #999999">
-                                                {{material.date | toFinnishDateTime}} {{material.author.name}}
-                                            </div>
-                                            <div>
-                                            	<span ng-repeat="tag in material.tags" class="tag">{{tag.title}}</span>
-                                            </div>                                            
-                                        </td>
-                                    </tr>
-                                    <tr ng-if="!materialsmodel.hasalerts() && materialsmodel.rows.length==0">
-                                        <td class="align-left">
-                                            <div style="color: #999999">
-                                                {{'desktop.materials.messages.nomaterials' | i18n}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-if="materialsmodel.rows.length>0">
-                                        <td>
-                                        	<div stp-pagination></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+							<div ng-include="'archive/list.html'"/>
                         </td>
                     </tr>
                     <tr>
                         <td style="vertical-align: top">
-                            <h6>{{'archive.text.filter_results_category' | i18n}}</h6>
-                            <!-- categories -->
-                            <table>
-                                <tr ng-repeat="category in categoriesmodel.rows" ng-if="categoriesmodel.ready">
-                                    <td style="vertical-align: top;">
-                                        <input type="checkbox" ng-model="category.checked" ng-change="selectedcategoriesmodel.clicked(category)" />
-                                    </td>
-                                    <td style="padding-left: 5px;">
-                                        {{category.title}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="*">&nbsp;</td>
-                                </tr>
-                            </table>
-    						<h6>{{'archive.text.filter_results_tag' | i18n}}</h6>
-    						<!-- tags -->
-    						<table>
-    							<tr ng-repeat="tag in tagsmodel.rows" ng-if="tagsmodel.ready && tag.slug.length>0">
-    								<td style="vertical-align: top; padding-left: 5px;">
-										 <input type="checkbox" ng-model="tag.checked" ng-change="tagsmodel.clicked(tag)" />
-									</td>
-									<td style="padding-left: 5px;">
-										{{tag.title}}
-									</td>
-								<tr>
-								<tr><td colspan="*">&nbsp;</td></tr>
-    						</table>                            
-                            <!-- calendar tree -->
-                            <h6>{{'archive.text.filter_results_date' | i18n}}</h6>
-                            <table ng-repeat="year in materialsyear_tree.years">
-                                <tr>
-                                    <td ng-if="year.open">
-                                        <button type="button" ng-click="year.open = false" style="border: none; background: white;">
-                                            <img src="../img/itemtree-collapse-sprite-down.png" />
-                                        </button>
-                                    </td>
-                                    <td ng-if="!year.open">
-                                        <button type="button" ng-click="year.open = true" style="border: none; background: white;">
-                                            <img src="../img/itemtree-collapse-sprite-right.png" />
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" style="vertical-align: center;" data-indeterminate-checkbox data-child-list="year.months" data-property="checked" data-ng-model="year.checked" ng-click="materialsyear_tree.clicked(year,0)" />
-                                        <!-- must be ng-click instead of change (IE wont work otherwise) -->
-                                    </td>
-                                    <td style="padding-left: 5px;">
-                                        {{year.name}}
-                                    </td>
-                                </tr>
-                                <tr ng-repeat="month in year.months" ng-if="year.open">
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <input type="checkbox" style="vertical-align: top;" data-ng-model="month.checked" ng-change="materialsyear_tree.clicked(month,0)" />
-                                    </td>
-                                    <td>
-                                        {{month.name}}
-                                    </td>
-                                </tr>
-                            </table>
+                        	<div ng-include="'archive/filters.html'"/>
                         </td>
                         </tr>
                 </tbody>
@@ -141,115 +40,14 @@
                             <h5>{{'archive.text.filter_results' | i18n}}</h5>
                         </td>
                         <td style="vertical-align: top" rowspan="2">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                        	<div stp-pagination></div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-if="announcementsmodel.ready && announcementsmodel.hasalerts()">
-                                        <td class="align-left">
-                                            <div class="row-fluid">
-                                                <div class="span9">
-                                                    <alert ng-repeat="alert in announcementsmodel.alerts" type="alert.type"> <img style="margin-right: 10px;" src="../img/alert-icon28x29.png">{{alert.msg}}</alert>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-repeat="announcement in announcementsmodel.rows | startFrom: announcementsmodel.pagesize*(announcementsmodel.pagenr-1)  |  limitTo: announcementsmodel.pagesize" ng-if="announcementsmodel.ready">
-                                        <td class="align-left">
-                                            <div>
-                                                <a href="#/etusivu/arkisto/tiedote/{{announcement.id}}" title="{{'desktop.announcement.show.hint' | i18n}}"><h5>{{announcement.title_plain | words:8}}</h5></a>
-                                            </div>
-                                            <div style="color: #999999">
-                                                {{announcement.date | toFinnishDateTime}} {{announcement.author.name}}
-                                            </div>
-                                            <div>
-                                            	<span ng-repeat="tag in announcement.tags" class="tag">{{tag.title}}</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-if="!announcementsmodel.hasalerts() && announcementsmodel.rows.length==0">
-                                        <td class="align-left">
-                                            <div style="color: #999999">
-                                                {{'desktop.announcements.messages.noannoucemenets' | i18n}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-if="announcementsmodel.rows.length>0">
-                                        <td>
-                                        	<div stp-pagination></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+ 							<div ng-include="'archive/list.html'"/>
                         </td>
                     </tr>
                     <tr>
                         <td style="vertical-align: top">
-                            <h6>{{'archive.text.filter_results_category' | i18n}}</h6>
-                            <!-- categories -->
-                            <table>
-                                <tr ng-repeat="category in categoriesmodel.rows" ng-if="categoriesmodel.ready">
-                                    <td style="vertical-align: top;">
-                                        <input type="checkbox" ng-model="category.checked" ng-change="selectedcategoriesmodel.clicked(category)" />
-                                    </td>
-                                    <td style="padding-left: 5px;">
-                                        {{category.title}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                	<td colspan="*">&nbsp;</td>
-                                </tr>
-                            </table>
-    						<h6>{{'archive.text.filter_results_tag' | i18n}}</h6>
-    						<!-- tags -->
-    						<table>
-    							<tr ng-repeat="tag in tagsmodel.rows" ng-if="tagsmodel.ready && tag.slug.length>0">
-    								<td style="vertical-align: top; padding-left: 5px;">
-										 <input type="checkbox" ng-model="tag.checked" ng-change="tagsmodel.clicked(tag)" />
-									</td>
-									<td style="padding-left: 5px;">
-										{{tag.title}}
-									</td>
-								<tr>
-								<tr><td colspan="*">&nbsp;</td></tr>
-    						</table>                             
-                            <!-- calendar tree -->
-                            <h6>{{'archive.text.filter_results_date' | i18n}}</h6>
-                            <table ng-repeat="year in announcementsyear_tree.years">
-                                <tr>
-                                    <td ng-if="year.open">
-                                        <button type="button" ng-click="year.open = false" style="border: none; background: white;">
-                                            <img src="../img/itemtree-collapse-sprite-down.png" />
-                                        </button>
-                                    </td>
-                                    <td ng-if="!year.open">
-                                        <button type="button" ng-click="year.open = true" style="border: none; background: white;">
-                                            <img src="../img/itemtree-collapse-sprite-right.png" />
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" style="vertical-align: center;" data-indeterminate-checkbox data-child-list="year.months" data-property="checked" data-ng-model="year.checked" ng-click="announcementsyear_tree.clicked(year,0)" />
-                                        <!-- must be ng-click instead of ng-change (IE wont work otherwise) -->
-                                    </td>
-                                    <td style="padding-left: 5px;">
-                                        {{year.name}}
-                                    </td>
-                                </tr>
-                                <tr ng-repeat="month in year.months" ng-if="year.open">
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <input type="checkbox" style="vertical-align: top;" data-ng-model="month.checked" ng-change="announcementsyear_tree.clicked(month,0)" />
-                                    </td>
-                                    <td>
-                                        {{month.name}}
-                                    </td>
-                                </tr>
-                            </table>
+                        	<div ng-include="'archive/filters.html'"/>
                         </td>
-                        </tr>
+                    </tr>
                 </tbody>
             </table>
         </tab>
