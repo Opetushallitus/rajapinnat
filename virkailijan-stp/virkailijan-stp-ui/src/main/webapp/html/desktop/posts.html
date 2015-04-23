@@ -155,8 +155,8 @@
 					</table>
 				</td>				
 				<td style="width: 30%; vertical-align: top">
-					<h5>Viimeisin julkaistu ohje tai materiaali</h5>
-					<table class="table" ng-if="latestMaterial" style="margin-bottom:0;">
+					<h5 ng-if="latestMaterial.post.tags">{{'desktop.materials.title.latestmessage' | i18n}}</h5>
+					<table class="table" ng-if="latestMaterial.post.id" style="margin-bottom:0;">
 						<tr>
        		 				<td class="align-left">
        		 					<div>
@@ -171,8 +171,8 @@
        		 				</td>						
 						</tr>
 					</table>
-					<hr   style="margin: 0;"/>
-					<h5>Ohjeet ja materiaalityypit</h5>
+					<hr ng-if="latestMaterial.post.id" style="margin: 0;"/>
+					<h5>{{'desktop.materials.title.messagetypes' | i18n}}</h5>
     				<table class="table" ng-repeat="tag in tagsmodel.rows"  ng-if="tagsmodel.ready" style="margin-bottom:0;">
 			         	<tr>
                         	<td ng-if="tag.shown" style="width: 40px; padding-top: 8px;">
