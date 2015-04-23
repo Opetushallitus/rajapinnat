@@ -10,6 +10,9 @@ app.factory('LatestAnnouncementsUIModel', function(LatestAnnouncementsPopulator)
 app.factory('LatestEventsPopulator', function(Events, $filter) {
 	var eventsResultValidator = new PostResultValidator;
 	eventsResultValidator.result = function(result) {
+		_(result.events).forEach(function(event) {
+			event.categories = event.event_categories;
+		});
 		return result.events;
 	}
 	return new ModelPopulator(Events, $filter('i18n')("desktop.events.messages.errors.loadingevents"), eventsResultValidator);
@@ -19,11 +22,7 @@ app.factory('LatestEventsUIModel', function(LatestEventsPopulator) {
 	return new UIFilterModel(LatestEventsPopulator).setParams({});
 });
 
-app.factory('LatestMaterial', function() {	
-	return {post : null};
-});
-
-app.factory('LatestMaterialsPopulator', function(LatestMaterials, LatestMaterial, $filter) {
+app.factory('LatestMaterialsPopulator', function(LatestMaterials, $filter) {
 	return new ModelPopulator(LatestMaterials, $filter('i18n')("desktop.materials.messages.errors.loadingmaterials"));
 });
 
@@ -101,7 +100,7 @@ app.factory('CategoriesPopulator', function(Categories, $filter) {
 	categoriesResultValidator.result = function(result) {
 		return result.categories;
 	}	
-	return new ModelPopulator(Categories, $filter('i18n')("desktop.materials.messages.errors.loadingcategories"), categoriesResultValidator);
+	return new ModelPopulator(Categories, $filter('i18n')("desktop.categories.messages.errors.loadingcategories"), categoriesResultValidator);
 });
 
 app.factory('SelectedCategoriesModel', function(LatestAnnouncementsUIModel, LatestEventsUIModel, LatestMaterialsUIModel, ArchiveAnnouncementsUIModel, ArchiveMaterialsUIModel, CategoriesUIModel, UserOrganisations, Profiles) {
@@ -212,7 +211,7 @@ app.factory('TagsPopulator', function(Tags, $filter) {
 		});
 		return result.tags;
 	}	
-	return new ModelPopulator(Tags, $filter('i18n')("desktop.announcements.messages.errors.XXloadingannouncements"), tagsResultValidator);
+	return new ModelPopulator(Tags, $filter('i18n')("desktop.tags.messages.errors.loadingtags"), tagsResultValidator);
 });
 
 app.factory('TagsUIModel', function(TagsPopulator,  ArchiveMaterialsUIModel, ArchiveAnnouncementsUIModel) {
@@ -228,6 +227,19 @@ app.factory('TagsUIModel', function(TagsPopulator,  ArchiveMaterialsUIModel, Arc
 		ArchiveMaterialsUIModel.clicked(tag, 2);
 		ArchiveAnnouncementsUIModel.clicked(tag, 2);
 	}
+	return model;
+});
+
+app.factory('LatestMaterial', function(LatestMaterialsUIModel) {
+	var model = new function() {
+		this.post = null;
+		this.refresh = function() {
+			model.post  = _.max(LatestMaterialsUIModel.rows, function(row) {
+			  return toDate(row.date);
+			});
+		}
+	}
+	model.refresh();
 	return model;
 });
 
@@ -253,12 +265,8 @@ function PostsController($scope, TagsUIModel, breadcrumbs, LatestAnnouncementsUI
 		$scope.location.path("/etusivu/arkisto");
 	}
 	$scope.latestMaterial = LatestMaterial;
-	$scope.$watch('materialsmodel.ready', function(newValue, oldValue) {
-		if (newValue) {
-			LatestMaterial.post  = _.max($scope.materialsmodel.rows, function(row) {
-				  return toDate(row.date);
-			});
-		}
+	$scope.$watch('materialsmodel.rows.length', function(newValue, oldValue) {
+		LatestMaterial.refresh();
     });
 }
 

@@ -251,8 +251,6 @@ app.filter('filterTags', [function() {
     		});
     	} else {
 	    	_(input).forEach(function(row) {
-	    		console.log("tag:"+tag.slug);
-	    		console.log("slugs:"+ _(row.tags).map("slug"));
 	        	if( _(row.tags).map("slug").contains(tag.slug)) {
 	        		tag.rows.push(row);
 	        	}
@@ -393,7 +391,7 @@ var UIFilterModel = function(populator) {
 		return model;   			
 	}
 	model.removeFilter = function(filter, group) {
-		model.filtergroups[group].remove(filter); //voipi olla ettei toimi
+		model.filtergroups[group].remove(filter);
 		if (model.ready) {
 			model.populate(false);
 		}	   			
@@ -408,20 +406,25 @@ var UIFilterModel = function(populator) {
 	}
 	model.transform = function(rows) {
 		if (model.filtergroups.length==0) {
+//			no filters : return all
 			return rows;
 		}
     	var _rows =[];
     	var hit = false;
+//    matches := <filtergroup_1> AND <filtergroup_2> AND ... AND <filtergroup_n>
+//    <filtergroup_n> := <filter_1_in_filtergroup_n> OR <filter_2_in_filtergroup_n> OR ... OR <filter_y_in_filtergroup_n>
+// 	  plain text explanation:
+//    row is to to be selected to the result, if row has at least one ("OR") hit in each ("AND") filtergroup
     	$(rows).each(function(i, row) {
     		hit = true;
     		$(model.filtergroups).each(function(i, filtergroup) {
     			$(filtergroup).each(function(i, filter) {
     				if (hit = filter(row)) {
-    					return false;
+    					return false; // "break"
     				}
     			});
-    			if (!hit) { //must hit all groups, otherwise not maching
-    				return false;
+    			if (!hit) { //one hit required for each group
+    				return false; // "break"
     			}
     		});
     		if (hit) {
