@@ -37,12 +37,6 @@
         		 					<div style="color: #999999">
         		 						{{event.event_date_time.event_start_date | toFinnishDate}} {{event.event_date_time.event_start_time | limitTo:5 }} - {{event.event_date_time.event_end_date | toFinnishDate}} {{event.event_date_time.event_end_time | limitTo:5 }}
         		 					</div>
-        		 					<td>
-	        							<button class="btn" ng-click="show.alert=true">Aseta muistutus</button>
-	        							<div ng-show="show.alert" class="alert alert-danger" role="alert">
-	  										Not implemented yet!
-										</div>
-        							</td>
         		 				</td>
         		 			</tr>
         		 			<tr ng-if="event.event_location">

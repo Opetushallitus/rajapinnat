@@ -47,9 +47,26 @@ app.factory('NoCacheInterceptor', function() {
 });
 // Route configuration
 
+
 app.config([ '$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
 	$httpProvider.interceptors.push('NoCacheInterceptor');
 
+	$httpProvider.interceptors.push(function($q) {
+	    var realEncodeURIComponent = window.encodeURIComponent;
+	    return {
+	      'request': function(config) {
+	         window.encodeURIComponent = function(input) {
+	           return realEncodeURIComponent(input).split("%3Csearch_for_all%3E").join("+"); 
+	         }; 
+	         return config || $q.when(config);
+	      },
+	      'response': function(config) {
+	         window.encodeURIComponent = realEncodeURIComponent;
+	         return config || $q.when(config);
+	      }
+	    };
+	  });
+	
 		var routeParameters =  {
 		etusivu   : { controller : PostsController,
 					  templateUrl : TEMPLATE_URL_BASE + 'desktop/posts.html',
@@ -102,7 +119,8 @@ app.factory('LatestAnnouncements', function($resource) {
     return $resource(WP_API_BASE +"get_posts", {}, {
         get : {
             method : "GET",
-            isArray : false
+            isArray : false,
+            params : { exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
 });
@@ -121,7 +139,8 @@ app.factory('TextSearchAnnouncements', function($resource) {
         get : {
             method : "GET",
             isArray : false,
-            params : { post_type : "post"}
+            params : { post_type : "post",
+            	 	   exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
 });
@@ -149,7 +168,8 @@ app.factory('LatestMaterials', function($resource) {
         get : {
             method : "GET",
             isArray : false,
-            params : { post_type : "page" }
+            params : { post_type : "page",
+            		   exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
 })
@@ -159,7 +179,8 @@ app.factory('TextSearchMaterials', function($resource) {
         get : {
             method : "GET",
             isArray : false,
-            params : { post_type : "page"}
+            params : { post_type : "page",
+            	       exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
 });
