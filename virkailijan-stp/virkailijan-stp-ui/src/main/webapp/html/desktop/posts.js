@@ -78,7 +78,7 @@ var SearchUI = function(UIModel) {
 		}
 		this.setParams = function() {
 			UIModel.setParams(
-					{ "search"  : model.searchtext,
+					{ "search"  : model.searchtext.length==0 ? '<search_for_all>' : model.searchtext ,
 					  "order"   : model.order,
 					  "orderby" : model.order_by
 			});
@@ -103,7 +103,7 @@ app.factory('CategoriesPopulator', function(Categories, $filter) {
 	return new ModelPopulator(Categories, $filter('i18n')("desktop.categories.messages.errors.loadingcategories"), categoriesResultValidator);
 });
 
-app.factory('SelectedCategoriesModel', function(LatestAnnouncementsUIModel, LatestEventsUIModel, LatestMaterialsUIModel, ArchiveAnnouncementsUIModel, ArchiveMaterialsUIModel, CategoriesUIModel, UserOrganisations, Profiles) {
+app.factory('SelectedCategoriesModel', function($filter, LatestAnnouncementsUIModel, LatestEventsUIModel, LatestMaterialsUIModel, ArchiveAnnouncementsUIModel, ArchiveMaterialsUIModel, CategoriesUIModel, UserOrganisations, Profiles) {
 	var model = new function() {
 		this.ready = false;
 		this.rows = [];
@@ -148,7 +148,7 @@ app.factory('SelectedCategoriesModel', function(LatestAnnouncementsUIModel, Late
 				model.clicked(category);
 			}
 		};
-		this.buttonTexts = {buttonDefaultText: 'Kaikki'};
+		this.buttonTexts = {buttonDefaultText:  $filter('i18n')("userroles.dropbox.label.all")};
 		this.init = function() {
 			if (model.ready) {
 				return;

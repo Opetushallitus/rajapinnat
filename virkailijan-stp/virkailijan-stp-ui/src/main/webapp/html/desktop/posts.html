@@ -1,18 +1,14 @@
 <div class="container">
+	<div stp-breadcrumb></div>
 	<div ng-include="'partials/userroles.html'"/>
 	<div class="row-fluid" style="vertical-align: middle; line-height:60px">
 		<table>
 			<tr>
 				<td>
-					<input type="text" ng-model="searchmodel.searchtext" style="margin-bottom: 0; height: 30px;" class="input-xxlarge" maxlength="50" placeholder="{{'desktop.search.placeholder' | i18n}}"/>
-				</td>
-				<td>
-        			<button class="btn-primary" ng-click="toArchive()" title="{{'desktop.search.hint' | i18n}}" ng-disabled="searchmodel.searchtext.length==0">
-            			{{'desktop.search' | i18n}}
-        			</button>
-				</td>
-				<td>
-					<a href="#/etusivu/arkisto">&gt;&gt; {{'desktop.showarchive' | i18n}}</a>
+				<form name="perusHakuForm" class="form-search ng-scope ng-pristine ng-valid">
+					<input type="text" ng-model="searchmodel.searchtext" style="margin-bottom: 0; height: 30px;" class="input-xxlarge" maxlength="50" placeholder="{{'desktop.search.placeholder' | i18n}}"/> 
+    				<button class="btn btn-primary ng-binding" ng-click="toArchive()" type="submit">{{'desktop.search' | i18n}}</button>
+				</form>
 				</td>
 			</tr>
 		</table>
