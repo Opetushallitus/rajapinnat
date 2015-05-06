@@ -33,7 +33,7 @@ var YearTreeUI = function($filter, CalendarUtil, ClickUIModels){
 		}
 		this.years = [];
 		var d = parseInt((new Date()).getFullYear());
-		for (var i=0; i<10; i++) {
+		for (var i=0; i<(d-2012); i++) {
 			this.years.push(new year(""+(d-i)));
 		}
 	};
