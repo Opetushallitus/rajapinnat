@@ -19,25 +19,6 @@
      </div>
     <h2 ng-if="announcementsmodel.rows.length>=0 || materialsmodel.rows.length>0">{{'archive.text.results' | i18n}} "{{searchmodel.searchedtext}}" ({{(announcementsmodel.rows.length+materialsmodel.rows.length)}} {{'archive.text.count' | i18n}})</h2>
     <tabset>
-        <tab heading="{{'desktop.materials.title' | i18n}} ({{materialsmodel.rows.length || 0}})" active="tabState.tab0" select="tabState.set_activetab(tabState.tab0)">
-            <table style="width: 100%" ng-controller="materialsTabCtrl">
-                <tbody>
-                    <tr>
-                        <td style="width: 20%;">
-                            <h5>{{'archive.text.filter_results' | i18n}}</h5>
-                        </td>
-                        <td style="vertical-align: top" rowspan="2">
-							<div ng-include="'archive/list.html'"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="vertical-align: top">
-                        	<div ng-include="'archive/filters.html'"/>
-                        </td>
-                        </tr>
-                </tbody>
-            </table>
-        </tab>
         <tab heading="{{'desktop.announcements.title' | i18n}} ({{announcementsmodel.rows.length || 0}})" active="tabState.tab1" select="tabState.set_activetab(tabState.tab1)">
             <table style="width: 100%" ng-controller="announcementsTabCtrl">
                 <tbody>
@@ -57,5 +38,24 @@
                 </tbody>
             </table>
         </tab>
+        <tab heading="{{'desktop.materials.title' | i18n}} ({{materialsmodel.rows.length || 0}})" active="tabState.tab0" select="tabState.set_activetab(tabState.tab0)">
+            <table style="width: 100%" ng-controller="materialsTabCtrl">
+                <tbody>
+                    <tr>
+                        <td style="width: 20%;">
+                            <h5>{{'archive.text.filter_results' | i18n}}</h5>
+                        </td>
+                        <td style="vertical-align: top" rowspan="2">
+							<div ng-include="'archive/list.html'"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top">
+                        	<div ng-include="'archive/filters.html'"/>
+                        </td>
+                        </tr>
+                </tbody>
+            </table>
+        </tab>        
     </tabset>
 </div>
