@@ -46,8 +46,8 @@ app.factory('YearTreeUIModel', function($filter, CalendarUtil, ArchiveAnnounceme
 
 app.factory("TabsStateUIModel", function() {
 	var model = new function() {
-		this.tab0 = true;
-		this.tab1 = false;
+		this.tab0 = false;
+		this.tab1 = true;
 		this.set_activetab = function(tab) {
 			tab = true;
 		}
