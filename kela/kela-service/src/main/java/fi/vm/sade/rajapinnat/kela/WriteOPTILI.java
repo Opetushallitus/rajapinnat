@@ -141,12 +141,18 @@ public class WriteOPTILI extends AbstractOPTIWriter {
         return strFormatter(oppil_nro, 5, "OPPIL_NRO");
     }
 
-    private String getHakukohdeId(HakukohdePerustieto curTulos) throws OPTFormatException {
-        Hakukohde hakukE = kelaDAO.findHakukohdeByOid(curTulos.getOid());
-        if (hakukE==null) {
-        	error(2,curTulos.getOid()+" "+curTulos.getNimi());
+    private Hakukohde getHakukohde(HakukohdePerustieto curTulos) throws OPTFormatException {
+        Hakukohde hk = kelaDAO.findHakukohdeByOid(curTulos.getOid());
+        
+        if (hk == null) {
+            error(2, curTulos.getOid() + " " + curTulos.getNimi());
         }
-        String hakukohdeId = String.format("%s", hakukE.getId());
+        
+        return hk;
+    }
+    
+    private String getHakukohdeId(Hakukohde hk) throws OPTFormatException {
+        String hakukohdeId = String.format("%s", hk.getId());
         return numFormatter(hakukohdeId, 10, "hakukohdeid");
     }
 
@@ -238,7 +244,7 @@ public class WriteOPTILI extends AbstractOPTIWriter {
 		OrganisaatioDTO tarjoajaOrganisaatioDTO=(OrganisaatioDTO) args[1];
 		KoulutusmoduuliToteutus komoto = (KoulutusmoduuliToteutus) args[2];
 		String komoto_oid="";
-				
+                
 		switch (komoto.getOid()) {
 		case  "1.2.246.562.5.02998_11_900_1709_1509" : 
 		case "1.2.246.562.5.02998_11_900_1709_1511": 
@@ -252,8 +258,13 @@ public class WriteOPTILI extends AbstractOPTIWriter {
 			komoto_oid=komoto.getOid();
 		}
 		
+                Hakukohde hk = getHakukohde(curTulos);
+                
+                String linjaNro = StringUtils.isEmpty(hk.getKelaLinjaKoodi()) ? StringUtils.leftPad("", 3) : hk.getKelaLinjaKoodi();
+                String linjaTarkenne = StringUtils.isEmpty(hk.getKelaLinjaTarkenne()) ? StringUtils.leftPad("", 2) : hk.getKelaLinjaTarkenne();
+                
 		return String.format("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", //44 fields
-                getHakukohdeId(curTulos),//Sisainen koodi
+                getHakukohdeId(hk),//Sisainen koodi
                 getOppilaitosnumero(tarjoajaOrganisaatioDTO),//OPPIL_NRO
                 getOrgOid(tarjoajaOrganisaatioDTO), //OrganisaatioOID
                 getOpetuspisteenJarjNro(tarjoajaOrganisaatioDTO),
@@ -273,8 +284,8 @@ public class WriteOPTILI extends AbstractOPTIWriter {
                 StringUtils.leftPad("",3), //OPL_OTTOALUE
                 StringUtils.leftPad("",3), //Opetusmuoto
                 StringUtils.leftPad("",2), //Koulutustyyppi
-                StringUtils.leftPad("",3), //OPL-EKASITTELY
-                StringUtils.leftPad("",2), //OPL_PKR_TUNNUS
+                linjaNro, //LINJANRO
+                linjaTarkenne, //LINJTARK
                 StringUtils.leftPad("",2), //OPL_VKOEJAR
                 StringUtils.leftPad("",2), //OPL_VKOEKUT
                 StringUtils.leftPad("",7), //Alinkeskiarvo

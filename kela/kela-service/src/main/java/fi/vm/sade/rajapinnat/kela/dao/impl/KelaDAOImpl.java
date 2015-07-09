@@ -19,15 +19,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
-import javax.persistence.Persistence;
-
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import fi.vm.sade.organisaatio.api.model.types.OrganisaatioTyyppi;
@@ -40,6 +34,10 @@ import fi.vm.sade.rajapinnat.kela.tarjonta.model.OrganisaatioPerustieto;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Organisaatiosuhde;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Organisaatiosuhde.OrganisaatioSuhdeTyyppi;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Yhteystieto;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 
 /**
  * 
@@ -47,44 +45,28 @@ import fi.vm.sade.rajapinnat.kela.tarjonta.model.Yhteystieto;
  */
 @Repository
 public class KelaDAOImpl implements KelaDAO { 
-	
-    private EntityManager tarjontaEm;
-    private EntityManager organisaatioEm;
+
+    @Inject
+    @Named("tarjontaEntityManagerFactory")
+    @PersistenceUnit(unitName = "tarjontaKela")
+    private EntityManagerFactory tarjontaEmf;
+    
+    @Inject
+    @Named("organisaatioEntityManagerFactory")
+    @PersistenceUnit(unitName = "organisaatioKela")
+    private EntityManagerFactory organisaatioEmf;
     
     private static final String KAYNTIOSOITE = "kaynti";
     private static final String POSTI = "posti";
     private static final String WWW = "Www";
     
-    private String tarjontaDbUrl;
-    private String tarjontaDbUsername;
-    private String tarjontaDbPassword;
-    private String organisaatioDbUrl;
-    private String organisaatioDbUsername;
-    private String organisaatioDbPassword;
     private static long generated_yht_id=9000000001L;
     private static HashMap<Long, Long> yht_id_map=new HashMap<Long, Long>(); //id of organisation, yht_id 
-    
-   
-    @PostConstruct
-    public void initEntityManagers () {
-        Map<String, String> tarjontaDbProperties = new HashMap<String, String>(); 
-        tarjontaDbProperties.put("hibernate.connection.url", tarjontaDbUrl);
-        tarjontaDbProperties.put("hibernate.connection.username", tarjontaDbUsername);
-        tarjontaDbProperties.put("hibernate.connection.password", tarjontaDbPassword);
-        
-        Map<String, String> organisaatioDbProperties = new HashMap<String, String>(); 
-        organisaatioDbProperties.put("hibernate.connection.url", organisaatioDbUrl);
-        organisaatioDbProperties.put("hibernate.connection.username", organisaatioDbUsername);
-        organisaatioDbProperties.put("hibernate.connection.password", organisaatioDbPassword);
-        
-        tarjontaEm = Persistence.createEntityManagerFactory("tarjontaKela", tarjontaDbProperties).createEntityManager();
-        organisaatioEm = Persistence.createEntityManagerFactory("organisaatioKela", organisaatioDbProperties).createEntityManager();
-    }
 
     @Override
     public Hakukohde findHakukohdeByOid(String oid) {
     	try {
-            return (Hakukohde) tarjontaEm.createQuery("FROM "+Hakukohde.class.getName()+" WHERE oid=? ")//and tila='JULKAISTU'")
+            return (Hakukohde) getTarjontaEntityManager().createQuery("FROM "+Hakukohde.class.getName()+" WHERE oid=? ")//and tila='JULKAISTU'")
                                 .setParameter(1, oid)
                                 .getSingleResult();
         } catch (NoResultException ex) {
@@ -98,7 +80,7 @@ public class KelaDAOImpl implements KelaDAO {
     @Override
     public Koulutusmoduuli getKoulutusmoduuli(String oid) {
         try {
-        	Koulutusmoduuli koulutusmoduuli = (Koulutusmoduuli) tarjontaEm.createQuery("FROM "+Koulutusmoduuli.class.getName()+" WHERE oid=? ")//and tila='JULKAISTU'")
+        	Koulutusmoduuli koulutusmoduuli = (Koulutusmoduuli) getTarjontaEntityManager().createQuery("FROM "+Koulutusmoduuli.class.getName()+" WHERE oid=? ")//and tila='JULKAISTU'")
             .setParameter(1, oid)
             .getSingleResult();
             return koulutusmoduuli;
@@ -112,7 +94,7 @@ public class KelaDAOImpl implements KelaDAO {
     @Override
     public KoulutusmoduuliToteutus getKoulutusmoduuliToteutus(String oid) {
         try {
-        	KoulutusmoduuliToteutus koulutusmoduuliToteutus = (KoulutusmoduuliToteutus) tarjontaEm.createQuery("FROM "+KoulutusmoduuliToteutus.class.getName()+" WHERE oid=? ")// and tila='JULKAISTU'")
+        	KoulutusmoduuliToteutus koulutusmoduuliToteutus = (KoulutusmoduuliToteutus) getTarjontaEntityManager().createQuery("FROM "+KoulutusmoduuliToteutus.class.getName()+" WHERE oid=? ")// and tila='JULKAISTU'")
             .setParameter(1, oid)
             .getSingleResult();
             return koulutusmoduuliToteutus;
@@ -148,7 +130,7 @@ public class KelaDAOImpl implements KelaDAO {
 				" ks.id=ksk.koulutus_sisaltyvyys_id and "+
 				" ksk.koulutusmoduuli_id=km2.id and "+
 				" km2.oid = ?";
-		for (String oid : (List<String>) tarjontaEm.createNativeQuery(qString).setParameter(1, rootOid).getResultList()) {
+		for (String oid : (List<String>) getTarjontaEntityManager().createNativeQuery(qString).setParameter(1, rootOid).getResultList()) {
 			_getParentOids(oid, resultList);
 			resultList.add(oid);
 		}
@@ -179,7 +161,7 @@ public class KelaDAOImpl implements KelaDAO {
 				" ks.parent_id=km2.id and "+
 				//" km2.tila='JULKAISTU' and "+
 				" km2.oid = ?";
-		for (String oid : (List<String>) tarjontaEm.createNativeQuery(qString).setParameter(1, rootOid).getResultList()) {
+		for (String oid : (List<String>) getTarjontaEntityManager().createNativeQuery(qString).setParameter(1, rootOid).getResultList()) {
 			_getChildrenOids(oid, resultList);
 			resultList.add(oid);
 		}
@@ -188,7 +170,7 @@ public class KelaDAOImpl implements KelaDAO {
     @Override
     public Organisaatio findOrganisaatioByOid(String oid) {
         try {
-            return (Organisaatio) organisaatioEm.createQuery("FROM "+Organisaatio.class.getName()+" WHERE oid=?")
+            return (Organisaatio) getOrganisaatioEntityManager().createQuery("FROM "+Organisaatio.class.getName()+" WHERE oid=?")
                                 .setParameter(1, oid)
                                 .getSingleResult();
 	    } catch (NoResultException ex) {
@@ -203,7 +185,7 @@ public class KelaDAOImpl implements KelaDAO {
     @Override
     public Organisaatio findFirstChildOrganisaatio(String oid) {
         try {
-            return (Organisaatio) organisaatioEm.createQuery("FROM " + Organisaatio.class.getName() + " WHERE parentOidPath like ? ")
+            return (Organisaatio) getOrganisaatioEntityManager().createQuery("FROM " + Organisaatio.class.getName() + " WHERE parentOidPath like ? ")
                     .setParameter(1, oid)
                     .getSingleResult();
         } catch (NoResultException ex) {
@@ -216,7 +198,7 @@ public class KelaDAOImpl implements KelaDAO {
 
     private Long _getKayntiosoiteIdForOrganisaatio(Long id, String osoiteTyyppi) {
         @SuppressWarnings("unchecked")
-		List<Long> resultList = organisaatioEm.createQuery("SELECT id FROM " + Yhteystieto.class.getName() + " WHERE organisaatioId = ? AND osoiteTyyppi = ? order by id desc")
+		List<Long> resultList = getOrganisaatioEntityManager().createQuery("SELECT id FROM " + Yhteystieto.class.getName() + " WHERE organisaatioId = ? AND osoiteTyyppi = ? order by id desc")
 				  .setParameter(1, id)
                   .setParameter(2, osoiteTyyppi)
                   .getResultList();
@@ -230,7 +212,7 @@ public class KelaDAOImpl implements KelaDAO {
     
     private Long _getWwwIdForOrganisaatio(Long id) {
         @SuppressWarnings("unchecked")
-		List<Long> resultList = organisaatioEm.createQuery("SELECT id FROM " + Yhteystieto.class.getName() + " WHERE organisaatioId = ? AND dType = ? order by id desc")
+		List<Long> resultList = getOrganisaatioEntityManager().createQuery("SELECT id FROM " + Yhteystieto.class.getName() + " WHERE organisaatioId = ? AND dType = ? order by id desc")
 				  .setParameter(1, id)
                   .setParameter(2, WWW)
                   .getResultList();
@@ -263,64 +245,10 @@ public class KelaDAOImpl implements KelaDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Organisaatiosuhde> findAllLiitokset() {
-        return (List<Organisaatiosuhde>) organisaatioEm.createQuery("FROM " + Organisaatiosuhde.class.getName() + " WHERE suhdetyyppi = ?") 
+        return (List<Organisaatiosuhde>) getOrganisaatioEntityManager().createQuery("FROM " + Organisaatiosuhde.class.getName() + " WHERE suhdetyyppi = ?") 
                  .setParameter(1, OrganisaatioSuhdeTyyppi.LIITOS.name())
                  .getResultList();
     }
-    
-    @Value("${kela-tarjontadb.url}")
-    public void setTarjontaDbUrl(String tarjontaDbUrl) {
-        this.tarjontaDbUrl = tarjontaDbUrl;
-    }
-
-    public String getTarjontaDbUrl() {
-        return tarjontaDbUrl;
-    }
-
-    @Value("${kela-tarjontadb.username}")
-	public void setTarjontaDbUsername(String tarjontaDbUsername) {
-		this.tarjontaDbUsername = tarjontaDbUsername;
-	}
-
-    public String getTarjontaDbUsername() {
-		return tarjontaDbUsername;
-	}
-    
-    @Value("${kela-tarjontadb.password}")
-	public void setTarjontaDbPassword(String tarjontaDbPassword) {
-		this.tarjontaDbPassword = tarjontaDbPassword;
-	}
-
-	public String getTarjontaDbPassword() {
-		return tarjontaDbPassword;
-	}
-
-	@Value("${kela-organisaatiodb.url}")
-    public void setOrganisaatioDbUrl(String organisaatioDbUrl) {
-        this.organisaatioDbUrl = organisaatioDbUrl;
-    }
-
-	public String getOrganisaatioDbUrl() {
-        return organisaatioDbUrl;
-    }
-
-	@Value("${kela-organisaatiodb.username}")
-	public void setOrganisaatioDbUsername(String organisaatioDbUsername) {
-		this.organisaatioDbUsername = organisaatioDbUsername;
-	}
-
-	public String getOrganisaatioDbUsername() {
-		return organisaatioDbUsername;
-	}
-
-	@Value("${kela-organisaatiodb.password}")
-	public void setOrganisaatioDbPassword(String organisaatioDbPassword) {
-		this.organisaatioDbPassword = organisaatioDbPassword;
-	}
-
-	public String getOrganisaatioDbPassword() {
-		return organisaatioDbPassword;
-	}
 	
     private OrganisaatioPerustieto applyOrganisaatio(Object [] organisaatio) {
         OrganisaatioPerustieto result = new OrganisaatioPerustieto();
@@ -387,7 +315,7 @@ public class KelaDAOImpl implements KelaDAO {
     		;
     		
     		@SuppressWarnings("unchecked")
-			List<Object[]> organisaatiot = organisaatioEm.createNativeQuery(sQuery).getResultList();
+			List<Object[]> organisaatiot = getOrganisaatioEntityManager().createNativeQuery(sQuery).getResultList();
 
     		List<OrganisaatioPerustieto> organisaatioPerustiedot =
     				new LinkedList<OrganisaatioPerustieto>();
@@ -409,7 +337,7 @@ public class KelaDAOImpl implements KelaDAO {
 		+" and position('Oppilaitos' in o.organisaatiotyypitstr)>0"; 
 
 		@SuppressWarnings("unchecked")
-		List<String> parentOids = organisaatioEm.createNativeQuery(sQuery).getResultList();
+		List<String> parentOids = getOrganisaatioEntityManager().createNativeQuery(sQuery).getResultList();
 		if (parentOids.size()!=1) {
 			return null;
 		}
@@ -437,7 +365,7 @@ public class KelaDAOImpl implements KelaDAO {
 		;
 		
 		@SuppressWarnings("unchecked")
-		List<Object[]> organisaatiot = organisaatioEm.createNativeQuery(sQuery).getResultList();
+		List<Object[]> organisaatiot = getOrganisaatioEntityManager().createNativeQuery(sQuery).getResultList();
 
 		List<OrganisaatioPerustieto> organisaatioPerustiedot =
 				new LinkedList<OrganisaatioPerustieto>();
@@ -543,5 +471,12 @@ public class KelaDAOImpl implements KelaDAO {
 		 */
 		return "   ";
 	}
+        
+        private EntityManager getTarjontaEntityManager() {
+            return tarjontaEmf.createEntityManager();
+        }
 
+        private EntityManager getOrganisaatioEntityManager() {
+            return organisaatioEmf.createEntityManager();
+        }
 }
