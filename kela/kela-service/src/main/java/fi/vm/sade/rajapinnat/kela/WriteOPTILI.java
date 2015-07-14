@@ -62,7 +62,8 @@ public class WriteOPTILI extends AbstractOPTIWriter {
     	"OPPIL_NRO may not be missing (org.oid=%s).",
     	"HAK_NIMI may not be missing (org.oid=%s).",
     	"duplicate oid suffix detected (%s oid %s).",
-    	"no hakukohde for OID : %s (%s)"
+    	"no hakukohde for OID : %s (%s)",
+        "komo %s has no koulutus_uri"
     };
 
     private final static String[] warnings = {
@@ -109,6 +110,11 @@ public class WriteOPTILI extends AbstractOPTIWriter {
     	if (koulutusmoduuli==null) {
     		error(8);
     	}
+        
+        if (koulutusmoduuli.getKoulutusUri() == null) {
+            error(12, koulutusmoduuli.getOid());
+        }
+        
     	return getTutkintotunniste(koulutusmoduuli.getKoulutusUri()," koulutusmoduuli-oid: "+koulutusmoduuli.getOid());
     }
 
