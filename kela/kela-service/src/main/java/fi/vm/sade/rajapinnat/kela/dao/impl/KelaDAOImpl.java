@@ -35,6 +35,7 @@ import fi.vm.sade.rajapinnat.kela.tarjonta.model.OrganisaatioPerustieto;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Organisaatiosuhde;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Organisaatiosuhde.OrganisaatioSuhdeTyyppi;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Yhteystieto;
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManagerFactory;
@@ -48,6 +49,9 @@ import org.apache.log4j.Logger;
 @Repository
 public class KelaDAOImpl implements KelaDAO { 
     private static final Logger LOG = Logger.getLogger(KelaDAOImpl.class);
+    
+    private EntityManager tarjontaEm;
+    private EntityManager organisaatioEm;
     
     @Inject
     @Named("tarjontaEntityManagerFactory")
@@ -66,6 +70,12 @@ public class KelaDAOImpl implements KelaDAO {
     private static long generated_yht_id=9000000001L;
     private static HashMap<Long, Long> yht_id_map=new HashMap<Long, Long>(); //id of organisation, yht_id 
 
+    @PostConstruct
+    public void initEntityManagers () {
+        tarjontaEm = tarjontaEmf.createEntityManager();
+        organisaatioEm = organisaatioEmf.createEntityManager();
+    }
+    
     @Override
     public Hakukohde findHakukohdeByOid(String oid) {
     	try {
@@ -481,10 +491,10 @@ public class KelaDAOImpl implements KelaDAO {
 	}
         
         private EntityManager getTarjontaEntityManager() {
-            return tarjontaEmf.createEntityManager();
+            return tarjontaEm;
         }
 
         private EntityManager getOrganisaatioEntityManager() {
-            return organisaatioEmf.createEntityManager();
+            return organisaatioEm;
         }
 }
