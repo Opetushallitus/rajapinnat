@@ -40,7 +40,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
-import org.apache.log4j.Logger;
 
 /**
  * 
@@ -48,7 +47,6 @@ import org.apache.log4j.Logger;
  */
 @Repository
 public class KelaDAOImpl implements KelaDAO { 
-    private static final Logger LOG = Logger.getLogger(KelaDAOImpl.class);
     
     private EntityManager tarjontaEm;
     private EntityManager organisaatioEm;
@@ -349,10 +347,9 @@ public class KelaDAOImpl implements KelaDAO {
 		+" and o.oid in (select regexp_split_to_table(parentoidpath, E'\\\\|') from organisaatio where oid='"+oid+"')"
 		+" and position('Oppilaitos' in o.organisaatiotyypitstr)>0"; 
 
-                LOG.info("Getting parent oid.");
 		@SuppressWarnings("unchecked")
 		List<String> parentOids = getOrganisaatioEntityManager().createNativeQuery(sQuery).getResultList();
-                LOG.info("Got parent oid.");
+
 		if (parentOids.size()!=1) {
 			return null;
 		}
@@ -378,17 +375,14 @@ public class KelaDAOImpl implements KelaDAO {
 		+" where position('Toimipiste' in o.organisaatiotyypitstr)>0 "
 		+" and not o.organisaatiopoistettu=true "
 		;
-		LOG.info("Excecuting toimipiste query...");
                 
 		@SuppressWarnings("unchecked")
 		List<Object[]> organisaatiot = getOrganisaatioEntityManager().createNativeQuery(sQuery).getResultList();
 
-                LOG.info("Got " + organisaatiot.size() + " results.");
 		List<OrganisaatioPerustieto> organisaatioPerustiedot =
 				new LinkedList<OrganisaatioPerustieto>();
 		
 		for (Object [] organisaatio : organisaatiot) {
-                        LOG.info("Handling organization " + organisaatio[0]);
 			if (!excludeOids.contains((String) organisaatio[0])) {
 				OrganisaatioPerustieto organisaatioPerustieto = applyOrganisaatio(organisaatio);
 				organisaatioPerustieto.setParentOppilaitosOid(findParentOppilaitosOid(organisaatioPerustieto.getOid()));
