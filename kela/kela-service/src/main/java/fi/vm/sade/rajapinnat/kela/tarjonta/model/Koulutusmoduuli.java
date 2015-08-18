@@ -34,8 +34,6 @@ public class Koulutusmoduuli {
     private String oid;
     @Column(name = "koulutus_uri")
     private String koulutusUri;
-    @Column(name = "kandi_koulutus_uri")
-    private String kandi_koulutus_uri;
     @Column(name = "koulutusaste_uri")
     private String koulutusaste_uri;
     
@@ -61,14 +59,6 @@ public class Koulutusmoduuli {
 
 	public void setKoulutusUri(String koulutusUri) {
 		this.koulutusUri = koulutusUri;
-	}
-
-	public String getKandi_koulutus_uri() {
-		return kandi_koulutus_uri;
-	}
-
-	public void setKandi_koulutus_uri(String kandi_koulutus_uri) {
-		this.kandi_koulutus_uri = kandi_koulutus_uri;
 	}
 
 	public String getKoulutusaste_uri() {
