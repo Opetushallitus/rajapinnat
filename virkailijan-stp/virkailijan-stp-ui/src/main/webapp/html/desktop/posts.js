@@ -159,8 +159,10 @@ app.factory('SelectedCategoriesModel', function($filter, LatestAnnouncementsUIMo
 					_(_.filter(CategoriesUIModel.rows, function(category) {
 						return slugs.contains(category.slug);
 					})).forEach(function(category){
-						category.checked = true;
-						model.clicked(category)
+						if (_.isUndefined(category.checked) || !category.checked) {
+							category.checked = true;
+							model.clicked(category)
+						}
 					});
 				});
 			}

@@ -140,6 +140,7 @@ app.factory('TextSearchAnnouncements', function($resource) {
             method : "GET",
             isArray : false,
             params : { post_type : "post",
+     		   		   count : "-1",
             	 	   exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
@@ -180,6 +181,7 @@ app.factory('TextSearchMaterials', function($resource) {
             method : "GET",
             isArray : false,
             params : { post_type : "page",
+            		   count : "-1",
             	       exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
@@ -405,7 +407,7 @@ var UIFilterModel = function(populator) {
 		if (!model.filtergroups[group]) {
 			model.filtergroups[group] = [];
 		}
-		model.filtergroups[group].push(filter);
+			model.filtergroups[group].push(filter);
 		if (model.ready) {
 			model.populate(false);
 		}
