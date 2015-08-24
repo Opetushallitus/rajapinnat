@@ -120,7 +120,8 @@ app.factory('LatestAnnouncements', function($resource) {
         get : {
             method : "GET",
             isArray : false,
-            params : { exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
+            params : { 	count : "-1",
+            			exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
 });
@@ -150,7 +151,8 @@ app.factory('Events', function($resource) {
     return $resource(WP_API_BASE+"events/get_recent_events", {}, {
         get : {
             method : "GET",
-            isArray : false
+            isArray : false,
+            params : { count : "-1" }
         }
     });
 })
@@ -170,6 +172,7 @@ app.factory('LatestMaterials', function($resource) {
             method : "GET",
             isArray : false,
             params : { post_type : "page",
+    	   			   count : "-1",
             		   exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
