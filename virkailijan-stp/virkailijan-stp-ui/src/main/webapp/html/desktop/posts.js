@@ -122,33 +122,7 @@ app.factory('SelectedCategoriesModel', function($filter, LatestAnnouncementsUIMo
 			ArchiveAnnouncementsUIModel.clicked(category, 1);
 			ArchiveMaterialsUIModel.clicked(category, 1);
 		}
-		this.extraSettings = {externalIdProp: '',
-			displayProp: 'title', 
-			idProp: 'slug',
-			buttonClasses: 'btn btn-default dropdown-multiselect', 
-			showCheckAll : false, 
-			showUncheckAll: false,
-			smartButtonMaxItems: 15,
-			smartButtonTextConverter: function(itemText, originalItem) {
-				return itemText;
-		}};
-		this.categoriesevents = {
-			onItemSelect :  function (category) {
-				category.checked = true;
-				model.clicked(category);
-			},
-			onItemDeselect :  function (item) {
-				//there's bug in library (angularjs-dropdown-multiselect.min.js): item is not category-object (externalIdProp: '') 
-				// - like on 'onItemSelect' - but Object on its own  - so we'll find the actual object by its slug
-				var category = {};
-				category = _.filter(CategoriesUIModel.rows, function(_category) {
-				    return _category.slug == item.slug;
-				})[0];
-				category.checked = false;
-				model.clicked(category);
-			}
-		};
-		this.buttonTexts = {buttonDefaultText:  $filter('i18n')("userroles.dropbox.label.all")};
+
 		this.init = function() {
 			if (model.ready) {
 				return;
