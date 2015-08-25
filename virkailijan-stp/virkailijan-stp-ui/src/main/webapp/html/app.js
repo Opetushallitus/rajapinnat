@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module('virkailijan-stp', ['angularjs-dropdown-multiselect','ngHtmlCompile','ngResource', 'ngSanitize', 'truncate', 'loading', 'ngRoute', 'ng-breadcrumbs', 'ngAnimate', 'localization', 'ui.bootstrap','ui.bootstrap.tpls','ui.bootstrap.transition', 'ui.utils', 'ngIdle', 'pasvaz.bindonce', 'ngUpload']);
+var app = angular.module('virkailijan-stp', ['ngHtmlCompile','ngResource', 'ngSanitize', 'truncate', 'loading', 'ngRoute', 'ng-breadcrumbs', 'ngAnimate', 'localization', 'ui.bootstrap','ui.bootstrap.tpls','ui.bootstrap.transition', 'ui.utils', 'ngIdle', 'pasvaz.bindonce', 'ngUpload']);
 //
 // i18n toteutus kopioitu osittain http://jsfiddle.net/4tRBY/41/
 //
