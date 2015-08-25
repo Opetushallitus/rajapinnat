@@ -7,7 +7,7 @@ app.factory('EventModel', function(Event) {
         this.getEvent = function(scope, tapahtumaid, sce) {
         	Event.get({ id : tapahtumaid }, function(result) {
         		model.event = result;
-        		scope.htmlContent = sce.trustAsHtml(result.content);
+        		scope.htmlContent = sce.trustAsHtml(preFormattedHtml(result.content));
         	});
         };
     };

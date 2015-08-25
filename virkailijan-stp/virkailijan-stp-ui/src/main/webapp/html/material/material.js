@@ -7,7 +7,7 @@ app.factory('MaterialModel', function(Material) {
         this.getEvent = function(scope, materiaaliid, sce) {
         	Material.get({ id : materiaaliid }, function(result) {
         		model.material = result.post;
-        		scope.htmlContent = sce.trustAsHtml(result.post.content);
+        		scope.htmlContent = sce.trustAsHtml(preFormattedHtml(result.post.content));
         		scope.loadingReady = true;
         	});
         };

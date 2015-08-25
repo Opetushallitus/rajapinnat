@@ -226,7 +226,9 @@ app.factory('CalendarModel', function(EventDates, CalendarUtil, $q, SelectedCate
              				model.events.push(event);
              			};
              		});
-             		_(model.events).forEach(function (el) { el.hmlContent = model.sce.trustAsHtml(el.content) }); 
+             		_(model.events).forEach(function (el) {
+             			el.content = preFormattedHtml(el.content);             			 
+             		}); 
              		model.eventsReady = true;
              	}
             );
