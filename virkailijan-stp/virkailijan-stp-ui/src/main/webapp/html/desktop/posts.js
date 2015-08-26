@@ -3,8 +3,15 @@ app.factory('LatestAnnouncementsPopulator', function(LatestAnnouncements, $filte
 	return new ModelPopulator(LatestAnnouncements, $filter('i18n')("desktop.announcements.messages.errors.loadingannouncements"));
 });
 
-app.factory('LatestAnnouncementsUIModel', function(LatestAnnouncementsPopulator) {	
-	return new UIFilterModel(LatestAnnouncementsPopulator).setParams({});
+app.factory('LatestAnnouncementsUIModel', function(LatestAnnouncementsPopulator, $filter) {
+	var uiFilterModel = new  UIFilterModel(LatestAnnouncementsPopulator);
+	uiFilterModel.transform = function(rows) {
+		_(rows).forEach(function(row) {
+			row.title_plain_short = $filter('words')(row.title_plain, "8");
+		});
+    	return rows;
+    }
+	return uiFilterModel.setParams({});
 });
 
 app.factory('LatestEventsPopulator', function(Events, $filter) {
@@ -34,16 +41,30 @@ app.factory('TextSearchAnnoucementsPopulator', function(TextSearchAnnouncements,
 	return new ModelPopulator(TextSearchAnnouncements, $filter('i18n')("desktop.announcements.messages.errors.loadingannouncements"));
 });
 
-app.factory('ArchiveAnnouncementsUIModel', function(TextSearchAnnoucementsPopulator) {
-	return new UIFilterModel(TextSearchAnnoucementsPopulator);
+app.factory('ArchiveAnnouncementsUIModel', function(TextSearchAnnoucementsPopulator, $filter) {
+	var uiFilterModel = new  UIFilterModel(TextSearchAnnoucementsPopulator);
+	uiFilterModel.transform = function(rows) {
+		_(rows).forEach(function(row) {
+			row.title_plain_short = $filter('words')(row.title_plain, "8");
+		});
+    	return rows;
+    }
+	return uiFilterModel;
 });
 
 app.factory('TextSearchMaterialsPopulator', function(TextSearchMaterials, $filter) {
 	return new ModelPopulator(TextSearchMaterials, $filter('i18n')("desktop.materials.messages.errors.loadingmaterials"));
 });
 
-app.factory('ArchiveMaterialsUIModel', function(TextSearchMaterialsPopulator) {
-	return new UIFilterModel(TextSearchMaterialsPopulator);
+app.factory('ArchiveMaterialsUIModel', function(TextSearchMaterialsPopulator, $filter) {
+	var uiFilterModel = new  UIFilterModel(TextSearchMaterialsPopulator);
+	uiFilterModel.transform = function(rows) {
+		_(rows).forEach(function(row) {
+			row.title_plain_short = $filter('words')(row.title_plain, "8");
+		});
+    	return rows;
+    }
+	return uiFilterModel;
 });
 
 app.factory("SearchTxtUIModel", function(AnnouncementsSortOrderUIModel, MaterialsSortOrderUIModel) {

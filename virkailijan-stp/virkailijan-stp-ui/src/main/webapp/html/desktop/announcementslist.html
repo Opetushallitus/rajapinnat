@@ -13,7 +13,7 @@
         <tr ng-repeat="announcement in announcementsmodel.rows | limitTo: announcementsmodel.maxlines" ng-if="announcementsmodel.ready">
             <td class="align-left">
                 <div>
-                    <a href="#/etusivu/tiedote/{{announcement.id}}" title="{{'desktop.announcement.show.hint' | i18n}}"><h5>{{announcement.title_plain | words:8}}</h5></a>
+                    <a href="#/etusivu/tiedote/{{announcement.id}}" title="{{'desktop.announcement.show.hint' | i18n}}"><h5><span ng-html-compile="announcement.title_plain_short"/></h5></a>
                 </div>
                 <div style="color: #999999">
                     {{announcement.date | toFinnishDateTime}} {{announcement.author.name}}
