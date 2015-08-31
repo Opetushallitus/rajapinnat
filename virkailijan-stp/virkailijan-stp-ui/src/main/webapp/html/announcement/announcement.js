@@ -7,7 +7,8 @@ app.factory('AnnouncementModel', function(Announcement) {
         this.getAnnouncement = function(scope, tiedoteid, sce) {
         	Announcement.get({ id : tiedoteid }, function(result) {
         		model.announcement = result.post;
-        		scope.htmlContent = sce.trustAsHtml(result.post.content);
+        		scope.htmlContent = sce.trustAsHtml(preFormattedHtml(result.post.content));
+        		scope.htmlTitle = sce.trustAsHtml(result.post.title);
         		scope.loadingReady = true;
         	});
         };

@@ -3,8 +3,15 @@ app.factory('LatestAnnouncementsPopulator', function(LatestAnnouncements, $filte
 	return new ModelPopulator(LatestAnnouncements, $filter('i18n')("desktop.announcements.messages.errors.loadingannouncements"));
 });
 
-app.factory('LatestAnnouncementsUIModel', function(LatestAnnouncementsPopulator) {	
-	return new UIFilterModel(LatestAnnouncementsPopulator).setParams({});
+app.factory('LatestAnnouncementsUIModel', function(LatestAnnouncementsPopulator, $filter) {
+	var uiFilterModel = new  UIFilterModel(LatestAnnouncementsPopulator);
+	uiFilterModel.transform = function(rows) {
+		_(rows).forEach(function(row) {
+			row.title_plain_short = $filter('words')(row.title_plain, "8");
+		});
+    	return rows;
+    }
+	return uiFilterModel.setParams({});
 });
 
 app.factory('LatestEventsPopulator', function(Events, $filter) {
@@ -34,16 +41,30 @@ app.factory('TextSearchAnnoucementsPopulator', function(TextSearchAnnouncements,
 	return new ModelPopulator(TextSearchAnnouncements, $filter('i18n')("desktop.announcements.messages.errors.loadingannouncements"));
 });
 
-app.factory('ArchiveAnnouncementsUIModel', function(TextSearchAnnoucementsPopulator) {
-	return new UIFilterModel(TextSearchAnnoucementsPopulator);
+app.factory('ArchiveAnnouncementsUIModel', function(TextSearchAnnoucementsPopulator, $filter) {
+	var uiFilterModel = new  UIFilterModel(TextSearchAnnoucementsPopulator);
+	uiFilterModel.transform = function(rows) {
+		_(rows).forEach(function(row) {
+			row.title_plain_short = $filter('words')(row.title_plain, "8");
+		});
+    	return rows;
+    }
+	return uiFilterModel;
 });
 
 app.factory('TextSearchMaterialsPopulator', function(TextSearchMaterials, $filter) {
 	return new ModelPopulator(TextSearchMaterials, $filter('i18n')("desktop.materials.messages.errors.loadingmaterials"));
 });
 
-app.factory('ArchiveMaterialsUIModel', function(TextSearchMaterialsPopulator) {
-	return new UIFilterModel(TextSearchMaterialsPopulator);
+app.factory('ArchiveMaterialsUIModel', function(TextSearchMaterialsPopulator, $filter) {
+	var uiFilterModel = new  UIFilterModel(TextSearchMaterialsPopulator);
+	uiFilterModel.transform = function(rows) {
+		_(rows).forEach(function(row) {
+			row.title_plain_short = $filter('words')(row.title_plain, "8");
+		});
+    	return rows;
+    }
+	return uiFilterModel;
 });
 
 app.factory("SearchTxtUIModel", function(AnnouncementsSortOrderUIModel, MaterialsSortOrderUIModel) {
@@ -122,33 +143,7 @@ app.factory('SelectedCategoriesModel', function($filter, LatestAnnouncementsUIMo
 			ArchiveAnnouncementsUIModel.clicked(category, 1);
 			ArchiveMaterialsUIModel.clicked(category, 1);
 		}
-		this.extraSettings = {externalIdProp: '',
-			displayProp: 'title', 
-			idProp: 'slug',
-			buttonClasses: 'btn btn-default dropdown-multiselect', 
-			showCheckAll : false, 
-			showUncheckAll: false,
-			smartButtonMaxItems: 15,
-			smartButtonTextConverter: function(itemText, originalItem) {
-				return itemText;
-		}};
-		this.categoriesevents = {
-			onItemSelect :  function (category) {
-				category.checked = true;
-				model.clicked(category);
-			},
-			onItemDeselect :  function (item) {
-				//there's bug in library (angularjs-dropdown-multiselect.min.js): item is not category-object (externalIdProp: '') 
-				// - like on 'onItemSelect' - but Object on its own  - so we'll find the actual object by its slug
-				var category = {};
-				category = _.filter(CategoriesUIModel.rows, function(_category) {
-				    return _category.slug == item.slug;
-				})[0];
-				category.checked = false;
-				model.clicked(category);
-			}
-		};
-		this.buttonTexts = {buttonDefaultText:  $filter('i18n')("userroles.dropbox.label.all")};
+
 		this.init = function() {
 			if (model.ready) {
 				return;
@@ -159,8 +154,10 @@ app.factory('SelectedCategoriesModel', function($filter, LatestAnnouncementsUIMo
 					_(_.filter(CategoriesUIModel.rows, function(category) {
 						return slugs.contains(category.slug);
 					})).forEach(function(category){
-						category.checked = true;
-						model.clicked(category)
+						if (_.isUndefined(category.checked) || !category.checked) {
+							category.checked = true;
+							model.clicked(category)
+						}
 					});
 				});
 			}

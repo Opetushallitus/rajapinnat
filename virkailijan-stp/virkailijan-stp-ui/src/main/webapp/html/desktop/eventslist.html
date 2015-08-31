@@ -13,10 +13,10 @@
         <tr ng-repeat="event in eventsmodel.rows | limitTo: eventsmodel.maxlines" ng-if="eventsmodel.ready">
             <td class="align-left">
                 <div>
-                    <a href="#/etusivu/tapahtuma/{{event.post_id}}" title="{{'desktop.event.show.hint' | i18n}}"><h5>{{event.event_date_time.event_start_date | toFinnishDate }}</h5></a>
+                    <a href="#/etusivu/tapahtuma/{{event.post_id}}" title="{{'desktop.event.show.hint' | i18n}}"><h5>{{event.title | words:12}}</h5></a>
                 </div>
                 <div style="color: #999999">
-                    {{event.title | words:12}}
+                	{{event.event_date_time.event_start_date | toFinnishDate }}
                 </div>
             </td>
         </tr>

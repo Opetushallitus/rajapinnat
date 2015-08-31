@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module('virkailijan-stp', ['angularjs-dropdown-multiselect','ngHtmlCompile','ngResource', 'ngSanitize', 'truncate', 'loading', 'ngRoute', 'ng-breadcrumbs', 'ngAnimate', 'localization', 'ui.bootstrap','ui.bootstrap.tpls','ui.bootstrap.transition', 'ui.utils', 'ngIdle', 'pasvaz.bindonce', 'ngUpload']);
+var app = angular.module('virkailijan-stp', ['ngHtmlCompile','ngResource', 'ngSanitize', 'truncate', 'loading', 'ngRoute', 'ng-breadcrumbs', 'ngAnimate', 'localization', 'ui.bootstrap','ui.bootstrap.tpls','ui.bootstrap.transition', 'ui.utils', 'ngIdle', 'pasvaz.bindonce', 'ngUpload']);
 //
 // i18n toteutus kopioitu osittain http://jsfiddle.net/4tRBY/41/
 //
@@ -102,16 +102,29 @@ app.config([ '$routeProvider', '$httpProvider', function($routeProvider, $httpPr
 } ]);
 
 app.factory('Profiles', function($resource) {
+	
     return $resource(SERVICE_URL_BASE + "session/defaultprofile", {}, {
-        post: {method:   "POST",
-        	   isArray : true} 
+        post: {
+        		method:   "POST",
+                interceptor: {
+                    responseError: function (data) {
+                        console.log('error fetching Profiles');
+                    }
+               },
+        	   isArray : true}
     });
 });
 
 app.factory('UserOrganisations', function($resource) {
     return $resource(AUTH_URL_BASE + "omattiedot/organisaatiohenkilo", {}, {
-        get: {method:   "GET",
-        	   isArray : true} 
+        get: { 
+        		method:   "GET",
+                interceptor: {
+                    responseError: function (data) {
+                        console.log('error fetching UserOrganisations');
+                    }
+                },
+                isArray : true} 
     });
 });
 
@@ -119,8 +132,14 @@ app.factory('LatestAnnouncements', function($resource) {
     return $resource(WP_API_BASE +"get_posts", {}, {
         get : {
             method : "GET",
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching LatestAnnouncements');
+                }
+            },
             isArray : false,
-            params : { exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
+            params : { 	count : "-1",
+            			exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
 });
@@ -129,6 +148,11 @@ app.factory('Announcement', function($resource) {
     return $resource(WP_API_BASE+"get_post", {}, {
         get : {
             method : "GET",
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching Announcement');
+                }
+            },
             isArray : false
         }
     });
@@ -139,7 +163,13 @@ app.factory('TextSearchAnnouncements', function($resource) {
         get : {
             method : "GET",
             isArray : false,
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching TextSearchAnnouncements');
+                }
+            },
             params : { post_type : "post",
+     		   		   count : "-1",
             	 	   exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
@@ -149,7 +179,13 @@ app.factory('Events', function($resource) {
     return $resource(WP_API_BASE+"events/get_recent_events", {}, {
         get : {
             method : "GET",
-            isArray : false
+            isArray : false,
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching Events');
+                }
+            },
+            params : { count : "-1" }
         }
     });
 })
@@ -158,6 +194,11 @@ app.factory('Event', function($resource) {
     return $resource(WP_API_BASE+"event/get_event", {}, {
         get : {
             method : "GET",
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching Event');
+                }
+            },
             isArray : false
         }
     });
@@ -167,8 +208,15 @@ app.factory('LatestMaterials', function($resource) {
     return $resource(WP_API_BASE +"get_posts", {}, {
         get : {
             method : "GET",
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching LatestMaterials');
+                }
+            },
             isArray : false,
+            
             params : { post_type : "page",
+    	   			   count : "-1",
             		   exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
@@ -178,8 +226,14 @@ app.factory('TextSearchMaterials', function($resource) {
     return $resource(WP_API_BASE +"get_search_results", {}, {
         get : {
             method : "GET",
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching TextSearchMaterials');
+                }
+            },
             isArray : false,
             params : { post_type : "page",
+            		   count : "-1",
             	       exclude : "content,comments,attachments,comment_count,comment_status,custom_fields,excerpt,status,url,slug,type" }
         }
     });
@@ -189,6 +243,11 @@ app.factory('Material', function($resource) {
     return $resource(WP_API_BASE+"get_post", {}, {
         get : {
             method : "GET",
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching Material');
+                }
+            },
             isArray : false,
             params : { post_type : "page" }
         }
@@ -199,6 +258,11 @@ app.factory('Categories', function($resource) {
     return $resource(WP_API_BASE +"get_category_index", {}, {
         get : {
             method : "GET",
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching Categories');
+                }
+            },
             isArray : false,
         }
     });
@@ -208,6 +272,11 @@ app.factory('Tags', function($resource) {
     return $resource(WP_API_BASE +"get_tag_index", {}, {
         get : {
             method : "GET",
+            interceptor: {
+                responseError: function (data) {
+                    console.log('error fetching Tags');
+                }
+            },
             isArray : false,
         }
     });
@@ -215,7 +284,14 @@ app.factory('Tags', function($resource) {
 
 app.factory('SessionPoll', function($resource) {
     return $resource(SERVICE_URL_BASE + "session/maxinactiveinterval", {}, {
-        get: {method:   "GET"}
+        get: {
+        		method:   "GET",
+                interceptor: {
+                    responseError: function (data) {
+                        console.log('error fetching SessionPoll');
+                    }
+                }
+        	}
     });
 });
 
@@ -259,6 +335,10 @@ function getLanguageSpecificValueOrValidValue(fieldArray, fieldName, language) {
         specificValue = getLanguageSpecificValue(fieldArray, fieldName, "EN");
     }
     return specificValue;
+}
+
+function preFormattedHtml(text) {
+	return "<pre style=\"font-family: arial; word-break: normal;\">"+text+"</pre>"
 }
 
 app.filter('filterTags', [function() {
@@ -405,7 +485,7 @@ var UIFilterModel = function(populator) {
 		if (!model.filtergroups[group]) {
 			model.filtergroups[group] = [];
 		}
-		model.filtergroups[group].push(filter);
+			model.filtergroups[group].push(filter);
 		if (model.ready) {
 			model.populate(false);
 		}
