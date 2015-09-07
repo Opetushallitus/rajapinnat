@@ -41,7 +41,6 @@
       <module>ytj</module>
       <module>kela</module>
       <module>vtj</module>
-      <module>virkailijan-stp</module>
     </modules>
     
     <dependencyManagement>
