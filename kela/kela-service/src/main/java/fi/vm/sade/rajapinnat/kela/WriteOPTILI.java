@@ -269,7 +269,7 @@ public class WriteOPTILI extends AbstractOPTIWriter {
                 String linjaNro = StringUtils.isEmpty(hk.getKelaLinjaKoodi()) ? StringUtils.leftPad("", 3) : hk.getKelaLinjaKoodi();
                 String linjaTarkenne = StringUtils.isEmpty(hk.getKelaLinjaTarkenne()) ? StringUtils.leftPad("", 2) : hk.getKelaLinjaTarkenne();
                 
-		return String.format("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", //44 fields
+		return String.format("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s", //34 fields
                 getHakukohdeId(hk),//Sisainen koodi
                 getOppilaitosnumero(tarjoajaOrganisaatioDTO),//OPPIL_NRO
                 getOrgOid(tarjoajaOrganisaatioDTO), //OrganisaatioOID
