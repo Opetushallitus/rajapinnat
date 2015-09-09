@@ -276,13 +276,7 @@ public class WriteOPTILI extends AbstractOPTIWriter {
                 getOpetuspisteenJarjNro(tarjoajaOrganisaatioDTO),
                 StringUtils.leftPad("",12),//Op. linjan tai koulutuksen jarjestysnro
                 getKoulutuslaji(),//Koulutuslaji
-                StringUtils.leftPad("",2),//Opintolinjan kieli
-                StringUtils.leftPad("",2),//OPL_LASPER
-                StringUtils.leftPad("",2),//Valintakoeryhma
-                StringUtils.leftPad("",10),//Kokeilun yksiloiva tunniste
-                StringUtils.leftPad("",5), //OPL_SUUNT
                 getHakukohteenNimi(curTulos),//Hakukohteen nimi
-                StringUtils.leftPad("",1),//filler
                 kelaDAO.getKKTutkinnonTaso(komoto),//TUT_TASO
                 getTutkintotunniste(komoto.getKoulutusmoduuli()),//TUT_ID = koulutuskoodi
                 getOrgOid(curTulos), //hakukohde OID
@@ -361,7 +355,7 @@ public class WriteOPTILI extends AbstractOPTIWriter {
 		if (StringUtils.isEmpty(hakNimi)) {
 			error(9, curTulos.getOid()+" "+curTulos.getNimi());
 		}
-		return strCutter(hakNimi, 40, "hakukohteen nimi", false);
+		return strCutter(hakNimi, 62, "hakukohteen nimi", false);
 	}
 
 	@Override
