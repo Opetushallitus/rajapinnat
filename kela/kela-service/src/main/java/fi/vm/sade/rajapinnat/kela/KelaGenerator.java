@@ -141,7 +141,7 @@ public class KelaGenerator implements Runnable {
                 host,
                 targetPath,
                 "?password=",
-                password + "&passiveMode=true");
+                password + "&passiveMode=true&binary=true");
     }
 
     private String targetUrl;

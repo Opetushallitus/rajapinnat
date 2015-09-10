@@ -32,7 +32,7 @@
 			<setHeader headerName="CamelFileName"><simple>${body.args[0]}</simple></setHeader>
 			<setBody><simple>${body.args[1]}</simple></setBody>
 			<to
-				uri="{{protocol}}://{{username}}@{{host}}:{{port}}{{path}}?password={{password}}&amp;passiveMode=true" />
+				uri="{{protocol}}://{{username}}@{{host}}:{{port}}{{path}}?password={{password}}&amp;passiveMode=true&binary=true" />
 		</route>
 	</routeContext>
 
