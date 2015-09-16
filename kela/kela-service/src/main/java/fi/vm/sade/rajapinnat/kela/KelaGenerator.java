@@ -84,6 +84,7 @@ public class KelaGenerator implements Runnable {
     private String host;
     private String username;
     private String password = "<not set>";
+    private String transferParameters;
     private String sourcePath;
     private String targetPath;
 
@@ -141,7 +142,7 @@ public class KelaGenerator implements Runnable {
                 host,
                 targetPath,
                 "?password=",
-                password + "&passiveMode=true&binary=true");
+                password + transferParameters);
     }
 
     private String targetUrl;
@@ -206,6 +207,11 @@ public class KelaGenerator implements Runnable {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    @Value("${transferparameters}")
+    public void setTransferParameters(String parameters) {
+        this.transferParameters = parameters;
+    }
 
     @Value("${exportdir}")
     public void setSourcePath(String sourcePath) {
@@ -233,12 +239,16 @@ public class KelaGenerator implements Runnable {
         return password;
     }
 
+    public String getTargetPath() {
+        return targetPath;
+    }
+    
     public String getSourcePath() {
         return sourcePath;
     }
 
-    public String getTargetPath() {
-        return targetPath;
+    public String getTransferParameters() {
+        return transferParameters;
     }
 
     public static void setSocksProxyOn() {
