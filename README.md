@@ -6,6 +6,10 @@ Tämän alla rajapintoja ulkoisien järjestelmien ja opintopolun palveluiden vä
 
 ## vtj ##
 
+Hetu hakuihin käytetty rajapinta.
+ * Käynnistä palvelu VtjServiceTomcatilla
+ * configuroi oph-configuration hakemisto. (vtj.production.env=false rupeaa palauttamaan testi hetuilla tietoa.)
+ 
 ## ytj ##
 
 ## tiedonsiirto ##
