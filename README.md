@@ -8,7 +8,8 @@ Tämän alla rajapintoja ulkoisien järjestelmien ja opintopolun palveluiden vä
 
 Hetu hakuihin käytetty rajapinta.
  * Käynnistä palvelu VtjServiceTomcatilla
- * configuroi oph-configuration hakemisto. (vtj.production.env=false rupeaa palauttamaan testi hetuilla tietoa.)
+ * configuroi oph-configuration hakemisto. (vtj.production.env=false rupeaa palauttamaan testi hetuilla tietoa.) 
+   * rajapinnat/DEV-security-context-backend.xml tiedostoa voi käyttää kehitysvaiheessa 
  
 ## ytj ##
 
