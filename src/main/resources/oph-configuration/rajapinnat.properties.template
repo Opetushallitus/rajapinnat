@@ -36,6 +36,7 @@ vtj.truststore.password={{vtj_truststore_password}}
 
 #KELA-OPTI
 exportdir={{kela_opti_exportdir}}
+transferprotocol={{kela_opti_transferprotocol}}
 transferhost={{kela_opti_transferhost}}
 transferuser={{kela_opti_transferuser}}
 transferpassword={{kela_opti_transferpassword}}
@@ -127,7 +128,6 @@ errorLimit=20
 errorCooldown=10
 dataTimeout=30000
 root.organisaatio.oid=1.2.246.562.10.00000000001
-transferprotocol=ftps
 OPTIOR.alkutietue=00000ALKU
 OPTIOR.lopputietue=99999LOPPU??????
 OPTIYH.alkutietue=0000000000ALKU
