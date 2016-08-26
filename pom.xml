@@ -12,8 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <authentication.api.version>7.0-SNAPSHOT</authentication.api.version>
-        <generic.version>9.0-SNAPSHOT</generic.version>
-        <sade-generic.version>9.0-SNAPSHOT</sade-generic.version>
+        <generic.version>9.5-SNAPSHOT</generic.version>
         <log.client.version>7.0-SNAPSHOT</log.client.version>
         <oid.api.version>8.0-SNAPSHOT</oid.api.version>
         <rajapinnat.ytj.version>10.0-SNAPSHOT</rajapinnat.ytj.version>
@@ -35,7 +34,7 @@
     <parent>
         <groupId>fi.vm.sade.generic</groupId>
         <artifactId>build-parent</artifactId>
-        <version>9.0-SNAPSHOT</version>
+        <version>15.0-SNAPSHOT</version>
     </parent>
 
     <modules>
@@ -43,7 +42,7 @@
       <module>kela</module>
       <module>vtj</module>
     </modules>
-    
+
     <dependencyManagement>
     	<dependencies>
 
@@ -209,5 +208,5 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
-    </pluginRepositories>    
+    </pluginRepositories>
 </project>
