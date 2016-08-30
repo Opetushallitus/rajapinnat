@@ -132,12 +132,12 @@
         <beans:constructor-arg name="cache">
             <beans:bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
                 <beans:property name="cacheManager" ref="casTicketCache" />
-                <beans:property name="maxElementsInMemory" value="100000" />
-                <beans:property name="maxElementsOnDisk" value="10000000" />
+                <beans:property name="maxElementsInMemory" value="10000" />
+                <beans:property name="maxElementsOnDisk" value="100000" />
                 <beans:property name="overflowToDisk" value="true" />
                 <beans:property name="cacheName" value="casProxyGrantingTickets" />
-                <beans:property name="timeToLive" value="7200" />
-                <beans:property name="timeToIdle" value="7200" />
+                <beans:property name="timeToLive" value="3600" />
+                <beans:property name="timeToIdle" value="3600" />
                 <beans:property name="eternal" value="false" />
                 <beans:property name="cacheEventListeners">
                     <beans:bean class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicator">
@@ -166,13 +166,13 @@
         <beans:property name="cacheManager" ref="casTicketCache" />
         <beans:property name="diskExpiryThreadIntervalSeconds" value="120" />
         <beans:property name="diskPersistent" value="false" />
-        <beans:property name="maxElementsInMemory" value="100000" />
-        <beans:property name="maxElementsOnDisk" value="10000000" />
+        <beans:property name="maxElementsInMemory" value="10000" />
+        <beans:property name="maxElementsOnDisk" value="100000" />
         <beans:property name="memoryStoreEvictionPolicy" value="LRU" />
         <beans:property name="overflowToDisk" value="true" />
         <beans:property name="cacheName" value="casTickets" />
-        <beans:property name="timeToLive" value="7200" />
-        <beans:property name="timeToIdle" value="7200" />
+        <beans:property name="timeToLive" value="3600" />
+        <beans:property name="timeToIdle" value="3600" />
         <beans:property name="eternal" value="false" />
         <beans:property name="cacheEventListeners" ref="jgroupsEventListener"/>
     </beans:bean>
