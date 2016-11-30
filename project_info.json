@@ -1,0 +1,14 @@
+{
+  "projects": [
+    {
+      "name": "kela-service",
+      "includes": [
+        "OrganisaatioSearchService"
+      ],
+      "uses": [
+        "tarjonta-db",
+        "organisaatio-db"
+      ]
+    }
+  ]
+}
