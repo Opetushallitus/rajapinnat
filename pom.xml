@@ -41,7 +41,6 @@
         <module>ytj</module>
         <module>kela</module>
         <module>vtj</module>
-        <module>commons</module>
     </modules>
 
     <dependencyManagement>
