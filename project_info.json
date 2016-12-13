@@ -3,12 +3,35 @@
     {
       "name": "kela-service",
       "includes": [
-        "organisaatio-solr-client"
+        "OrganisaatioSearchService",
+        "organisaatio-solr-client",
+        "rajapinnat"
       ],
       "uses": [
         "tarjonta-db",
         "organisaatio-db"
+      ],
+      "spring": {
+        "xml": "kela/kela-service/src/main/resources/spring/application-context.xml",
+        "properties": "src/main/resources/oph-configuration/rajapinnat.properties.template"
+      }
+    },
+    {
+      "name": "vtj-service",
+      "includes" : [
+        "rajapinnat"
       ]
+    },
+    {
+      "name": "ytj-service",
+      "type": "library",
+      "properties": {
+        "ytj-fi.base": "https://tietopalvelu.ytj.fi"
+      }
+    },
+    {
+      "name": "rajapinnat",
+      "type": "library"
     }
   ]
 }
