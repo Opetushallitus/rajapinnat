@@ -148,5 +148,4 @@ cas.service.kela-service=${host.ilb}/kela-service
 koodi.public.webservice.url.backend=https://${host.virkailija}/koodisto-service/services/koodiService
 koodisto.public.webservice.url.backend=https://${host.virkailija}/koodisto-service/services/koodistoService
 organisaatio.webservice.url.backend=https://${host.virkailija}/organisaatio-service/services/organisaatioService
-organisaatio.api.rest.url=https://${host.virkailija}/organisaatio-service/rest
 
