@@ -27,8 +27,6 @@
         <solr.version>4.2.0</solr.version>
         <modelmapper.version>0.6.3</modelmapper.version>
         <ehcache.version>2.5.2</ehcache.version>
-        <ehcache-jgroupsreplication.version>1.5</ehcache-jgroupsreplication.version>
-        <jgroups.version>2.10.0.GA</jgroups.version>
     </properties>
 
     <parent>
