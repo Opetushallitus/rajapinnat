@@ -25,6 +25,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import fi.vm.sade.organisaatio.resource.api.TasoJaLaajuusDTO;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -52,6 +53,9 @@ public class KelaResourceImpl implements KelaResource {
 
     @Autowired
     protected KelaDAO kelaDAO;
+
+    @Autowired
+    private TarjontaClient tarjontaClient;
 
     public enum Command {
 
@@ -180,55 +184,49 @@ public class KelaResourceImpl implements KelaResource {
         }
     }
 
-    private boolean ylempi(String s) {
-        return s != null && (s.equalsIgnoreCase("060") || s.equalsIgnoreCase("061"));
-    }
-
-    private boolean alempi(String s) {
-        return s != null && (s.equalsIgnoreCase("060") || s.equalsIgnoreCase("050"));
-    }
-
     @Override
-    public String tutkinnontaso(String hakukohdeOid) {
+    public TasoJaLaajuusDTO tutkinnontaso(String hakukohdeOid) {
         Hakukohde hakukohde = haeHakukohde(hakukohdeOid);
-        boolean ylempia = false;
-        boolean alempia = false;
+        TasoJaLaajuusContainer ylempiTaso = null;
+        TasoJaLaajuusContainer alempiTaso = null;
         for (KoulutusmoduuliToteutus komoto : hakukohde.getKoulutukset()) {
-            String komotoTutkinnonTaso = kelaDAO.getKKTutkinnonTaso(komoto);
-            if (komotoTutkinnonTaso != null) {
-                if (!ylempia) {
-                    ylempia = ylempi(komotoTutkinnonTaso);
+            TasoJaLaajuusContainer komotoTutkinnonTaso = kelaDAO.getKKTutkinnonTaso(komoto);
+            if (komotoTutkinnonTaso.hasTaso()) {
+                if (komotoTutkinnonTaso.isYlempi()) {
+                    ylempiTaso = komotoTutkinnonTaso;
                 }
-                if (!alempia) {
-                    alempia = alempi(komotoTutkinnonTaso);
+                if (komotoTutkinnonTaso.isAlempi()) {
+                    alempiTaso = komotoTutkinnonTaso;
                 }
-                if (ylempia && alempia) {
-                    break;
+                if(komotoTutkinnonTaso.isHammaslaakis() || komotoTutkinnonTaso.isLaakis() || komotoTutkinnonTaso.isAlempiYlempi()) {
+                    return komotoTutkinnonTaso.toDTO(tarjontaClient);
                 }
             }
         }
         /*
          * jos pelkkiä ylempiä => 061 (erillinen ylempi kk.tutkinto)
          */
-        if (ylempia && !alempia) {
-            return "061";
+        if (ylempiTaso != null && alempiTaso == null) {
+            return ylempiTaso.toDTO(tarjontaClient);
         }
         /*
          * jos pelkkiä alempia => 050  (alempi kk.tutkinto)
          */
-        if (!ylempia && alempia) {
-            return "050";
+        if (ylempiTaso == null && alempiTaso != null) {
+            return alempiTaso.toDTO(tarjontaClient);
         }
         /*
          * jos väh. 1 ylempiä ja väh. 1 => 060 (alempi+ylempi)
          */
-        if (ylempia && alempia) {
-            return "060";
+        if (ylempiTaso != null && alempiTaso != null) {
+            TasoJaLaajuusContainer cont = new TasoJaLaajuusContainer();
+            cont.alempiYlempi(alempiTaso.getKomoId1(), ylempiTaso.getKomoId1());
+            return cont.toDTO(tarjontaClient);
         }
         /*
          *  jos ei kumpiakaan : koulutuksen tasoa ei merkitä
          */
-        return "   ";
+        return new TasoJaLaajuusContainer().eiTasoa().toDTO(tarjontaClient);
 
     }
 
