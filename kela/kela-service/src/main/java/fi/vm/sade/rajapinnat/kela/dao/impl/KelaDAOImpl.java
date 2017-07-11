@@ -15,21 +15,10 @@
  */
 package fi.vm.sade.rajapinnat.kela.dao.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
-
-import fi.vm.sade.rajapinnat.kela.TasoJaLaajuusContainer;
-import org.springframework.stereotype.Repository;
-
 import fi.vm.sade.organisaatio.api.model.types.OrganisaatioTyyppi;
+import fi.vm.sade.rajapinnat.kela.TasoJaLaajuusContainer;
 import fi.vm.sade.rajapinnat.kela.dao.KelaDAO;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Hakukohde;
-import fi.vm.sade.rajapinnat.kela.tarjonta.model.KoodistoUri;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Koulutusmoduuli;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.KoulutusmoduuliToteutus;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Organisaatio;
@@ -37,11 +26,20 @@ import fi.vm.sade.rajapinnat.kela.tarjonta.model.OrganisaatioPerustieto;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Organisaatiosuhde;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Organisaatiosuhde.OrganisaatioSuhdeTyyppi;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Yhteystieto;
+import org.springframework.stereotype.Repository;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceUnit;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -441,29 +439,13 @@ public class KelaDAOImpl implements KelaDAO {
             return resp.hammasLaakis(komoto.getKoulutusmoduuli().getOid());
         }
 
-        boolean alempia_sisaltyy = false;
-        boolean ylempia_sisaltyy = false;
-
-        for (KoodistoUri koulutusUri : komoto.getSisaltyvatKoulutuskoodit()) {
-            if (alempi(koulutusUri.getKoodiUri())) {
-                alempia_sisaltyy = true;
-            } else if(ylempi(koulutusUri.getKoodiUri())) {
-                ylempia_sisaltyy = true;
-            }
-        }
-        
         /*
-         * 2) jos koulutusmoduulilla sekä koulutus_uri että sisältyvällä koulutuskoodi yhdistelmällä (ylempi+alempi tai alempi+ylempi) => 060 = alempi+ylempi
-         */
-        if ((ylempi(koulutus_uri) && alempia_sisaltyy) || (alempi(koulutus_uri) && ylempia_sisaltyy)) {
-            return resp.alempiYlempi(komoto.getKoulutusmoduuli().getOid(), null);
-        }
-
-        /*
-         * 3) haetaan lapsikoulutusmoduulit (ei sisaruksia l. toteutuksia tai emomoduuleita) yo. lisäksi:
+         * 2) haetaan lapsikoulutusmoduulit (ei sisaruksia l. toteutuksia tai emomoduuleita) yo. lisäksi:
          */
         String rootOid = koulutusmoduuli.getOid();
-        List<String> relativesList = getChildrenOids(rootOid);
+        List<String> relativesList = new ArrayList<String>();
+        relativesList.addAll(getChildrenOids(rootOid));
+        relativesList.addAll(getParentOids(rootOid));
         relativesList.add(rootOid);
 
         Koulutusmoduuli ylempiKomo = null;
@@ -487,25 +469,25 @@ public class KelaDAOImpl implements KelaDAO {
         }
 
         /*
-         * 4) jos pelkkiä ylempiä => 061 (erillinen ylempi kk.tutkinto)
+         * 3) jos pelkkiä ylempiä => 061 (erillinen ylempi kk.tutkinto)
          */
         if (ylempiKomo != null && alempiKomo == null) {
             return resp.onlyYlempi(ylempiKomo.getOid());
         }
         /*
-         * 5) jos pelkkiä alempia => 050  (alempi kk.tutkinto)
+         * 4) jos pelkkiä alempia => 050  (alempi kk.tutkinto)
          */
         if (ylempiKomo == null && alempiKomo != null) {
             return resp.onlyAlempi(alempiKomo.getOid());
         }
         /*
-         * 6) jos väh. 1 ylempiä ja väh. 1 => 060 (alempi+ylempi)
+         * 5) jos väh. 1 ylempiä ja väh. 1 => 060 (alempi+ylempi)
          */
         if (ylempiKomo != null && alempiKomo != null) {
             return resp.alempiYlempi(alempiKomo.getOid(), ylempiKomo.getOid());
         }
         /*
-         * 7) jos ei kumpiakaan : koulutuksen tasoa ei merkitä
+         * 6) jos ei kumpiakaan : koulutuksen tasoa ei merkitä
          */
         return resp.eiTasoa();
     }
