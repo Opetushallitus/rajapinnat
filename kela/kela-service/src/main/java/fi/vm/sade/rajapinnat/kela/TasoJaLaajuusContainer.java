@@ -1,6 +1,7 @@
 package fi.vm.sade.rajapinnat.kela;
 
 import fi.vm.sade.organisaatio.resource.api.TasoJaLaajuusDTO;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 public class TasoJaLaajuusContainer {
@@ -58,10 +59,10 @@ public class TasoJaLaajuusContainer {
         return this;
     }
 
-    public TasoJaLaajuusContainer alempiYlempi(String komoId1, String komoId2) {
+    public TasoJaLaajuusContainer alempiYlempi(String alempiKomoId, String ylempiKomoId) {
         tasoCode = ALEMPIYLEMPI;
-        this.komoId1 = komoId1;
-        this.komoId2 = komoId2;
+        this.komoId1 = alempiKomoId;
+        this.komoId2 = ylempiKomoId;
         return this;
     }
 
@@ -116,7 +117,7 @@ public class TasoJaLaajuusContainer {
 
     private String prefixLaajuus(String laajuus) {
         try {
-            if (laajuus != null && "".equals(laajuus) == false) {
+            if (StringUtils.isNotEmpty(laajuus)) {
                 return String.format("%03d", new Integer(laajuus));
             }
         } catch (Exception e) {
@@ -133,7 +134,7 @@ public class TasoJaLaajuusContainer {
                 if (laajuus.contains("/")) {
                     // case: 180+120/150 = laajuus1 = 330
                     String[] laajuusParts = laajuus.split("/");
-                    int sum = new Integer(laajuusParts[0].substring(0, laajuusParts[0].indexOf('+'))).intValue() + new Integer(laajuusParts[1]).intValue();
+                    int sum = Integer.parseInt(laajuusParts[0].substring(0, laajuusParts[0].indexOf('+'))) + Integer.parseInt(laajuusParts[1]);
                     str[0] = "" + sum;
                 } else {
                     String[] laajuusParts = laajuus.split("\\+");
