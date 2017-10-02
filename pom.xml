@@ -27,6 +27,7 @@
         <solr.version>4.2.0</solr.version>
         <modelmapper.version>0.6.3</modelmapper.version>
         <ehcache.version>2.5.2</ehcache.version>
+        <s3.version>1.11.205</s3.version>
     </properties>
 
     <parent>
@@ -174,6 +175,11 @@
             <id>com.springsource.repository.maven.milestone</id>
             <name>Spring Framework Maven Milestone Releases (Maven Central Format)</name>
             <url>https://artifactory.oph.ware.fi/artifactory/com.springsource.repository.maven.milestone/</url>
+        </repository>
+        <repository>
+            <id>amazon</id>
+            <name>Amazon s3</name>
+            <url>https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3/</url>
         </repository>
         <repository>
             <id>atomikos</id>
