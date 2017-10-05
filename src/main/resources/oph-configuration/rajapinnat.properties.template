@@ -38,6 +38,7 @@ vtj.truststore.password={{vtj_truststore_password}}
 exportdir={{kela_opti_exportdir}}
 rajapinnat-s3-enabled={{rajapinnat_s3_enabled}}
 rajapinnat-s3-bucket-name={{rajapinnat_s3_bucket_name}}
+rajapinnat-s3-region={{rajapinnat_s3_region}}
 transferprotocol={{kela_opti_transferprotocol}}
 transferhost={{kela_opti_transferhost}}
 transferuser={{kela_opti_transferuser}}
