@@ -194,7 +194,9 @@ public class WriteOPTILI extends AbstractOPTIWriter {
         HakukohteetVastaus vastaus = null;
         while (true) {
             try {
+                LOG.info("starting haeHakukohteet");
                 vastaus = hakukohdeSearchService.haeHakukohteet(kysely);
+                LOG.info("got haeHakukohteet");
                 break;
             } catch (org.apache.solr.common.SolrException e) {
                 handleException(e);
@@ -221,7 +223,7 @@ public class WriteOPTILI extends AbstractOPTIWriter {
                 if (TarjontaTila.JULKAISTU.equals(curTulos.getTila()) && isHakukohdeOppilaitos(tarjoajaOid)) {
                     Hakukohde hakukohde = kelaDAO.findHakukohdeByOid(curTulos.getOid());
                     if (hakukohde == null) {
-                        error(11, curTulos.getOid() + " " + curTulos.getNimi());
+                        error(11, curTulos.getOid(), curTulos.getNimi());
                     }
                     List<KoulutusmoduuliToteutus> komotos = hakukohde.getKoulutukset();
 

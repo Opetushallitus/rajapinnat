@@ -15,11 +15,7 @@
  */
 package fi.vm.sade.rajapinnat.kela;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,12 +23,19 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.amazonaws.auth.InstanceProfileCredentialsProvider;
+import com.amazonaws.services.s3.model.*;
 import fi.vm.sade.organisaatio.resource.dto.OrganisaatioRDTO;
 import fi.vm.sade.rajapinnat.kela.config.UrlConfiguration;
 import fi.vm.sade.tarjonta.service.search.HakukohdeSearchService;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.cxf.jaxrs.client.ClientWebApplicationException;
 import org.apache.cxf.jaxrs.client.ServerWebApplicationException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -53,13 +56,36 @@ import fi.vm.sade.rajapinnat.kela.dao.KelaDAO;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.Organisaatio;
 import fi.vm.sade.rajapinnat.kela.tarjonta.model.OrganisaatioPerustieto;
 import fi.vm.sade.tarjonta.service.search.KoodistoKoodi;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.AmazonClientException;
+
 
 @Configurable
 public abstract class AbstractOPTIWriter {
+
+
+    private AmazonS3 getS3client(){
+        if(s3client == null){
+            try {
+                InstanceProfileCredentialsProvider ipcp = InstanceProfileCredentialsProvider.createAsyncRefreshingProvider(true);
+                s3client = AmazonS3ClientBuilder.standard()
+                        .withCredentials(ipcp)
+                        .withRegion(Regions.fromName(s3region))
+                        .build();
+                LOG.info("S3client initialized");
+            } catch(AmazonClientException e){
+                LOG.error(e.getMessage());
+            }
+        }
+        return s3client;
+    }
 
     protected enum OrgType {
 
@@ -116,6 +142,7 @@ public abstract class AbstractOPTIWriter {
     protected final static String WARN_MESS_3 = "Got exception: %s. Retry in %s seconds...";
 
     protected final static String INFO_MESS_1 = "%s records written, %s skipped.";
+    protected final static String INFO_MESS_2 = "file %s in %s pushed into S3 bucket %s.";
 
     @Autowired
     private UrlConfiguration urlConfiguration;
@@ -138,6 +165,11 @@ public abstract class AbstractOPTIWriter {
     private String fileName = null;
 
     private String path = null;
+
+    private boolean s3enabled = false;
+    private String s3bucketName = null;
+    private AmazonS3 s3client = null;
+    private String s3region = null;
 
     private int errorLimit = 0;
     private int errorCoolDown = 10;
@@ -219,10 +251,14 @@ public abstract class AbstractOPTIWriter {
     }
 
     private void createFileNames(String suffix) {
-        String path = createPath();
+        String path = (isS3enabled()) ? createS3Path() : createPath();
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN_FILE);
         fileLocalName = NAMEPREFIX + sdf.format(startDate) + suffix;
         fileName = path + fileLocalName;//NAMEPREFIX + sdf.format(new Date()) + name;
+    }
+
+    private String createS3Path(){
+        return this.path + DIR_SEPARATOR;
     }
 
     private String createPath() {
@@ -247,6 +283,26 @@ public abstract class AbstractOPTIWriter {
     @Value("${exportdir}")
     public void setPath(String path) {
         this.path = path;
+    }
+
+    @Value("${rajapinnat-s3-enabled}")
+    public void setS3enabled(boolean s3enabled) {
+        this.s3enabled = s3enabled;
+    }
+    public boolean isS3enabled() {
+        return this.s3enabled;
+    }
+    public String getS3bucketName() {
+        return this.s3bucketName;
+    }
+    @Value("${rajapinnat-s3-bucket-name}")
+    public void setS3bucketName(String s3bucketName) {
+        this.s3bucketName = s3bucketName;
+    }
+
+    @Value("${rajapinnat-s3-region}")
+    public void setS3region(String s3region) {
+        this.s3region = s3region;
     }
 
     @Value("${fi-uri}")
@@ -357,6 +413,14 @@ public abstract class AbstractOPTIWriter {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
         factory.setReadTimeout(60000);
         factory.setConnectTimeout(60000);
+
+        HttpClient httpClient = HttpClients.custom()
+                .setDefaultRequestConfig(RequestConfig.custom()
+                .setCookieSpec(CookieSpecs.STANDARD).build())
+                .build();
+
+        factory.setHttpClient(httpClient);
+
         RestTemplate restTemplate = new RestTemplate(factory);
         return restTemplate.getForObject(
                 urlConfiguration.url("organisaatio-service.organisaatio.noimage", orgOid), OrganisaatioRDTO.class);
@@ -478,6 +542,18 @@ public abstract class AbstractOPTIWriter {
         this.kelaDAO = hakukohdeDAO;
     }
 
+    public File getS3File() throws IOException{
+        try {
+            S3Object s3Object = this.getS3client().getObject(getS3bucketName(), getFileLocalName());
+            IOUtils.copy(s3Object.getObjectContent(), new FileOutputStream(this.fileLocalName));
+            return new File(this.fileLocalName);
+        } catch (IOException e) {
+            LOG.error(String.format(ERR_MESS_4, getFileName()));
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public String getFileName() {
         if (fileName == null) {
             createFileName();
@@ -535,6 +611,17 @@ public abstract class AbstractOPTIWriter {
             bostr.flush();
             bostr.close();
             LOG.info(String.format(INFO_MESS_1, writes, writesTries - writes));
+            // push to S3
+            if(isS3enabled()) {
+                try {
+                    this.getS3client().putObject(new PutObjectRequest(getS3bucketName(), getFileLocalName(), new File(getFileName())));
+                } catch(Exception e){
+                    e.printStackTrace();
+                    throw e;
+                }
+                LOG.info(String.format(INFO_MESS_2, getFileLocalName(), getFileName(), getS3bucketName()));
+            }
+
         } catch (FileNotFoundException e) {
             LOG.error(String.format(ERR_MESS_3, getFileName()));
             e.printStackTrace();
