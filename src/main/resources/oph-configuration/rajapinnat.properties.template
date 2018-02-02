@@ -80,7 +80,7 @@ cas.group-search-filter=(uniqueMember\={0})
 cas.sendRenew=false
 cas.user-search-base=ou\=people
 cas.user-search-filter=(|(mail\={0})(uid\={0}))
-cas.service.vtj-service=${host.ilb}/vtj-service
+cas.service.vtj-service=https://${host_cas}/vtj-service
 customAttribute.webservice.url.backend=https://${host.virkailija}/authentication-service/services/customAttributeService
 flyway.initOnMigrate=true
 jpa.schemaUpdate=validate
@@ -147,7 +147,7 @@ OPTINI.alkutietue=0000000000ALKU
 OPTINI.lopputietue=9999999999LOPPU??????
 OPTITU.alkutietue=0000000000000000ALKU
 OPTITU.lopputietue=9999999999999999LOPPU??????
-cas.service.kela-service=${host.ilb}/kela-service
+cas.service.kela-service=https://${host_cas}/kela-service
 koodi.public.webservice.url.backend=https://${host.virkailija}/koodisto-service/services/koodiService
 koodisto.public.webservice.url.backend=https://${host.virkailija}/koodisto-service/services/koodistoService
 organisaatio.webservice.url.backend=https://${host.virkailija}/organisaatio-service/services/organisaatioService
