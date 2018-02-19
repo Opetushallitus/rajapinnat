@@ -38,3 +38,6 @@ log4j.logger.org.apache.activemq.spring={{env_loglevel}}
 log4j.logger.org.jasig.cas.client.session=INFO'
 # kela-opti -loglevel:
 log4j.logger.fi.vm.sade.rajapinnat.kela=INFO
+
+# BUG-1629 testing
+log4j.logger.fi.vm.sade.rajapinnat=INFO
