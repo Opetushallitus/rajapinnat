@@ -24,7 +24,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScheduledExport {
     private static final Logger LOG = Logger.getLogger(ScheduledExport.class);
-    
+
+
+    static {
+        LOG.info("Hello from kela scheduled export");
+    }
+
+
     @Autowired
     KelaResourceImpl kelaResource;
     
