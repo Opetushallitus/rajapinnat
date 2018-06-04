@@ -27,6 +27,8 @@ import javax.ws.rs.QueryParam;
 
 import fi.vm.sade.organisaatio.resource.api.TasoJaLaajuusDTO;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,7 +48,7 @@ import fi.vm.sade.rajapinnat.kela.tarjonta.model.KoulutusmoduuliToteutus;
 @Component
 @Api(value = "/kela", description = "Kelan operaatiot")
 public class KelaResourceImpl implements KelaResource {
-
+    private static final Logger LOG = LoggerFactory.getLogger(KelaResourceImpl.class);
     @Autowired
     @Qualifier("kelaTask")
     private TaskExecutor taskExecutor;
@@ -189,6 +191,7 @@ public class KelaResourceImpl implements KelaResource {
         Hakukohde hakukohde = haeHakukohde(hakukohdeOid);
         TasoJaLaajuusContainer ylempiTaso = null;
         TasoJaLaajuusContainer alempiTaso = null;
+        TasoJaLaajuusContainer toinenAsteTaso = null;
         for (KoulutusmoduuliToteutus komoto : hakukohde.getKoulutukset()) {
             TasoJaLaajuusContainer komotoTutkinnonTaso = kelaDAO.getKKTutkinnonTaso(komoto);
             if (komotoTutkinnonTaso.hasTaso()) {
@@ -197,6 +200,9 @@ public class KelaResourceImpl implements KelaResource {
                 }
                 if (komotoTutkinnonTaso.isAlempi()) {
                     alempiTaso = komotoTutkinnonTaso;
+                }
+                if (komotoTutkinnonTaso.isToinenAste()) {
+                    toinenAsteTaso = komotoTutkinnonTaso;
                 }
                 if(komotoTutkinnonTaso.isHammaslaakis() || komotoTutkinnonTaso.isLaakis() || komotoTutkinnonTaso.isAlempiYlempi()) {
                     return komotoTutkinnonTaso.toDTO(tarjontaClient);
@@ -224,8 +230,19 @@ public class KelaResourceImpl implements KelaResource {
             return cont.toDTO(tarjontaClient);
         }
         /*
-         *  jos ei kumpiakaan : koulutuksen tasoa ei merkitä
+         *  jos ei kumpiakaan : tarkistetaan toinen aste
          */
+
+        if (toinenAsteTaso != null) {
+            LOG.info("Hakukohde {} oli toinen aste tutkinnontasolla {}", hakukohdeOid, toinenAsteTaso.getTasoCode());
+            return toinenAsteTaso.toDTO(tarjontaClient);
+        }
+
+        /*
+         *  muussa tapauksessa: koulutuksen tasoa ei merkitä
+         */
+
+        LOG.info("Ei tutkinnon tasoa hakukohteelle {}", hakukohdeOid);
         return new TasoJaLaajuusContainer().eiTasoa().toDTO(tarjontaClient);
 
     }

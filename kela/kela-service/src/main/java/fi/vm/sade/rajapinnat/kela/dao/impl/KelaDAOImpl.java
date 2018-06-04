@@ -24,6 +24,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 
 import fi.vm.sade.rajapinnat.kela.TasoJaLaajuusContainer;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import fi.vm.sade.organisaatio.api.model.types.OrganisaatioTyyppi;
@@ -49,7 +52,7 @@ import javax.persistence.PersistenceUnit;
  */
 @Repository
 public class KelaDAOImpl implements KelaDAO {
-
+    private static final Logger LOG = LoggerFactory.getLogger(KelaDAOImpl.class);
     private EntityManager tarjontaEm;
     private EntityManager organisaatioEm;
 
@@ -409,10 +412,6 @@ public class KelaDAOImpl implements KelaDAO {
         return s != null && s.startsWith("koulutus_772201");
     }
 
-    private boolean kk_tut_taso(String s) {
-        return ylempi(s) || alempi(s) || laakis(s) || hammaslaakis(s);
-    }
-
     @Override
     public TasoJaLaajuusContainer getKKTutkinnonTaso(KoulutusmoduuliToteutus komoto) {
 
@@ -429,10 +428,6 @@ public class KelaDAOImpl implements KelaDAO {
             return resp.eiTasoa(); //ei JULKAISTU
         }
         koulutus_uri = emptyString(komoto.getKoulutusUri()) ? koulutusmoduuli.getKoulutusUri() : komoto.getKoulutusUri();
-
-        if (!kk_tut_taso(koulutus_uri)) {
-            return resp.eiTasoa(); //ei korkeakoulun ylempi eikä alempi
-        }
 
         if (laakis(koulutus_uri)) {
             return resp.laakis(komoto.getKoulutusmoduuli().getOid());
@@ -505,9 +500,57 @@ public class KelaDAOImpl implements KelaDAO {
             return resp.alempiYlempi(alempiKomo.getOid(), ylempiKomo.getOid());
         }
         /*
-         * 7) jos ei kumpiakaan : koulutuksen tasoa ei merkitä
+         * 7) jos ei kumpiakaan : tarkistetaan toinen aste koulutustyypin perusteella
          */
+
+        LOG.info("Komoto {} mahdollisesti toinen aste, tarkistetaan koulutustyyppi", komoto.getOid());
+        for (String koulutustyyppi : getKoulutustyyppikoodis(koulutusmoduuli)) {
+            switch (koulutustyyppi) {
+                case "1": case "4": case "13": case "26":
+                    return resp.ammatillinenPerustutkinto();
+                case "2": case "14": case "21":
+                    return resp.lukio();
+                case "5":
+                    return resp.telma();
+                case "11":
+                    return resp.ammattitutkinto();
+                case "12":
+                    return resp.erikoisammattitutkinto();
+                case "18": case "19":
+                    return resp.valma();
+                // in any other case, keep looping
+                }
+        }
+
+        /*
+         * muussa tapauksessa: koulutuksen tasoa ei merkitä
+         */
+        LOG.info("Ei tutkinnon tasoa komotolle {}", komoto.getOid());
         return resp.eiTasoa();
+    }
+
+    List<String> getKoulutustyyppikoodis(Koulutusmoduuli koulutusmoduuli) {
+        List<String> koulutustyyppikoodis = new ArrayList<>();
+
+        if (koulutusmoduuli != null) {
+            String koulutustyyppiUris = koulutusmoduuli.getKoulutustyyppi_uri(); // Format: |uri_x|uri_y|...|
+
+            if (koulutustyyppiUris != null) {
+                String uriSeparator = "|";
+                String[] splitUris = StringUtils.split(koulutustyyppiUris, uriSeparator);
+                String koodiSeparator = "_";
+
+                for (String uri : splitUris) {
+                    String[] parts = StringUtils.split(uri, koodiSeparator);
+                    if (parts.length >= 2) {
+                        koulutustyyppikoodis.add(parts[1]);
+                    }
+                }
+            }
+            LOG.info("Komon {} koulutustyyppi-urit olivat {} josta koulutustyyppikoodeiksi luettiin " + koulutustyyppikoodis, koulutusmoduuli.getOid(), koulutustyyppiUris);
+        }
+
+        return koulutustyyppikoodis;
     }
 
     private EntityManager getTarjontaEntityManager() {
