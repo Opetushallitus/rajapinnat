@@ -1,6 +1,7 @@
 package fi.vm.sade.rajapinnat.vtj.service.impl;
 
 import fi.vm.sade.rajapinnat.vtj.NotFoundException;
+import fi.vm.sade.rajapinnat.vtj.api.Huoltaja;
 import fi.vm.sade.rajapinnat.vtj.api.YksiloityHenkilo;
 import fi.vm.sade.rajapinnat.vtj.api.YksiloityHenkilo.EntinenNimiTyyppi;
 import fi.vm.sade.rajapinnat.vtj.service.VtjService;
@@ -17,6 +18,8 @@ import org.tempuri.TeeHenkilonTunnusKyselyResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.util.StringUtils;
 
 /**
@@ -72,8 +75,8 @@ public class VtjServiceImpl implements VtjService {
                 return getVtjHenkiloVastaussanoma(loppukayttaja, uusiHetu, true);
             }
         }
-        // kaikki paluukoodit paitsi 0000 ja 0002 käsitellään virheinä
-        else if (!"0000".equals(paluuKoodi)) {
+        // kaikki paluukoodit paitsi 0000, 0018 ja 0002 käsitellään virheinä
+        else if (!"0000".equals(paluuKoodi) && !"0018".equals(paluuKoodi)) {
             throw new NotFoundException("Could not find person.");
         }
 
@@ -196,6 +199,17 @@ public class VtjServiceImpl implements VtjService {
 
         if (vtjHenkilo.getKotikunta() != null) {
             henkilo.setKotikunta(vtjHenkilo.getKotikunta().getKuntanumero());
+        }
+
+        if (vtjHenkilo.getHuoltaja() != null) {
+            List<Huoltaja> huoltajat = vtjHenkilo.getHuoltaja().stream()
+                    .map(vtjHuoltaja -> new Huoltaja(
+                            vtjHuoltaja.getNykyisetEtunimet().getEtunimet(),
+                            vtjHuoltaja.getNykyinenSukunimi().getSukunimi(),
+                            vtjHuoltaja.getHenkilotunnus(),
+                            vtjHuoltaja.getHuoltotiedot().getHenkilosuhdelajikoodi()))
+                    .collect(Collectors.toList());
+            henkilo.setHuoltajat(huoltajat);
         }
 
         return henkilo;
