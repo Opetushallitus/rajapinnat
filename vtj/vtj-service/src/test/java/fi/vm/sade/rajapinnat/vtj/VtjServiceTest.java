@@ -80,6 +80,8 @@ public class VtjServiceTest {
 
     @Test
     public void testHenkilonTunnusKysely0002NoNewHetu() {
+        expectedEx.expect(PassivoituException.class);
+
         String hetu = "111111-1111";
 
         TeeHenkilonTunnusKyselyResponse.TeeHenkilonTunnusKyselyResult result =
@@ -100,16 +102,21 @@ public class VtjServiceTest {
         String oldHetu = "111111-1111";
         String newHetu = "222222-2222";
 
-        TeeHenkilonTunnusKyselyResponse.TeeHenkilonTunnusKyselyResult result =
+        TeeHenkilonTunnusKyselyResponse.TeeHenkilonTunnusKyselyResult oldResult =
                 Mockito.mock(TeeHenkilonTunnusKyselyResponse.TeeHenkilonTunnusKyselyResult.class);
-        when(result.getContent())
+        when(oldResult.getContent())
                 .thenReturn(new ArrayList<Object>(Arrays.asList(createVastausSanomaWithPaluukoodi0002(newHetu))));
 
         when(soSoSoap.teeHenkilonTunnusKysely("OPHREK", null, null, "", null, oldHetu, null, null, null, null, null, null, null))
-                .thenReturn(result);
+                .thenReturn(oldResult);
+
+        TeeHenkilonTunnusKyselyResponse.TeeHenkilonTunnusKyselyResult newResult =
+                Mockito.mock(TeeHenkilonTunnusKyselyResponse.TeeHenkilonTunnusKyselyResult.class);
+        when(newResult.getContent())
+                .thenReturn(new ArrayList<Object>(Arrays.asList(createVastausSanomaWithPaluukoodi0000(newHetu))));
 
         when(soSoSoap.teeHenkilonTunnusKysely("OPHREK", null, null, "", null, newHetu, null, null, null, null, null, null, null))
-                .thenReturn(result);
+                .thenReturn(newResult);
 
         vtjService = spy(vtjService);
 
@@ -150,6 +157,32 @@ public class VtjServiceTest {
         verify(vtjService, times(1)).teeHenkiloKysely("", oldHetu, false);
         verify(vtjService, times(1)).getVtjHenkiloVastaussanoma("", oldHetu, false, false);
         verify(vtjService, times(1)).getVtjHenkiloVastaussanoma("", newHetu, true, false);
+    }
+
+    @Test
+    public void testHenkilonTunnusKyselyTuntematon() {
+        expectedEx.expect(NotFoundException.class);
+        expectedEx.expectMessage("Unknown response code 'tuntematon'.");
+
+        TeeHenkilonTunnusKyselyResponse.TeeHenkilonTunnusKyselyResult result =
+                Mockito.mock(TeeHenkilonTunnusKyselyResponse.TeeHenkilonTunnusKyselyResult.class);
+        when(result.getContent())
+                .thenReturn(new ArrayList<Object>(Arrays.asList(createVastausSanomaWithPaluukoodi("tuntematon"))));
+
+        when(soSoSoap.teeHenkilonTunnusKysely("OPHREK", null, null, "", null, "111111-1111", null, null, null, null, null, null, null))
+                .thenReturn(result);
+
+        vtjService.teeHenkiloKysely("", "111111-1111", false);
+    }
+
+    private VTJHenkiloVastaussanoma createVastausSanomaWithPaluukoodi(String tuntematon) {
+        VTJHenkiloVastaussanoma.Paluukoodi paluukoodi = new VTJHenkiloVastaussanoma.Paluukoodi();
+        paluukoodi.setKoodi(tuntematon);
+
+        VTJHenkiloVastaussanoma vtjHenkiloVastaussanoma = new VTJHenkiloVastaussanoma();
+        vtjHenkiloVastaussanoma.setPaluukoodi(paluukoodi);
+
+        return vtjHenkiloVastaussanoma;
     }
 
     private VTJHenkiloVastaussanoma createVastausSanomaWithPaluukoodi0000(String hetu) {
