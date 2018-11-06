@@ -2,8 +2,6 @@
 
 Tämän alla rajapintoja ulkoisien järjestelmien ja opintopolun palveluiden välille
 
-## kela ##
-
 ## vtj ##
 
 Hetu hakuihin käytetty rajapinta.
