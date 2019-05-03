@@ -31,31 +31,6 @@ vtj.username={{vtj_username}}
 vtj.truststore.file={{vtj_truststore_file}}
 vtj.truststore.password={{vtj_truststore_password}}
 
-#KELA-OPTI
-exportdir={{kela_opti_exportdir}}
-rajapinnat-s3-enabled={{rajapinnat_s3_enabled}}
-rajapinnat-s3-bucket-name={{rajapinnat_s3_bucket_name}}
-rajapinnat-s3-region={{rajapinnat_s3_region}}
-transferprotocol={{kela_opti_transferprotocol}}
-transferhost={{kela_opti_transferhost}}
-transferuser={{kela_opti_transferuser}}
-transferpassword={{kela_opti_transferpassword}}
-transferparameters={{kela_opti_transferparameters}}
-targetPath={{kela_opti_targetPath}}
-kela-tarjontadb.url=jdbc:postgresql://{{ host_postgresql_tarjonta }}:{{ port_postgresql }}/tarjonta
-kela-tarjontadb.username={{ host_postgresql_tarjonta_user }}
-kela-tarjontadb.password={{ host_postgresql_tarjonta_password }}
-kela-tarjontadb.max-size={{ host_postgresql_tarjonta_kela_service_max_active }}
-kela-organisaatiodb.url=jdbc:postgresql://{{ host_postgresql_organisaatio }}:{{ port_postgresql }}/organisaatio
-kela-organisaatiodb.username={{ host_postgresql_organisaatio_user }}
-kela-organisaatiodb.password={{ host_postgresql_organisaatio_password }}
-kela-organisaatiodb.max-size={{ host_postgresql_organisaatio_max_active }}
-organisaatio.solr.url={{ organisaatio_solr_url }}
-tarjonta.solr.baseurl={{ tarjonta_solr_baseurl }}
-kela.scheduler.cron.expression={{ kela_scheduler_cron_expression }}
-kela.scheduler.enabled={{ kela_scheduler_enabled }}
-kela.scheduler.reportlist={{ kela_scheduler_reportlist }}
-
 # Oletusarvoja
 accessRight.webservice.url.backend=https\://${host.virkailija}/authentication-service/services/accessRightService
 accessRightAdmin.webservice.url.backend=https\://${host.virkailija}/authentication-service/services/accessRightAdminService
