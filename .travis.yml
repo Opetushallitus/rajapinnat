@@ -35,7 +35,7 @@ script:
 
 deploy:
   - provider: script
-    script: mvn deploy -pl fi.vm.sade.rajapinnat:vtj,vtj/vtj-api,ytj/ytj-api,ytj/ytj-generated-model,ytj/ytj-service -DskipTests --settings ci-tools/common/maven-settings.xml
+    script: mvn deploy -pl vtj/vtj-api,ytj/ytj-service -am -DskipTests --settings ci-tools/common/maven-settings.xml
     skip_cleanup: true
     on:
       branch: master
