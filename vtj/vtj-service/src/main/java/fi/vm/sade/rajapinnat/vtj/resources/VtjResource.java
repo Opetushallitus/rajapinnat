@@ -1,16 +1,14 @@
 package fi.vm.sade.rajapinnat.vtj.resources;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import fi.vm.sade.auditlog.vtj.VtjOperation;
+import fi.vm.sade.auditlog.Changes;
+import fi.vm.sade.auditlog.Target;
+import fi.vm.sade.rajapinnat.vtj.AuditLogger;
+import fi.vm.sade.rajapinnat.vtj.NotFoundException;
 import fi.vm.sade.rajapinnat.vtj.PassivoituException;
+import fi.vm.sade.rajapinnat.vtj.VtjOperation;
+import fi.vm.sade.rajapinnat.vtj.api.YksiloityHenkilo;
+import fi.vm.sade.rajapinnat.vtj.service.VtjService;
+import fi.vm.sade.rajapinnat.vtj.service.VtjTestData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,11 +16,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import fi.vm.sade.rajapinnat.vtj.NotFoundException;
-import fi.vm.sade.rajapinnat.vtj.api.YksiloityHenkilo;
-import fi.vm.sade.rajapinnat.vtj.service.VtjService;
-import fi.vm.sade.rajapinnat.vtj.service.VtjTestData;
-import static fi.vm.sade.rajapinnat.vtj.AuditHelper.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import static fi.vm.sade.rajapinnat.vtj.AuditHelper.getUser;
 
 /**
  * User: tommiha
@@ -39,6 +39,9 @@ public class VtjResource {
     
     @Autowired
     private VtjTestData vtjTestData;
+
+    @Autowired
+    private AuditLogger auditLogger;
     
     @Value("${vtj.production.env}")
     private boolean productionEnv;
@@ -48,6 +51,7 @@ public class VtjResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{hetu}")
     public Response teeHenkiloKysely(@PathParam("hetu") String hetu,
+                                     @Context HttpServletRequest request,
                                      @QueryParam("log") Boolean logMessage) {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -59,10 +63,9 @@ public class VtjResource {
                 yksiloityHenkilo = vtjTestData.teeHakuTestidatasta(hetu);
             }
 
-            AUDIT.log(builder()
-                    .hetu(hetu)
-                    .setOperaatio(VtjOperation.HENKILOTIETO_HAKU)
-                    .build());
+            Target target = new Target.Builder().setField("hetu", hetu).build();
+            Changes changes = new Changes.Builder().build();
+            auditLogger.log(getUser(request), VtjOperation.HENKILOTIETO_HAKU, target, changes);
 
             return Response.ok(yksiloityHenkilo).build();
         }

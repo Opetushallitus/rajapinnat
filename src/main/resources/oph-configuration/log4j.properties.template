@@ -17,8 +17,8 @@ log4j.appender.FILE.layout.ConversionPattern=%d{yyyy-MM-dd'T'HH:mm:ss.SSSX} %-5p
 log4j.appender.FILE.MaxFileSize=10MB
 log4j.appender.FILE.MaxBackupIndex=20
 # Audit output
-log4j.additivity.fi.vm.sade.auditlog.Audit=false
-log4j.logger.fi.vm.sade.auditlog.Audit=INFO, AUDIT
+log4j.additivity.fi.vm.sade.rajapinnat.vtj.AuditLogger=false
+log4j.logger.fi.vm.sade.rajapinnat.vtj.AuditLogger=INFO, AUDIT
 log4j.appender.AUDIT=org.apache.log4j.FileAppender
 log4j.appender.AUDIT.immediateFlush=true
 log4j.appender.AUDIT.File=${user.home}/tomcat/logs/auditlog_rajapinnat.log
