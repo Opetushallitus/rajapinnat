@@ -89,7 +89,7 @@ public class VtjTestDataImpl implements VtjTestData{
         testData.add(createNewYH("150894-967K", "Seppo",                       "Seppo",    "Testaaja",          "1", false, null, null, null, null, null, null, null, null, "246"));
         //Vetuma
         testData.add(createNewYH("010101-123N", "Teemu",                       "Teemu",    "Testaaja",          "1", false, null, null, null, null, null, null, null, null, "246"));
-        testData.add(createNewYH("210281-9988", "NORDEA",                      "NORDEA",   "DEMO",              "2", false,null, null, null, null, null, null, null, null, "246", asList(huollettava("Pekka", "Demo", "190306A9850"), huollettava("Liisa", "Demo", "190308A948A"))));
+        testData.add(createNewYH("210281-9988", "NORDEA",                      "NORDEA",   "DEMO",              "2", false,null, null, null, null, null, null, null, null, "246", asList(huollettava("Pekka", "Demo", "190306A9850"), huollettava("Liisa", "Demo", "190308A948A"), huollettava("Jorma", "Aalto", "120892-448C"))));
         testData.add(createNewYH("081181-9984", "ANNA",                        "ANNA",     "TESTI",             "2", false, null, null, null, null, null, null, null, null, "246"));
         testData.add(createNewYH("010170-960F", "Maija",                       "Maija",    "Meikäläinen",       "2", false, null, null, null, null, null, null, null, null, "246"));
         //VTJ-update-tests static
