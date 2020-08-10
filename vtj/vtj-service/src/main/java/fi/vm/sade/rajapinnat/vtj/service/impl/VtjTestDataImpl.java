@@ -97,6 +97,8 @@ public class VtjTestDataImpl implements VtjTestData{
         testData.add(createNewYH("020260-9833", "Ville",                       null,       "Meikäläinen",       "1", false, "ville.meikalainen@fromvtj.oph", "Uusikatu 100", "Nya gatan 100", "12345", "Auramaa", "Åraland", "Suomi", "Finland", "246"));
         testData.add(createNewYH("020260-941R", "Teppo Seppo",                 "Teppo",    "Meikäläinen",       "1", false, "seppo.meikalainen@fromvtj.oph", "Vanhakatu 100", "Gamla gatan 100", "54321", "Kymimaa", "Kymilandet", "Suomi", "Finland", "246"));
         testData.add(createNewYH("020260-961C", "Matti Seppo",                 "Seppo",    "Matikainen",        "1", false, "seppo.matikainen@fromvtj.oph", "Vanhakatu 200", "Gamla gatan 200", "56321", "Hämemaa", "Hämelandet", "Suomi", "Finland", "246"));
+        // Vardan testilapsi
+        testData.add(createNewYH("010619A9501", "Oona Matilda",                 "Oona",    "Korhonen",        "2", false, null, "Sepänkatu 11 A 10", "Sepänkatu 11 A 10", "70100", "KUOPIO", "KUOPIO", "Suomi", "Finland", "246"));
     }
 
     private static String[] changingDataHetus = {"010150-969L", "010150-913T", "010150-979X"};
