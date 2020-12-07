@@ -4,39 +4,39 @@
 
     <groupId>fi.vm.sade.rajapinnat</groupId>
     <artifactId>rajapinnat</artifactId>
-    <version>13.0-SNAPSHOT</version>
+    <version>14.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Rajapinnat :: Parent - ${project.version}</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
-        <java.version>1.8</java.version>
-        <compiler.debug>true</compiler.debug>
+        <maven.compiler.debug>true</maven.compiler.debug>
+        <maven.compiler.release>11</maven.compiler.release>
+        <maven.war.plugin.version>2.4</maven.war.plugin.version>
+
+        <auditlog.api.version>8.3.0-SNAPSHOT</auditlog.api.version>
         <authentication.api.version>7.0-SNAPSHOT</authentication.api.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <cxf.version>3.4.1</cxf.version>
+        <ehcache.version>2.5.2</ehcache.version>
         <generic.version>9.5-SNAPSHOT</generic.version>
+        <junit.version>4.10</junit.version>
+        <koodisto.api.version>10.2-SNAPSHOT</koodisto.api.version>
         <log.client.version>7.0-SNAPSHOT</log.client.version>
+        <mockito.version>1.9.0</mockito.version>
+        <modelmapper.version>0.6.3</modelmapper.version>
         <oid.api.version>8.0-SNAPSHOT</oid.api.version>
+        <organisaatio.api.version>12.2</organisaatio.api.version>
         <rajapinnat.ytj.version>11.0-SNAPSHOT</rajapinnat.ytj.version>
         <rajapinnat.kela-opti.version>11.0-SNAPSHOT</rajapinnat.kela-opti.version>
-	<organisaatio.api.version>12.2</organisaatio.api.version>
-      	<koodisto.api.version>10.2-SNAPSHOT</koodisto.api.version>
-      	<tarjonta.api.version>2016-07-SNAPSHOT</tarjonta.api.version>
-        <auditlog.api.version>8.3.0-SNAPSHOT</auditlog.api.version>
-
-        <maven.war.plugin.version>2.4</maven.war.plugin.version>
-        <swagger.version>1.3.0</swagger.version>
-        <solr.version>4.2.0</solr.version>
-        <modelmapper.version>0.6.3</modelmapper.version>
-        <ehcache.version>2.5.2</ehcache.version>
         <s3.version>1.11.205</s3.version>
+        <servlet.version>3.0.1</servlet.version>
+        <solr.version>4.2.0</solr.version>
+        <swagger.version>1.3.0</swagger.version>
+        <tarjonta.api.version>2016-07-SNAPSHOT</tarjonta.api.version>
     </properties>
-
-    <parent>
-        <groupId>fi.vm.sade.generic</groupId>
-        <artifactId>build-parent</artifactId>
-        <version>15.0-SNAPSHOT</version>
-    </parent>
 
     <modules>
         <module>ytj</module>
@@ -44,31 +44,50 @@
     </modules>
 
     <dependencyManagement>
-    	<dependencies>
+        <dependencies>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>2.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml.ws</groupId>
+                <artifactId>jaxws-api</artifactId>
+                <version>2.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.jws</groupId>
+                <artifactId>javax.jws-api</artifactId>
+                <version>1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jasig.cas.client</groupId>
+                <artifactId>cas-client-support-distributed-ehcache</artifactId>
+                <version>3.1.12</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>net.sf.ehcache</groupId>
+                        <artifactId>ehcache</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
 
-    		<dependency>
-			<groupId>org.jasig.cas.client</groupId>
-			<artifactId>cas-client-support-distributed-ehcache</artifactId>
-			<version>3.1.12</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.ehcache</groupId>
-					<artifactId>ehcache</artifactId>
-				</exclusion>
-			</exclusions>
-	    </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
 
-
-        <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>3.2.2</version>
-        </dependency>
-	</dependencies>
-   </dependencyManagement>
+        </dependencies>
+    </dependencyManagement>
     <build>
     	<pluginManagement>
     		<plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
     			<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
     			<plugin>
     				<groupId>org.eclipse.m2e</groupId>
@@ -114,17 +133,6 @@
                 </plugin>
     		</plugins>
     	</pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
     <distributionManagement>
         <repository>
@@ -151,7 +159,7 @@
             <id>oph-sade-artifactory-releases</id>
             <url>https://artifactory.opintopolku.fi/artifactory/oph-sade-release-local</url>
         </repository>
-        <repository>
+        <!--<repository>
             <id>vaadin-addons</id>
             <name>Vaadin addons</name>
             <url>https://artifactory.opintopolku.fi/artifactory/vaadin-addons</url>
@@ -192,7 +200,7 @@
             <id>amazon</id>
             <name>Amazon s3</name>
             <url>https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3/</url>
-        </repository>
+        </repository>-->
         <repository>
             <id>atomikos</id>
             <name>Atomikos repository</name>
