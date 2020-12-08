@@ -22,7 +22,7 @@
         <cxf.version>3.4.1</cxf.version>
         <ehcache.version>2.5.2</ehcache.version>
         <generic.version>9.5-SNAPSHOT</generic.version>
-        <junit.version>4.10</junit.version>
+        <junit.version>4.13.1</junit.version>
         <koodisto.api.version>10.2-SNAPSHOT</koodisto.api.version>
         <log.client.version>7.0-SNAPSHOT</log.client.version>
         <mockito.version>1.9.0</mockito.version>
@@ -71,13 +71,16 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-
             <dependency>
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
                 <version>${commons-collections.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
