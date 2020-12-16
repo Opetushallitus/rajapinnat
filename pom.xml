@@ -13,7 +13,6 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <maven.compiler.debug>true</maven.compiler.debug>
         <maven.compiler.release>11</maven.compiler.release>
-        <maven.war.plugin.version>2.4</maven.war.plugin.version>
 
         <auditlog.api.version>8.3.0-SNAPSHOT</auditlog.api.version>
         <authentication.api.version>7.0-SNAPSHOT</authentication.api.version>
@@ -36,6 +35,12 @@
         <solr.version>4.2.0</solr.version>
         <swagger.version>1.3.0</swagger.version>
         <tarjonta.api.version>2016-07-SNAPSHOT</tarjonta.api.version>
+
+        <!-- buildversion.txt -->
+        <buildNumber/>
+        <branch/>
+        <revision/>
+        <timestamp>${maven.build.timestamp}</timestamp><!-- war plugin tarvitsee yhä häksyn? -->
     </properties>
 
     <modules>
@@ -91,6 +96,11 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.1</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
     			<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
     			<plugin>
     				<groupId>org.eclipse.m2e</groupId>
@@ -125,11 +135,24 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
+                    <version>3.3.1</version>
                     <configuration>
                         <webResources>
                             <resource>
                                 <directory>../../src/main/resources</directory>
+                                <excludes>
+                                    <exclude>**/buildversion.txt</exclude>
+                                </excludes>
                                 <targetPath>WEB-INF/classes</targetPath>
+                                <filtering>false</filtering>
+                            </resource>
+                            <resource>
+                                <directory>../../src/main/resources</directory>
+                                <includes>
+                                    <include>**/buildversion.txt</include>
+                                </includes>
+                                <targetPath>/</targetPath>
+                                <filtering>true</filtering>
                             </resource>
                         </webResources>
                     </configuration>
@@ -162,48 +185,6 @@
             <id>oph-sade-artifactory-releases</id>
             <url>https://artifactory.opintopolku.fi/artifactory/oph-sade-release-local</url>
         </repository>
-        <!--<repository>
-            <id>vaadin-addons</id>
-            <name>Vaadin addons</name>
-            <url>https://artifactory.opintopolku.fi/artifactory/vaadin-addons</url>
-        </repository>
-        <repository>
-            <id>com.springsource.repository.bundles.release</id>
-            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
-            <url>https://artifactory.opintopolku.fi/artifactory/springsource-ebr/</url>
-        </repository>
-        <repository>
-            <id>com.springsource.repository.bundles.external</id>
-            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-            <url>https://artifactory.opintopolku.fi/artifactory/spring-ebr/</url>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>com.springsource.repository.maven.snapshot</id>
-            <name>SpringSource Enterprise Bundle Maven Repository - SpringSource Snapshot Releases</name>
-            <url>https://artifactory.opintopolku.fi/artifactory/com.springsource.repository.maven.snapshot/</url>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>com.springsource.repository.maven.milestone</id>
-            <name>Spring Framework Maven Milestone Releases (Maven Central Format)</name>
-            <url>https://artifactory.opintopolku.fi/artifactory/com.springsource.repository.maven.milestone/</url>
-        </repository>
-        <repository>
-            <id>amazon</id>
-            <name>Amazon s3</name>
-            <url>https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3/</url>
-        </repository>-->
         <repository>
             <id>atomikos</id>
             <name>Atomikos repository</name>
