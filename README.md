@@ -6,13 +6,15 @@ Tämän alla rajapintoja ulkoisien järjestelmien ja opintopolun palveluiden vä
 
 Hetu-hakuihin käytetty rajapinta.
 Ajaminen lokaalisti:
- * kopioi `DEV-security-context-backend.xml` ja `DEV-vtj-service.properties` (ilman DEV-etuliitettä) hakemistoon
+ * kopioi (tai linkitä) `DEV-security-context-backend.xml` ja `DEV-vtj-service.properties` (ilman DEV-etuliitettä) hakemistoon
  `$HOME/oph-configuration`
+ * käännä koodi: `mvn install`
  * käynnistä palvelu ajamalla `vtj/vtj-service` -hakemistossa:
- `mvn install org.codehaus.cargo:cargo-maven2-plugin:run`
+ `mvn org.codehaus.cargo:cargo-maven2-plugin:run`
 
 Palvelu käynnistyy oletusarvoisesti porttiin 8081, ja hetu-hakuja voi tehdä osoitteeseen:
 `http://localhost:8081/vtj-service/resources/vtj/<hetu>`. Testidata löytyy luokasta `VtjTestDataImpl`.
+Testitunnuksen löytyvät tiedostosta `DEV-security-context-backend.xml`.
  
 ## ytj ##
 
