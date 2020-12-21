@@ -7,22 +7,40 @@
     <parent>
         <groupId>fi.vm.sade.rajapinnat</groupId>
         <artifactId>vtj</artifactId>
-        <version>13.0-SNAPSHOT</version>
+        <version>14.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>fi.vm.sade.rajapinnat</groupId>
     <artifactId>vtj-service</artifactId>
     <packaging>war</packaging>
 
     <properties>
-        <deploy.to.server>tomcat</deploy.to.server>
         <webapp.port>8081</webapp.port>
         <slf4j.version>1.6.1</slf4j.version>
         <log4j.version>1.2.14</log4j.version>
+        <jersey.version>1.19.4</jersey.version>
+        <cxf.version>2.7.18</cxf.version>
+        <tomcat.version>7.0.107</tomcat.version>
     </properties>
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.cargo</groupId>
+                    <artifactId>cargo-maven2-plugin</artifactId>
+                    <configuration>
+                        <containerId>tomcat7x</containerId>
+                        <containerUrl>https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat/${tomcat.version}/tomcat-${tomcat.version}.zip</containerUrl>
+                        <configuration>
+                            <properties>
+                                <cargo.servlet.port>${webapp.port}</cargo.servlet.port>
+                            </properties>
+                        </configuration>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
@@ -30,12 +48,6 @@
             <groupId>org.jasig.cas.client</groupId>
             <artifactId>cas-client-support-distributed-ehcache</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-client-support-distributed-ehcache</artifactId>
@@ -104,55 +116,17 @@
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
-            <version>1.9.1</version>
+            <version>${jersey.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
-            <version>1.9.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.codehaus.jackson</groupId>
-                    <artifactId>jackson-core-asl</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.codehaus.jackson</groupId>
-                    <artifactId>jackson-jaxrs</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.codehaus.jackson</groupId>
-                    <artifactId>jackson-mapper-asl</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.codehaus.jackson</groupId>
-                    <artifactId>jackson-xc</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
-            <version>1.9.11</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-jaxrs</artifactId>
-            <version>1.9.11</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.11</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-xc</artifactId>
-            <version>1.9.11</version>
+            <version>${jersey.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-spring</artifactId>
-            <version>1.9.1</version>
+            <version>${jersey.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
@@ -180,23 +154,9 @@
                 </exclusion>
             </exclusions>
         </dependency>
-<!--        <dependency>
-            <groupId>com.sun.jersey.jersey-test-framework</groupId>
-            <artifactId>jersey-test-framework-grizzly</artifactId>
-            <version>1.9.1</version>
-            <scope>test</scope>
-            <exclusions>
-            	<exclusion>
-            		<artifactId>servlet-api</artifactId>
-            		<groupId>javax.servlet</groupId>
-            	</exclusion>
-            </exclusions>
-        </dependency>
--->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -285,25 +245,13 @@
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-api</artifactId>
-            <version>2.7.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-core</artifactId>
-            <version>2.7.3</version>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
-            <version>2.7.3</version>
+            <version>${cxf.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>2.7.3</version>
-        </dependency>
-
     </dependencies>
-    
 </project>

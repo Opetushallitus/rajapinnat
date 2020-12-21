@@ -4,10 +4,17 @@ Tämän alla rajapintoja ulkoisien järjestelmien ja opintopolun palveluiden vä
 
 ## vtj ##
 
-Hetu hakuihin käytetty rajapinta.
- * Käynnistä palvelu VtjServiceTomcatilla
- * configuroi oph-configuration hakemisto. (vtj.production.env=false rupeaa palauttamaan testi hetuilla tietoa.) 
-   * rajapinnat/DEV-security-context-backend.xml tiedostoa voi käyttää kehitysvaiheessa 
+Hetu-hakuihin käytetty rajapinta.
+Ajaminen lokaalisti:
+ * kopioi (tai linkitä) `DEV-security-context-backend.xml` ja `DEV-vtj-service.properties` (ilman DEV-etuliitettä) hakemistoon
+ `$HOME/oph-configuration`
+ * käännä koodi: `mvn install`
+ * käynnistä palvelu ajamalla `vtj/vtj-service` -hakemistossa:
+ `mvn org.codehaus.cargo:cargo-maven2-plugin:run`
+
+Palvelu käynnistyy oletusarvoisesti porttiin 8081, ja hetu-hakuja voi tehdä osoitteeseen:
+`http://localhost:8081/vtj-service/resources/vtj/<hetu>`. Testidata löytyy luokasta `VtjTestDataImpl`.
+Testitunnuksen löytyvät tiedostosta `DEV-security-context-backend.xml`.
  
 ## ytj ##
 
