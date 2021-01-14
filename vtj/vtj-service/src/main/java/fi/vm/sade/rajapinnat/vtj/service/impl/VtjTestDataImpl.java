@@ -188,8 +188,7 @@ public class VtjTestDataImpl implements VtjTestData{
                                                  maaR));
             yh.setSahkoposti((yh.getKutsumanimi() + "@fromvtj.oph").toLowerCase());
             yh.addKansalaisuusKoodi(kansalaisuusKoodi);
-        }
-        else {
+        } else {
             yh.setEtunimi(etunimi);
             yh.setSukunimi(sukunimi);
             yh.setKutsumanimi(kutsumanimi);
@@ -206,11 +205,26 @@ public class VtjTestDataImpl implements VtjTestData{
                                                       maaR));
             }
             yh.setSahkoposti(sahkoposti);
+            for (Huollettava huollettava : huollettavat) {
+                createNewYH(huollettava.getHetu(), huollettava.getEtunimet(), kutsumanimi(huollettava.getEtunimet()),
+                        huollettava.getSukunimi(), sukupuoli(huollettava.getHetu()), false, null,
+                        katuosoiteS, katuosoiteR, postinumero, kaupunkiS, kaupunkiR, maaS, maaR, kansalaisuusKoodi);
+            }
             yh.setHuollettavat(huollettavat);
         }
         yh.setHetu(hetu);
         yh.setSukupuoli(sukupuoli);
         return yh;
+    }
+
+    static String kutsumanimi(String etunimet) {
+        return etunimet.split("\\s")[0];
+    }
+
+    static String sukupuoli(String hetu) {
+        if (hetu == null || hetu.length() == 0) return "";
+        int juoksevaNumero = Integer.parseInt(hetu.substring(7, 10));
+        return (juoksevaNumero % 2) == 0 ? "2" : "1";
     }
 
     private static YksiloityHenkilo createNewYH(String hetu,

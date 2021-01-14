@@ -1,7 +1,6 @@
 package fi.vm.sade.rajapinnat.vtj.service;
 
 import fi.vm.sade.rajapinnat.vtj.api.YksiloityHenkilo;
-import fi.vrk.xml.schema.vtjkysely.VTJHenkiloVastaussanoma;
 
 /**
  * User: tommiha
