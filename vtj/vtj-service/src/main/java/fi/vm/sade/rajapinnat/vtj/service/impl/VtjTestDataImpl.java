@@ -97,6 +97,22 @@ public class VtjTestDataImpl implements VtjTestData{
         testData.add(createNewYH("020260-9833", "Ville",                       null,       "Meikäläinen",       "1", false, "ville.meikalainen@fromvtj.oph", "Uusikatu 100", "Nya gatan 100", "12345", "Auramaa", "Åraland", "Suomi", "Finland", "246"));
         testData.add(createNewYH("020260-941R", "Teppo Seppo",                 "Teppo",    "Meikäläinen",       "1", false, "seppo.meikalainen@fromvtj.oph", "Vanhakatu 100", "Gamla gatan 100", "54321", "Kymimaa", "Kymilandet", "Suomi", "Finland", "246"));
         testData.add(createNewYH("020260-961C", "Matti Seppo",                 "Seppo",    "Matikainen",        "1", false, "seppo.matikainen@fromvtj.oph", "Vanhakatu 200", "Gamla gatan 200", "56321", "Hämemaa", "Hämelandet", "Suomi", "Finland", "246"));
+        // Suomi.fi & huoltajuus
+        testData.add(createNewYH("010180-953U", "Tehvo", "Tehvo", "Testilä", "1", false, "tehvo.testila@fromvtj.oph", "Kukkaniityntie 21", "Blomängsvägen 21", "00950", "Helsinki", "Helsingfors", "Suomi", "Finland", "246", asList(
+                huollettava("Teila Aamu Runelma", "Testilä", "010215A951T")
+        )));
+        testData.add(createNewYH("220202A998H", "Krista", "Krista", "Luukkanen", "2", false, "krista.luukkanen@fromvtj.oph", "Kukkaniityntie 21", "Blomängsvägen 21", "00950", "Helsinki", "Helsingfors", "Suomi", "Finland", "246", asList(
+                huollettava("Vera Devushkina", "Popov", "010316A952W")
+        )));
+        testData.add(createNewYH("190668-953C", "Tenho", "Tenho", "Testimees", "1", false, "tenho.testimees@fromvtj.oph", "Kukkaniityntie 21", "Blomängsvägen 21", "00950", "Helsinki", "Helsingfors", "Suomi", "Finland", "246", asList(
+                huollettava("Mia Monna Maranella Mansikka", "Testimees", "010415A950C"),
+                huollettava("Rudolf Testarossa", "Testimees", "010415A951D"),
+                huollettava("Juan Santos Anderros", "Testimees", "010307A951J")
+        )));
+        testData.add(createNewYH("090670-999X", "Erkka", "Erkka", "Huusko", "1", false, "erkka.huusko@fromvtj.oph", "Kukkaniityntie 21", "Blomängsvägen 21", "00950", "Helsinki", "Helsingfors", "Suomi", "Finland", "246", asList(
+                huollettava("Helmi Anna Amanda", "Huusko", "010919A950E"),
+                huollettava("Joni Usko", "Huusko", "150204A999J")
+        )));
     }
 
     private static String[] changingDataHetus = {"010150-969L", "010150-913T", "010150-979X"};
