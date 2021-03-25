@@ -29,7 +29,6 @@
         <oid.api.version>8.0-SNAPSHOT</oid.api.version>
         <organisaatio.api.version>12.2</organisaatio.api.version>
         <rajapinnat.ytj.version>11.0-SNAPSHOT</rajapinnat.ytj.version>
-        <rajapinnat.kela-opti.version>11.0-SNAPSHOT</rajapinnat.kela-opti.version>
         <s3.version>1.11.205</s3.version>
         <servlet.version>3.0.1</servlet.version>
         <solr.version>4.2.0</solr.version>
