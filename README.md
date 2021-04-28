@@ -1,3 +1,13 @@
+# HUOM! OBS! ATTN! #
+
+---
+
+TÄMÄ REPO EI OLE ENÄÄ KÄYTÖSSÄ.
+
+VTJ-rajapinta on siirretty [omaan repoonsa](https://github.com/Opetushallitus/vtj). YTJ-kirjasto puolestaan on nyt osa [organisaatiopalvelua](https://github.com/Opetushallitus/organisaatio/). Aikoinaan rajapinnat-repoon kuulunut Kela-service on poistunut käytöstä.
+
+---
+
 # rajapinnat #
 
 Tämän alla rajapintoja ulkoisien järjestelmien ja opintopolun palveluiden välille
